@@ -1,0 +1,160 @@
+/* ESTILOS GENERALES */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+}
+
+.ejercicio {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.ejercicio h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+.caja {
+    background-color: lightblue;
+    padding: 20px;
+    border: 1px solid #333;
+}
+
+
+/* =========================
+   EJERCICIO 1
+   ========================= */
+
+.ejercicio1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+/* =========================
+   EJERCICIO 2
+   ========================= */
+
+.ejercicio2-center {
+    display: flex;
+    justify-content: center;
+}
+
+.ejercicio2-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ejercicio2-around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ejercicio2-evenly {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+/* =========================
+   EJERCICIO 3
+   ========================= */
+
+.ejercicio3-center {
+    display: flex;
+    height: 200px;
+    align-items: center;
+}
+
+.ejercicio3-start {
+    display: flex;
+    height: 200px;
+    align-items: flex-start;
+}
+
+.ejercicio3-end {
+    display: flex;
+    height: 200px;
+    align-items: flex-end;
+}
+
+
+/* =========================
+   EJERCICIO 4
+   ========================= */
+
+.ejercicio4-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.ejercicio4-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+
+/* =========================
+   EJERCICIO 5
+   ========================= */
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+}
+
+.layout header {
+    padding: 20px;
+    text-align: center;
+    background-color: lightblue;
+}
+
+.layout nav {
+    padding: 20px;
+    text-align: center;
+    background-color: lightgray;
+}
+
+.layout main {
+    flex-grow: 1;
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.layout footer {
+    padding: 20px;
+    text-align: center;
+    background-color: lightblue;
+}
+
+
+/* =========================
+   EJERCICIO 6
+   ========================= */
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    padding: 30px;
+    border: 1px solid #333;
+    flex: 1 1 200px;
+    text-align: center;
+    background-color: lightblue;
+}
