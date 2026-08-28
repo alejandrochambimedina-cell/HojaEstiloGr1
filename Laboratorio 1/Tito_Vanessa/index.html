@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DevCraft Studios - Desarrollo web moderno, accesible y responsivo.">
+  <title>DevCraft Studios | Soluciones Web de Alto Rendimiento</title>
+  
+  <!-- Enlace al archivo CSS externo -->
+  <link rel="stylesheet" href="../Tito_Vanessa/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="#inicio" aria-label="DevCraft Studios, ir al inicio">
+        DevCraft<span>Studios</span>
+      </a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#showcase">Demostración</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">Agencia de Desarrollo Digital</p>
+          <h1>Creamos productos digitales que impactan</h1>
+          <p class="hero-text">
+            Diseñamos e implementamos plataformas web ultrarrápidas, accesibles y adaptadas a cualquier dispositivo del mercado.
+          </p>
+          <a class="button" href="#servicios">Ver Servicios</a>
+        </div>
+
+        <picture class="hero-media">
+          <source media="(min-width: 64rem)" srcset="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop">
+          <source media="(min-width: 48rem)" srcset="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop" alt="Interfaz web observada en distintos dispositivos" width="640" height="480" fetchpriority="high">
+        </picture>
+      </div>
+    </section>
+
+    <section id="servicios" class="section">
+      <div class="container">
+        <header class="section-heading">
+          <p class="eyebrow">Nuestras Soluciones</p>
+          <h2>Especialidades del estudio</h2>
+          <p>
+            Estrategias de desarrollo centradas en el rendimiento, la accesibilidad y la escalabilidad de tu negocio.
+          </p>
+        </header>
+
+        <div class="cards">
+          <article class="card">
+            <span class="card-number">01</span>
+            <h3>UI/UX Responsivo</h3>
+            <p>Diseños adaptables desde pantallas móviles de 320px hasta monitores 4K.</p>
+          </article>
+          <article class="card">
+            <span class="card-number">02</span>
+            <h3>Optimización SEO</h3>
+            <p>Estructura semántica limpia para destacar en los motores de búsqueda.</p>
+          </article>
+          <article class="card">
+            <span class="card-number">03</span>
+            <h3>Máxima Velocidad</h3>
+            <p>Carga ultrarrápida aplicando las mejores prácticas de optimización multimedia.</p>
+          </article>
+          <article class="card">
+            <span class="card-number">04</span>
+            <h3>Accesibilidad Web</h3>
+            <p>Garantizamos navegabilidad con teclado y compatibilidad con lectores de pantalla.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="showcase" class="section section-accent">
+      <div class="container media-layout">
+        <div>
+          <p class="eyebrow">Experiencia Interactiva</p>
+          <h2>Demostración multimedia</h2>
+          <p>
+            Revisa el flujo visual de nuestros proyectos mediante el reproductor optimizado sin pérdidas de calidad.
+          </p>
+        </div>
+
+        <div class="video-shell">
+          <video controls preload="metadata" poster="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&auto=format&fit=crop">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este video.
+          </video>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 DevCraft Studios • Proyecto Final Semana 1</p>
+    </div>
+  </footer>
+
+</body>
+</html>
