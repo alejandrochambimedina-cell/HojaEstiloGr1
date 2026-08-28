@@ -1,1199 +1,546 @@
-/* =========================================================
-   RUTA DIGITAL
-   Laboratorio Semana 2 - Flexbox
-   ========================================================= */
+/* RUTA DIGITAL - Laboratorio Semana 2: Flexbox */
 
-
-/* =========================================================
-   VARIABLES
-   ========================================================= */
-
+/* VARIABLES */
 :root {
-
-    --color-ink: #0b2545;
-    --color-muted: #52657a;
-
-    --color-primary: #0b63ce;
-    --color-primary-dark: #074b9d;
-
-    --color-accent: #22c7d6;
-
-    --color-surface: #ffffff;
-    --color-soft: #eef5fb;
-
-    --color-border: #d7e2ee;
-
-    --shadow: 0 1rem 2.5rem rgb(11 37 69 / 12%);
-
-    --radius: 1.25rem;
-
-    --container: 72rem;
+  --color-ink: #0b2545;
+  --color-muted: #52657a;
+  --color-primary: #0b63ce;
+  --color-primary-dark: #074b9d;
+  --color-accent: #22c7d6;
+  --color-surface: #ffffff;
+  --color-soft: #eef5fb;
+  --color-border: #d7e2ee;
+  --shadow: 0 1rem 2.5rem rgb(11 37 69 / 12%);
+  --radius: 1.25rem;
+  --container: 72rem;
 }
 
-
-/* =========================================================
-   CONFIGURACIÓN GENERAL
-   ========================================================= */
-
-*,
-*::before,
-*::after {
-
-    box-sizing: border-box;
+/* CONFIGURACIÓN GENERAL */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
-
 
 html {
-
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
-
 
 body {
-
-    margin: 0;
-
-    color: var(--color-ink);
-
-    background: var(--color-surface);
-
-    font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        sans-serif;
-
-    line-height: 1.6;
+  margin: 0;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
 }
-
 
 a {
-
-    color: inherit;
+  color: inherit;
 }
-
 
 code {
-
-    padding: 0.08em 0.3em;
-
-    border-radius: 0.35rem;
-
-    color: var(--color-primary-dark);
-
-    background: #e7f1ff;
-
-    font-family:
-        ui-monospace,
-        SFMono-Regular,
-        Consolas,
-        monospace;
-
-    font-size: 0.92em;
+  padding: 0.08em 0.3em;
+  border-radius: 0.35rem;
+  color: var(--color-primary-dark);
+  background: #e7f1ff;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.92em;
 }
-
 
 .container {
-
-    width: min(100% - 2rem, var(--container));
-
-    margin-inline: auto;
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
 }
 
-
-/* =========================================================
-   ACCESIBILIDAD
-   ========================================================= */
-
+/* ACCESIBILIDAD */
 .skip-link {
-
-    position: fixed;
-
-    inset-block-start: 0.75rem;
-
-    inset-inline-start: 0.75rem;
-
-    z-index: 10;
-
-    padding: 0.7rem 1rem;
-
-    color: #ffffff;
-
-    background: var(--color-ink);
-
-    border-radius: 0.5rem;
-
-    transform: translateY(-160%);
+  position: fixed;
+  inset-block-start: 0.75rem;
+  inset-inline-start: 0.75rem;
+  z-index: 10;
+  padding: 0.7rem 1rem;
+  color: #ffffff;
+  background: var(--color-ink);
+  border-radius: 0.5rem;
+  transform: translateY(-160%);
 }
-
 
 .skip-link:focus {
-
-    transform: translateY(0);
+  transform: translateY(0);
 }
-
 
 :focus-visible {
-
-    outline: 0.2rem solid var(--color-accent);
-
-    outline-offset: 0.2rem;
+  outline: 0.2rem solid var(--color-accent);
+  outline-offset: 0.2rem;
 }
 
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
+/* HEADER */
 .site-header {
-
-    border-block-end: 1px solid var(--color-border);
-
-    background: rgb(255 255 255 / 96%);
+  border-block-end: 1px solid var(--color-border);
+  background: rgb(255 255 255 / 96%);
 }
-
 
 .header__inner {
-
-    /*
-     * FLEXBOX:
-     * Permite que los elementos del header
-     * se acomoden en varias líneas.
-     */
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 0.85rem 1.25rem;
-
-    padding-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1.25rem;
+  padding-block: 1rem;
 }
-
 
 .brand {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 0.65rem;
-
-    font-weight: 800;
-
-    text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 800;
+  text-decoration: none;
 }
-
 
 .brand__mark {
-
-    display: grid;
-
-    place-items: center;
-
-    inline-size: 2.5rem;
-
-    aspect-ratio: 1;
-
-    color: #ffffff;
-
-    background: var(--color-primary);
-
-    border-radius: 0.7rem;
-
-    font-size: 0.8rem;
+  display: grid;
+  place-items: center;
+  inline-size: 2.5rem;
+  aspect-ratio: 1;
+  color: #ffffff;
+  background: var(--color-primary);
+  border-radius: 0.7rem;
+  font-size: 0.8rem;
 }
-
-
-/* Navegación */
 
 .site-nav {
-
-    /*
-     * En móvil ocupa toda la línea.
-     */
-
-    flex: 1 1 100%;
+  flex: 1 1 100%;
 }
-
 
 .site-nav__list {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    gap: 0.35rem 1rem;
-
-    margin: 0;
-
-    padding: 0;
-
-    list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-
 
 .site-nav a,
 .site-footer a {
-
-    color: var(--color-muted);
-
-    font-weight: 700;
-
-    text-decoration-thickness: 0.1em;
-
-    text-underline-offset: 0.25em;
+  color: var(--color-muted);
+  font-weight: 700;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.25em;
 }
 
-
-/* =========================================================
-   BOTONES
-   ========================================================= */
-
+/* BOTONES */
 .button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-block-size: 2.75rem;
-
-    padding: 0.7rem 1rem;
-
-    border: 2px solid var(--color-primary);
-
-    border-radius: 0.75rem;
-
-    color: #ffffff;
-
-    background: var(--color-primary);
-
-    font-weight: 800;
-
-    text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 2.75rem;
+  padding: 0.7rem 1rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 0.75rem;
+  color: #ffffff;
+  background: var(--color-primary);
+  font-weight: 800;
+  text-decoration: none;
 }
-
 
 .button:hover {
-
-    background: var(--color-primary-dark);
-
-    border-color: var(--color-primary-dark);
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
 }
-
 
 .button--small {
-
-    min-block-size: 2.5rem;
-
-    padding-block: 0.5rem;
+  min-block-size: 2.5rem;
+  padding-block: 0.5rem;
 }
-
 
 .button--secondary {
-
-    color: var(--color-primary);
-
-    background: transparent;
+  color: var(--color-primary);
+  background: transparent;
 }
 
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
+/* HERO */
 .hero {
-
-    padding-block:
-        clamp(3.5rem, 9vw, 7rem);
-
-    background:
-        radial-gradient(circle at 85% 20%,
-            rgb(34 199 214 / 22%),
-            transparent 27rem),
-        linear-gradient(135deg,
-            #f7fbff,
-            #eef5fb);
+  padding-block: clamp(3.5rem, 9vw, 7rem);
+  background: radial-gradient(circle at 85% 20%, rgb(34 199 214 / 22%), transparent 27rem), linear-gradient(135deg, #f7fbff, #eef5fb);
 }
-
 
 .hero__layout {
-
-    /*
-     * MOBILE FIRST
-     * En móvil los elementos se colocan
-     * uno debajo del otro.
-     */
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
-
 
 .hero__content,
 .hero__panel {
-
-    /*
-     * Permite que el contenido pueda reducirse
-     * sin provocar desbordamiento.
-     */
-
-    min-inline-size: 0;
+  min-inline-size: 0;
 }
-
 
 .eyebrow,
 .panel__label,
 .card__eyebrow {
-
-    margin: 0 0 0.5rem;
-
-    color: var(--color-primary);
-
-    font-size: 0.78rem;
-
-    font-weight: 900;
-
-    letter-spacing: 0.1em;
-
-    text-transform: uppercase;
+  margin: 0 0 0.5rem;
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-
-h1,
-h2,
-h3,
-p {
-
-    overflow-wrap: anywhere;
+h1, h2, h3, p {
+  overflow-wrap: anywhere;
 }
 
-
-h1,
-h2,
-h3 {
-
-    margin-block-start: 0;
-
-    line-height: 1.15;
+h1, h2, h3 {
+  margin-block-start: 0;
+  line-height: 1.15;
 }
-
 
 h1 {
-
-    max-inline-size: 15ch;
-
-    margin-block-end: 1.25rem;
-
-    font-size:
-        clamp(2.3rem,
-            8vw,
-            5rem);
+  max-inline-size: 15ch;
+  margin-block-end: 1.25rem;
+  font-size: clamp(2.3rem, 8vw, 5rem);
 }
-
 
 h2 {
-
-    margin-block-end: 0.85rem;
-
-    font-size:
-        clamp(1.75rem,
-            4vw,
-            2.6rem);
+  margin-block-end: 0.85rem;
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
 }
-
 
 h3 {
-
-    margin-block-end: 0.65rem;
-
-    font-size: 1.25rem;
+  margin-block-end: 0.65rem;
+  font-size: 1.25rem;
 }
-
 
 .hero__lead {
-
-    max-inline-size: 62ch;
-
-    margin: 0;
-
-    color: var(--color-muted);
-
-    font-size:
-        clamp(1.05rem,
-            2vw,
-            1.25rem);
+  max-inline-size: 62ch;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
 }
-
-
-/* =========================================================
-   BOTONES DEL HERO
-   ========================================================= */
 
 .hero__actions {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 0.75rem;
-
-    margin-block-start: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block-start: 1.5rem;
 }
-
-
-/* =========================================================
-   PANEL DEL HERO
-   ========================================================= */
 
 .hero__panel {
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 1rem;
-
-    padding:
-        clamp(1.25rem,
-            4vw,
-            2rem);
-
-    border:
-        1px solid rgb(11 99 206 / 18%);
-
-    border-radius: var(--radius);
-
-    background:
-        rgb(255 255 255 / 82%);
-
-    box-shadow: var(--shadow);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid rgb(11 99 206 / 18%);
+  border-radius: var(--radius);
+  background: rgb(255 255 255 / 82%);
+  box-shadow: var(--shadow);
 }
-
 
 .panel__number {
-
-    /*
-     * flex: 0 0 auto
-     * evita que el número se reduzca.
-     */
-
-    flex: 0 0 auto;
-
-    color: var(--color-accent);
-
-    font-size: 2rem;
-
-    font-weight: 900;
-
-    line-height: 1;
+  flex: 0 0 auto;
+  color: var(--color-accent);
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
 }
-
 
 .hero__panel p:last-child {
-
-    margin-block-end: 0;
-
-    color: var(--color-muted);
+  margin-block-end: 0;
+  color: var(--color-muted);
 }
 
-
-/* =========================================================
-   SECCIONES
-   ========================================================= */
-
+/* SECCIONES */
 .section {
-
-    padding-block:
-        clamp(3rem,
-            7vw,
-            5.5rem);
+  padding-block: clamp(3rem, 7vw, 5.5rem);
 }
-
 
 .section--muted {
-
-    background: var(--color-soft);
+  background: var(--color-soft);
 }
-
 
 .section-heading {
-
-    /*
-     * FLEXBOX
-     * El título y las etiquetas se distribuyen
-     * de forma flexible.
-     */
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    align-items: flex-end;
-
-    justify-content: space-between;
-
-    gap: 1rem 2rem;
-
-    margin-block-end: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-block-end: 2rem;
 }
-
 
 .section-heading h2 {
-
-    margin-block-end: 0;
+  margin-block-end: 0;
 }
 
-
-/* =========================================================
-   ETIQUETAS
-   ========================================================= */
-
+/* ETIQUETAS */
 .tag-list {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 0.5rem;
-
-    margin: 0;
-
-    padding: 0;
-
-    list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-
 
 .tag-list li {
-
-    padding: 0.35rem 0.7rem;
-
-    border: 1px solid var(--color-border);
-
-    border-radius: 999px;
-
-    color: var(--color-muted);
-
-    background: #ffffff;
-
-    font-size: 0.85rem;
-
-    font-weight: 800;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-muted);
+  background: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 800;
 }
 
-
-/* =========================================================
-   CONTENEDOR DE TARJETAS
-   ========================================================= */
-
+/* TARJETAS */
 .card-list {
-
-    /*
-     * FLEXBOX PRINCIPAL DE LAS TARJETAS
-     *
-     * row  = tarjetas en fila
-     * wrap = permiten saltar de línea
-     */
-
-    display: flex;
-
-    flex-flow: row wrap;
-
-    align-items: stretch;
-
-    gap: 1.25rem;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  gap: 1.25rem;
 }
-
-
-/* =========================================================
-   TARJETA
-   ========================================================= */
 
 .card {
-
-    /*
-     * flex: grow shrink basis
-     *
-     * Puede crecer.
-     * Puede reducirse.
-     * Su base es 16rem.
-     */
-
-    flex: 1 1 16rem;
-
-    /*
-     * IMPORTANTE:
-     * Permite que el contenido pueda reducirse.
-     */
-
-    min-inline-size: 0;
-
-    /*
-     * FLEXBOX ANIDADO
-     */
-
-    display: flex;
-
-    flex-direction: column;
-
-    overflow: hidden;
-
-    border: 1px solid var(--color-border);
-
-    border-radius: var(--radius);
-
-    background: #ffffff;
-
-    box-shadow:
-        0 0.7rem 1.8rem rgb(11 37 69 / 8%);
+  flex: 1 1 16rem;
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: #ffffff;
+  box-shadow: 0 0.7rem 1.8rem rgb(11 37 69 / 8%);
 }
-
-
-/*
- * TARJETA DESTACADA
- */
 
 .card--featured {
-
-    /*
-     * Crece proporcionalmente más
-     * que las otras tarjetas.
-     */
-
-    flex-grow: 2;
+  flex-grow: 2;
 }
-
-
-/*
- * SEXTA TARJETA
- *
- * La base se modifica como pide el reto.
- */
-
-/* La sexta tarjeta tiene una base ligeramente mayor.
-   Se eligió 18rem porque proporciona un ancho útil
-   para sus metadatos sin depender de un ancho fijo. */
 
 .card--sixth {
-
-    flex-basis: 18rem;
+  flex-basis: 18rem;
 }
-
-
-/* =========================================================
-   PARTE VISUAL DE LAS TARJETAS
-   ========================================================= */
 
 .card__visual {
-
-    display: flex;
-
-    align-items: flex-end;
-
-    min-block-size: 9rem;
-
-    padding: 1rem;
-
-    color: #ffffff;
-
-    font-size:
-        clamp(1.2rem,
-            4vw,
-            2rem);
-
-    font-weight: 900;
-
-    letter-spacing: 0.08em;
+  display: flex;
+  align-items: flex-end;
+  min-block-size: 9rem;
+  padding: 1rem;
+  color: #ffffff;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
 }
-
 
 .card__visual--blue {
-
-    background:
-        linear-gradient(135deg,
-            #0b63ce,
-            #0b2545);
+  background: linear-gradient(135deg, #0b63ce, #0b2545);
 }
-
 
 .card__visual--cyan {
-
-    background:
-        linear-gradient(135deg,
-            #008f9b,
-            #0b63ce);
+  background: linear-gradient(135deg, #008f9b, #0b63ce);
 }
-
 
 .card__visual--violet {
-
-    background:
-        linear-gradient(135deg,
-            #6f4bd8,
-            #34306f);
+  background: linear-gradient(135deg, #6f4bd8, #34306f);
 }
-
 
 .card__visual--green {
-
-    background:
-        linear-gradient(135deg,
-            #198754,
-            #0b6050);
+  background: linear-gradient(135deg, #198754, #0b6050);
 }
-
 
 .card__visual--orange {
-
-    background:
-        linear-gradient(135deg,
-            #d46b08,
-            #8c3b00);
+  background: linear-gradient(135deg, #d46b08, #8c3b00);
 }
-
-
-/* Sexta tarjeta */
 
 .card__visual--purple {
-
-    background:
-        linear-gradient(135deg,
-            #8e44ad,
-            #4a235a);
+  background: linear-gradient(135deg, #8e44ad, #4a235a);
 }
-
-
-/* =========================================================
-   CUERPO DE LA TARJETA
-   ========================================================= */
 
 .card__body {
-
-    /*
-     * FLEXBOX ANIDADO
-     */
-
-    display: flex;
-
-    /*
-     * Ocupa el espacio disponible.
-     */
-
-    flex: 1;
-
-    flex-direction: column;
-
-    padding: 1.25rem;
-
-    /*
-     * Protección contra textos largos.
-     */
-
-    min-inline-size: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.25rem;
+  min-inline-size: 0;
 }
 
-
-.card__body>p:not(.card__eyebrow) {
-
-    margin-block-start: 0;
-
-    color: var(--color-muted);
+.card__body > p:not(.card__eyebrow) {
+  margin-block-start: 0;
+  color: var(--color-muted);
 }
-
-
-/* =========================================================
-   METADATOS
-   ========================================================= */
 
 .card__meta {
-
-    /*
-     * FLEXBOX PARA LOS METADATOS
-     *
-     * Este es uno de los requisitos del reto.
-     */
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    align-items: center;
-
-    gap: 0.5rem;
-
-    margin-block-start: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block-start: 1rem;
 }
-
 
 .card__meta span {
-
-    padding: 0.3rem 0.6rem;
-
-    border-radius: 999px;
-
-    color: var(--color-primary-dark);
-
-    background: #e7f1ff;
-
-    font-size: 0.8rem;
-
-    font-weight: 700;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  color: var(--color-primary-dark);
+  background: #e7f1ff;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
-
-
-/* =========================================================
-   BADGE
-   ========================================================= */
 
 .card__badge {
-
-    /*
-     * ALIGN-SELF
-     *
-     * Alinea solamente este elemento,
-     * sin modificar los demás elementos.
-     */
-
-    align-self: flex-end;
-
-    margin-block-start: 1rem;
-
-    padding: 0.35rem 0.65rem;
-
-    border-radius: 999px;
-
-    color: #ffffff;
-
-    background: var(--color-primary);
-
-    font-size: 0.72rem;
-
-    font-weight: 900;
+  align-self: flex-end;
+  margin-block-start: 1rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: 900;
 }
-
-
-/* =========================================================
-   FOOTER DE LAS TARJETAS
-   ========================================================= */
 
 .card__footer {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 0.75rem;
-
-    /*
-     * MARGIN AUTO
-     *
-     * Empuja el footer hacia la parte inferior
-     * de la tarjeta.
-     */
-
-    margin-block-start: auto;
-
-    padding-block-start: 1rem;
-
-    border-block-start:
-        1px solid var(--color-border);
-
-    font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-block-start: auto;
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--color-border);
+  font-size: 0.92rem;
 }
-
 
 .card__footer a {
-
-    color: var(--color-primary);
-
-    font-weight: 800;
+  color: var(--color-primary);
+  font-weight: 800;
 }
 
-
-/* =========================================================
-   RUTA SUGERIDA
-   ========================================================= */
-
+/* RUTA SUGERIDA */
 .path {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
-
 
 .path__intro {
-
-    flex: 1 1 22rem;
+  flex: 1 1 22rem;
 }
-
 
 .path__intro p:last-child {
-
-    color: var(--color-muted);
+  color: var(--color-muted);
 }
-
-
-/* =========================================================
-   PASOS
-   ========================================================= */
 
 .path__steps {
-
-    display: flex;
-
-    flex: 1 1 30rem;
-
-    flex-direction: column;
-
-    gap: 0.75rem;
-
-    margin: 0;
-
-    padding: 0;
-
-    list-style: none;
+  display: flex;
+  flex: 1 1 30rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-
 
 .path__steps li {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 0.85rem;
-
-    padding: 1rem;
-
-    border: 1px solid var(--color-border);
-
-    border-radius: 0.85rem;
-
-    background: #ffffff;
-
-    font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.85rem;
+  background: #ffffff;
+  font-weight: 700;
 }
-
 
 .path__steps span {
-
-    display: grid;
-
-    flex: 0 0 2.25rem;
-
-    place-items: center;
-
-    aspect-ratio: 1;
-
-    border-radius: 50%;
-
-    color: #ffffff;
-
-    background: var(--color-primary);
+  display: grid;
+  flex: 0 0 2.25rem;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: #ffffff;
+  background: var(--color-primary);
 }
 
-
-/* =========================================================
-   RETO FINAL
-   ========================================================= */
-
+/* RETO FINAL */
 .practice {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 1.25rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
 }
 
-
-.practice>div {
-
-    flex: 1 1 30rem;
+.practice > div {
+  flex: 1 1 30rem;
 }
-
 
 .practice p:last-child {
-
-    max-inline-size: 65ch;
-
-    margin-block-end: 0;
-
-    color: var(--color-muted);
+  max-inline-size: 65ch;
+  margin-block-end: 0;
+  color: var(--color-muted);
 }
 
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
+/* FOOTER */
 .site-footer {
-
-    padding-block: 2rem;
-
-    color: #d8e8f8;
-
-    background: var(--color-ink);
+  padding-block: 2rem;
+  color: #d8e8f8;
+  background: var(--color-ink);
 }
-
 
 .footer__inner {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 0.75rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
 }
-
 
 .footer__inner p {
-
-    margin: 0;
+  margin: 0;
 }
-
 
 .site-footer a {
-
-    color: #ffffff;
+  color: #ffffff;
 }
 
-
-/* =========================================================
-   MEDIA QUERY
-   ========================================================= */
-
+/* MEDIA QUERIES */
 @media (min-width: 48rem) {
+  .site-nav {
+    flex: 0 1 auto;
+    margin-inline-start: auto;
+  }
 
+  .hero__layout {
+    flex-direction: row;
+    align-items: center;
+  }
 
-    /* -----------------------------------------
-       NAVEGACIÓN
-       ----------------------------------------- */
+  .hero__content {
+    flex: 1 1 34rem;
+  }
 
-    .site-nav {
+  .hero__panel {
+    flex: 0 1 23rem;
+    align-self: stretch;
+    align-items: center;
+  }
 
-        /*
-         * En pantallas grandes deja de ocupar
-         * toda la línea.
-         */
-
-        flex: 0 1 auto;
-
-        margin-inline-start: auto;
-    }
-
-
-    /* -----------------------------------------
-       HERO
-       ----------------------------------------- */
-
-    .hero__layout {
-
-        /*
-         * MOBILE FIRST:
-         *
-         * column → row
-         */
-
-        flex-direction: row;
-
-        align-items: center;
-    }
-
-
-    .hero__content {
-
-        flex: 1 1 34rem;
-    }
-
-
-    .hero__panel {
-
-        flex: 0 1 23rem;
-
-        /*
-         * align-self:
-         * Este elemento se estira de forma individual.
-         */
-
-        align-self: stretch;
-
-        align-items: center;
-    }
-
-
-    /* -----------------------------------------
-       RUTA
-       ----------------------------------------- */
-
-    .path {
-
-        flex-direction: row;
-
-        align-items: flex-start;
-    }
-
+  .path {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 }
 
-
-/* =========================================================
-   CONTENIDO LARGO
-   ========================================================= */
-
+/* AJUSTES ADICIONALES */
 .card p,
 .hero__panel p {
-
-    overflow-wrap: anywhere;
+  overflow-wrap: anywhere;
 }
 
-
-/* =========================================================
-   MOVIMIENTO REDUCIDO
-   ========================================================= */
-
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-    html {
-
-        scroll-behavior: auto;
-    }
-
-
-    *,
-    *::before,
-    *::after {
-
-        transition-duration: 0.01ms !important;
-
-        animation-duration: 0.01ms !important;
-
-        animation-iteration-count: 1 !important;
-    }
-
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
