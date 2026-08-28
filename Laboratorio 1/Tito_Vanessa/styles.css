@@ -282,7 +282,7 @@ p {
   }
 }
 
-/* Breakpoint 3: Monitores/Escritorio (pantallas de 1024px en adelante) */
+/* Breakpoint 3: Monitores/Escritorio (pantallas de 1024px en adelante ) */
 @media (min-width: 64rem) {
   .header-content {
     padding-block: 1.25rem;

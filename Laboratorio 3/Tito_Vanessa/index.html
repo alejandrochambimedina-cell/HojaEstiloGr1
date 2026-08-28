@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Panel académico responsivo personalizado con CSS Grid Layout.">
+  <title>Campus Grid | Panel de aprendizaje</title>
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Enlace accesible para saltar contenido -->
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- Cabecera principal -->
+  <header class="site-header">
+    <div class="shell site-header_layout">
+      <a class="brand" href="#inicio" aria-label="Campus Grid, ir al inicio">
+        <span class="brand_mark" aria-hidden="true">CG</span>
+        <span>Campus Grid</span>
+      </a>
+
+      <nav class="top-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a aria-current="page" href="#inicio">Inicio</a></li>
+          <li><a href="#avisos">Avisos</a></li>
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#entregas">Entregas</a></li>
+        </ul>
+      </nav>
+
+      <button class="profile" type="button" aria-label="Abrir perfil de Ana">
+        <span class="profile_avatar" aria-hidden="true">AP</span>
+        <span class="profile_name">Ana</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Panel principal del Dashboard -->
+  <main id="contenido" class="shell dashboard">
+
+    <!-- Barra lateral -->
+    <aside class="panel sidebar" aria-labelledby="nav-curso">
+      <p class="eyebrow">Curso actual</p>
+      <h2 id="nav-curso">CSS avanzado</h2>
+      <nav aria-label="Secciones del panel académico">
+        <ul class="side-nav">
+          <li><a class="side-nav_link is-active" href="#inicio">Resumen</a></li>
+          <li><a class="side-nav_link" href="#avisos">Avisos</a></li>
+          <li><a class="side-nav_link" href="#progreso">Progreso</a></li>
+          <li><a class="side-nav_link" href="#recursos">Recursos</a></li>
+          <li><a class="side-nav_link" href="#entregas">Entregas</a></li>
+          <li><a class="side-nav_link" href="#actividad">Actividad</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar_tip">
+        <strong>Consejo</strong>
+        <p>Prueba el panel a 320 px y con zoom de 200 %.</p>
+      </div>
+    </aside>
+
+    <!-- Sección Hero -->
+    <section id="inicio" class="panel hero" aria-labelledby="hero-title">
+      <div class="hero_content">
+        <p class="eyebrow">Semana 3 CSS Grid Layout</p>
+        <h1 id="hero-title">Organiza el espacio en filas y columnas</h1>
+        <p>
+          Continúa tu ruta de aprendizaje con una composición bidimensional,
+          flexible y preparada para contenido real.
+        </p>
+        <div class="button-group">
+          <a class="button button--primary" href="#recursos">Continuar aprendiendo</a>
+          <a class="button button--ghost" href="#entregas">Ver entregas</a>
+        </div>
+      </div>
+      
+      <div class="hero_visual" aria-hidden="true">
+        <span class="hero_cell hero_cell--wide"></span>
+        <span class="hero_cell"></span>
+        <span class="hero_cell"></span>
+        <span class="hero_cell hero_cell--accent"></span>
+      </div>
+    </section>
+
+    <!-- REQUISITO R1: Área 'announcements' agregada en orden lógico en el DOM -->
+    <section id="avisos" class="panel announcements" aria-labelledby="announcements-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Novedades</p>
+          <h2 id="announcements-title">Avisos importantes</h2>
+        </div>
+      </div>
+      <div class="announcements-grid">
+        <article class="announcement-card">
+          <span class="tag tag--accent">Urgente</span>
+          <h3>Mantenimiento programado</h3>
+          <p>La plataforma estará en mantenimiento el domingo de 02:00 a 04:00 hrs.</p>
+        </article>
+        <article class="announcement-card">
+          <span class="tag">Info</span>
+          <h3>Publicación de Notas</h3>
+          <p>Las calificaciones del Lab 2 ya se encuentran disponibles en el portal.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Indicadores/Métricas -->
+    <section id="progreso" class="metrics" aria-label="Indicadores de progreso">
+      <article class="panel metric">
+        <p class="metric_label">Progreso</p>
+        <p class="metric_value">68 %</p>
+        <div class="progress" aria-label="Progreso del curso: 68 por ciento">
+          <span style="--progress: 68%"></span>
+        </div>
+      </article>
+
+      <article class="panel metric">
+        <p class="metric_label">Laboratorios</p>
+        <p class="metric_value">2 de 3</p>
+        <p class="metric_note">Uno pendiente esta semana</p>
+      </article>
+
+      <article class="panel metric">
+        <p class="metric_label">Próxima sesión</p>
+        <p class="metric_value">PC1</p>
+        <p class="metric_note">Integra responsive, Flexbox y Grid</p>
+      </article>
+    </section>
+
+    <!-- Sección de Recursos -->
+    <section id="recursos" class="panel resources" aria-labelledby="resources-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Biblioteca</p>
+          <h2 id="resources-title">Recursos recomendados</h2>
+        </div>
+        <a class="text-link" href="#recursos">Ver todos</a>
+      </div>
+
+      <div class="resource-grid">
+        <article id="anatomia" class="resource-card">
+          <span class="tag">Concepto</span>
+          <h3>Anatomía de una cuadrícula</h3>
+          <p>Reconoce líneas, tracks, celdas, áreas y espacios antes de posicionar elementos.</p>
+          <!-- REQUISITO R5: Aplicación de align-self / justify-self en el botón sin alterar lectura -->
+          <a class="text-link card-action" href="#anatomia">Abrir recurso</a>
+        </article>
+
+        <article id="tracks" class="resource-card">
+          <span class="tag">Práctica</span>
+          <h3>Tracks fluidos con minmax()</h3>
+          <p>Construye colecciones que respondan al espacio sin contar dispositivos.</p>
+          <a class="text-link card-action" href="#tracks">Abrir recurso</a>
+        </article>
+
+        <article id="areas" class="resource-card">
+          <span class="tag">Reto</span>
+          <h3>Áreas nombradas</h3>
+          <p>Redibuja la composición con nombres legibles y conserva el orden del DOM.</p>
+          <a class="text-link card-action" href="#areas">Abrir recurso</a>
+        </article>
+
+        <!-- REQUISITO R3: Cuarta tarjeta de recurso agregada -->
+        <article id="subgrid" class="resource-card">
+          <span class="tag">Avanzado</span>
+          <h3>Uso de Subgrid en CSS</h3>
+          <p>Alinea elementos anidados adoptando la rejilla del contenedor padre.</p>
+          <a class="text-link card-action" href="#subgrid">Abrir recurso</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sección de Entregas -->
+    <section id="entregas" class="panel tasks" aria-labelledby="tasks-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Agenda</p>
+          <h2 id="tasks-title">Próximas entregas</h2>
+        </div>
+      </div>
+      <ol class="task-list">
+        <li>
+          <span class="task-list_date">26 AGO</span>
+          <div>
+            <strong>Laboratorio de Grid</strong>
+            <span>Implementación y matriz de pruebas</span>
+          </div>
+        </li>
+        <li>
+          <span class="task-list_date">02 SEP</span>
+          <div>
+            <strong>Práctica calificada 1</strong>
+            <span>Interfaz responsiva integradora</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Sección de Actividad -->
+    <section id="actividad" class="panel activity" aria-labelledby="activity-title">
+      <p class="eyebrow">Última actividad</p>
+      <h2 id="activity-title">Tu avance</h2>
+      <ul class="activity-list">
+        <li><span aria-hidden="true">•</span> Completaste Flexbox</li>
+        <li><span aria-hidden="true">•</span> Probaste a 320 px</li>
+        <li><span aria-hidden="true">+</span> Continúa con CSS Grid</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="site-footer">
+    <div class="shell site-footer_layout">
+      <p>Campus Grid • Laboratorio académico</p>
+      <a href="#contenido">Volver al contenido</a>
+    </div>
+  </footer>
+
+</body>
+</html>
