@@ -340,6 +340,84 @@
     gap: 1.5rem;
 }
 
+/* ============FILTRO DE PRODUCTOS============= */
+
+.filtro-productos {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filtro-busqueda {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    max-width: 420px;
+    padding: 0.7rem 1rem;
+    background-color: var(--blanco);
+    border: 1px solid #e6edf5;
+    border-radius: 0.6rem;
+    box-shadow: var(--sombra);
+}
+
+.filtro-busqueda i {
+    color: var(--azul);
+}
+
+.filtro-busqueda input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: #172033;
+}
+
+.filtro-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.filtro-btn {
+    padding: 0.6rem 1.1rem;
+    border: 1px solid #b8d5f7;
+    border-radius: 2rem;
+    background-color: var(--blanco);
+    color: var(--azul);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transicion);
+}
+
+.filtro-btn:hover {
+    background-color: var(--azul-suave);
+}
+
+.filtro-btn.activo {
+    background-color: var(--azul);
+    border-color: var(--azul);
+    color: var(--blanco);
+}
+
+.sin-resultados {
+    width: 100%;
+    text-align: center;
+    color: var(--gris-texto);
+    font-size: 0.95rem;
+    padding: 2rem 0;
+    display: none;
+}
+
 /* ==========TARJETA PRODUCTO=============== */
 
 .producto {
@@ -707,6 +785,21 @@
 
     .categoria > a {
         font-size: 0.75rem;
+    }
+
+        /* Filtro de productos */
+
+    .filtro-productos {
+        width: 94%;
+    }
+
+    .filtro-categorias {
+        width: 100%;
+    }
+
+    .filtro-btn {
+        flex: 1;
+        text-align: center;
     }
 
     /* Ofertas */

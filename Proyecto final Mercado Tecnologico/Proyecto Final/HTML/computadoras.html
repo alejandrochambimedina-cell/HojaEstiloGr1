@@ -7,8 +7,7 @@
     <!-- Configuración responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="TecnoStore - Catálogo de computadoras y laptops para trabajo, estudio y gaming.">
+    <meta name="description" content="TecnoStore - Catálogo de computadoras y laptops para trabajo, estudio y gaming.">
 
     <title>Computadoras | TecnoStore</title>
 
@@ -88,11 +87,27 @@
                 <p> Laptops y equipos de escritorio para trabajo, estudio y gaming. </p>
             </div>
 
+            <!-- ============ FILTRO DE PRODUCTOS ============ -->
+            <div class="filtro-productos">
+
+                <div class="filtro-busqueda">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="buscarProducto" placeholder="Buscar laptop o PC...">
+                </div>
+
+                <div class="filtro-categorias">
+                    <button type="button" class="filtro-btn activo" data-filtro="todos">Todos</button>
+                    <button type="button" class="filtro-btn" data-filtro="laptop">Laptops</button>
+                    <button type="button" class="filtro-btn" data-filtro="pc">PC de Escritorio</button>
+                </div>
+
+            </div>
+
             <!-- ============ GRID DE PRODUCTOS ============ -->
             <div class="productos" id="grid-computadoras">
 
                 <!-- Producto 1 -->
-                <article class="producto">
+                <article class="producto" data-tipo="laptop">
                     <div class="producto-imagen">
                         <img src="../Imagenes/laptop.jpg" alt="Laptop Gamer">
                         <span class="producto-etiqueta oferta-etiqueta">-15%</span>
@@ -111,7 +126,7 @@
                 </article>
 
                 <!-- Producto 2 -->
-                <article class="producto">
+                <article class="producto" data-tipo="laptop">
                     <div class="producto-imagen">
                         <img src="../Imagenes/laptop1.jpg" alt="Laptop Lenovo IdeaPad">
                     </div>
@@ -129,15 +144,16 @@
                 </article>
 
                 <!-- Producto 3 -->
-                <article class="producto">
+                <article class="producto" data-tipo="laptop">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/laptop.jpg" alt="Laptop HP Pavilion">
+                        <img src="../Imagenes/Laptop HP Pavilion 15.jpg" alt="Laptop HP Pavilion">
                         <span class="producto-etiqueta oferta-etiqueta">-10%</span>
                     </div>
                     <div class="producto-info">
                         <span class="producto-categoria">Computadoras</span>
                         <h3>Laptop HP Pavilion 15</h3>
-                        <p>Intel Core i7, 16GB RAM, 1TB SSD, pantalla FHD 15.6". Rendimiento versátil para todo el día.</p>
+                        <p>Intel Core i7, 16GB RAM, 1TB SSD, pantalla FHD 15.6". Rendimiento versátil para todo el día.
+                        </p>
                         <div class="producto-pie">
                             <strong>S/ 2,699.00</strong>
                             <button type="button">
@@ -147,8 +163,26 @@
                     </div>
                 </article>
 
-                <!-- Producto 4 -->
-                <article class="producto">
+                <!-- Producto 4 (nuevo) -->
+                <article class="producto" data-tipo="laptop">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/laptop1.jpg" alt="Laptop ASUS Vivobook">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Computadoras</span>
+                        <h3>Laptop ASUS Vivobook 15</h3>
+                        <p>Intel Core i5 13va Gen, 8GB RAM, 512GB SSD. Ligera y potente para el día a día.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 2,099.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 5 -->
+                <article class="producto" data-tipo="pc">
                     <div class="producto-imagen">
                         <img src="../Imagenes/pc-gamer.jpg" alt="PC Gamer de Torre">
                     </div>
@@ -164,6 +198,66 @@
                         </div>
                     </div>
                 </article>
+
+                <!-- Producto 6 (nuevo) -->
+                <article class="producto" data-tipo="pc">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/pc-gamer.jpg" alt="PC Oficina Compacta">
+                        <span class="producto-etiqueta oferta-etiqueta">-8%</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Computadoras</span>
+                        <h3>PC Oficina Compacta</h3>
+                        <p>Intel Core i3, 8GB RAM, 256GB SSD. Ideal para tareas de oficina y estudio.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 1,399.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 7 (nuevo) -->
+                <article class="producto" data-tipo="pc">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/pc-gamer.jpg" alt="PC Gamer RGB Pro">
+                        <span class="producto-etiqueta oferta-etiqueta">-18%</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Computadoras</span>
+                        <h3>PC Gamer RGB Pro</h3>
+                        <p>Ryzen 7, 32GB RAM, RTX 4070, 1TB SSD. Máximo rendimiento para gaming y streaming.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 7,499.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 8 (nuevo) -->
+                <article class="producto" data-tipo="pc">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/pc-gamer.jpg" alt="Mini PC Intel NUC">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Computadoras</span>
+                        <h3>Mini PC Intel NUC</h3>
+                        <p>Intel Core i5, 16GB RAM, 512GB SSD. Compacta, silenciosa y de bajo consumo.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 2,899.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <p class="sin-resultados" id="mensajeSinResultados">
+                    No se encontraron productos que coincidan con tu búsqueda.
+                </p>
 
             </div>
         </section>
@@ -276,5 +370,66 @@
 
     <script src="../JS/inicio.js"></script>
 
+    <!-- Script propio de esta página: filtro de productos -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const inputBusqueda = document.getElementById("buscarProducto");
+            const botonesFiltro = document.querySelectorAll(".filtro-btn");
+            const productos = document.querySelectorAll("#grid-computadoras .producto");
+            const mensajeSinResultados = document.getElementById("mensajeSinResultados");
+
+            let filtroActivo = "todos";
+
+            function aplicarFiltros() {
+
+                const texto = inputBusqueda.value.trim().toLowerCase();
+                let visibles = 0;
+
+                productos.forEach(function (producto) {
+
+                    const tipo = producto.getAttribute("data-tipo");
+                    const nombre = producto.querySelector("h3").textContent.toLowerCase();
+
+                    const coincideCategoria =
+                        filtroActivo === "todos" || tipo === filtroActivo;
+
+                    const coincideTexto = nombre.includes(texto);
+
+                    if (coincideCategoria && coincideTexto) {
+                        producto.style.display = "";
+                        visibles++;
+                    } else {
+                        producto.style.display = "none";
+                    }
+
+                });
+
+                mensajeSinResultados.style.display =
+                    visibles === 0 ? "block" : "none";
+            }
+
+            botonesFiltro.forEach(function (boton) {
+
+                boton.addEventListener("click", function () {
+
+                    botonesFiltro.forEach(function (b) {
+                        b.classList.remove("activo");
+                    });
+
+                    boton.classList.add("activo");
+                    filtroActivo = boton.getAttribute("data-filtro");
+
+                    aplicarFiltros();
+                });
+
+            });
+
+            inputBusqueda.addEventListener("input", aplicarFiltros);
+
+        });
+    </script>
+
 </body>
+
 </html>
