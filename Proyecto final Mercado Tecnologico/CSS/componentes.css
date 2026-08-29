@@ -1,0 +1,147 @@
+/* Variables globales */
+:root {
+    --primary: #0066ff;
+    --primary-hover: #004ecc;
+    --accent: #00f2fe;
+    --bg-card: #ffffff;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --radius: 1rem;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 12px 30px rgba(0, 102, 255, 0.15);
+    --transicion: all 0.25s ease;
+}
+
+/* Grid adaptativo para las tarjetas */
+.grid-componentes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+/* Estilos de la tarjeta de producto */
+.producto {
+    position: relative;
+    background-color: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transicion);
+}
+
+/* Línea superior brillante al pasar el cursor */
+.producto::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    opacity: 0;
+    transition: var(--transicion);
+}
+
+.producto:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.producto:hover::before {
+    opacity: 1;
+}
+
+/* Ajuste y proporción de imágenes */
+.producto-imagen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #f8fafc;
+}
+
+.producto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.producto:hover .producto-imagen img {
+    transform: scale(1.08);
+}
+
+/* Información del producto y límites de texto */
+.producto-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.producto-categoria {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.producto-info h3 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.caracteristicas {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+/* Botón interactivo */
+.btn-producto {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: var(--transicion);
+}
+
+.btn-producto:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-producto:active {
+    transform: scale(0.97);
+}
+
+/* Adaptación responsive para celulares */
+@media (max-width: 600px) {
+    .grid-componentes {
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+    .producto-info {
+        padding: 1rem;
+    }
+}

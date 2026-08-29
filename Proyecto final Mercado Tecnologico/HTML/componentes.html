@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TecnoStore - Catálogo de componentes para PC: Procesadores, RAM, SSD, Tarjetas Gráficas, Placas Madre y Fuentes.">
+    <title>TecnoStore | Componentes de PC</title>
+
+    <!-- Fuentes y Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="../CSS/global.css">
+    <link rel="stylesheet" href="../CSS/estilos.css">
+    <link rel="stylesheet" href="../CSS/componentes.css">
+</head>
+
+<body>
+
+    <!-- Header y Navegación -->
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="../Imagenes/logo-tecno.png" alt="Logo de TecnoStore">
+            </a>
+        </div>
+
+        <nav class="navbar" aria-label="Navegación principal">
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="computadoras.html">
+                <i class="fa-solid fa-laptop"></i>
+                <span>Computadoras</span>
+            </a>
+            <a href="componentes.html" class="active">
+                <i class="fa-solid fa-microchip"></i>
+                <span>Componentes</span>
+            </a>
+            <a href="gaming.html">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>Accesorios y Gaming</span>
+            </a>
+            <a href="electrodomesticos.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Electrodomésticos</span>
+            </a>
+            <a href="#carrito" class="carrito-link" onclick="mostrarCarrito()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Carrito</span>
+                <span class="contador-carrito">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+        <!-- Banner de la sección -->
+        <section class="seccion-header">
+            <div class="titulo-seccion">
+                <span><i class="fa-solid fa-microchip"></i> Piezas de Alto Rendimiento</span>
+                <h2>Componentes para PC</h2>
+                <p>Arma o repotencia tu computadora con la mejor tecnología en hardware.</p>
+            </div>
+        </section>
+
+        <!-- Catálogo de productos -->
+        <section class="seccion" id="catalogo-componentes">
+            <div class="productos grid-componentes">
+                
+                <!-- 1. Procesador -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/procesador.jpg" alt="Procesador Intel Core i7-13700K">
+                        <span class="producto-etiqueta">Top Ventas</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Procesadores | Intel</span>
+                        <small class="sku">SKU: CPU-INTEL-I7-13700K</small>
+                        <h3>Procesador Intel Core i7-13700K</h3>
+                        <p class="caracteristicas">
+                            <strong>Núcleos:</strong> 16 (8 Performance + 8 Efficient) | <strong>Hilos:</strong> 24<br>
+                            <strong>Frecuencia:</strong> Base 3.4 GHz - Turbo hasta 5.4 GHz<br>
+                            <strong>Caché:</strong> 30MB Smart Cache | <strong>Socket:</strong> LGA1700<br>
+                            <strong>Gráficos Integrados:</strong> Intel UHD Graphics 770<br>
+                            <strong>Compatibilidad:</strong> Memoria DDR4 y DDR5, PCIe 5.0 y 4.0
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                        <strong class="precio">S/ 1,899.00</strong>
+                        <p class="promocion"><i class="fa-solid fa-box-open"></i> Incluye pasta térmica de regalo + Garantía de 3 años</p>
+                        <button class="btn-producto">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <!-- 2. Tarjeta Gráfica -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/tarjeta.jpg" alt="Tarjeta Gráfica NVIDIA GeForce RTX 4060">
+                        <span class="producto-etiqueta">DLSS 3 & Ray Tracing</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Tarjetas Gráficas | NVIDIA</span>
+                        <small class="sku">SKU: GPU-RTX4060-8G-OC</small>
+                        <h3>GPU NVIDIA GeForce RTX 4060 8GB GDDR6</h3>
+                        <p class="caracteristicas">
+                            <strong>Núcleos CUDA:</strong> 3072 | <strong>Frecuencia Boost:</strong> 2460 MHz<br>
+                            <strong>Memoria:</strong> 8GB GDDR6 (128-bit) - 17 Gbps<br>
+                            <strong>Arquitectura:</strong> Ada Lovelace (DLSS 3 y Ray Tracing 3ª Gen)<br>
+                            <strong>Conectividad:</strong> 3x DisplayPort 1.4a, 1x HDMI 2.1a<br>
+                            <strong>Fuente Recomendada:</strong> 550W (Conector 1x 8-pin)
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐⭐ (4.8/5)</div>
+                        <strong class="precio">S/ 1,650.00</strong>
+                        <p class="promocion"><i class="fa-solid fa-truck-fast"></i> Envío gratis a todo el Perú + Garantía oficial de 2 años</p>
+                        <button class="btn-producto">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <!-- 3. Memoria RAM -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/memoria-ram.jpg" alt="Memoria RAM DDR5 32GB">
+                        <span class="producto-etiqueta">RGB Sync</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Memorias RAM | DDR5</span>
+                        <small class="sku">SKU: RAM-DDR5-32G-6000</small>
+                        <h3>Kit Memoria RAM 32GB (2x16GB) DDR5 6000MHz</h3>
+                        <p class="caracteristicas">
+                            <strong>Capacidad:</strong> 32 GB (2 Módulos de 16 GB Dual Channel)<br>
+                            <strong>Frecuencia:</strong> 6000 MHz | <strong>Latencia:</strong> CL36 (1.35V)<br>
+                            <strong>Soporte Perfiles:</strong> Intel XMP 3.0 & AMD EXPO<br>
+                            <strong>Diseño:</strong> Disipador térmico de aluminio anodizado<br>
+                            <strong>Iluminación:</strong> RGB personalizable por software
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                        <strong class="precio">S/ 580.00</strong>
+                        <p class="promocion"><i class="fa-solid fa-shield-halved"></i> Garantía vitalicia de fabricante</p>
+                        <button class="btn-producto">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <!-- 4. Almacenamiento SSD -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/disco-ssd.jpg" alt="SSD M.2 NVMe 1TB">
+                        <span class="producto-etiqueta">Ultra Rápido</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Almacenamiento | SSD NVMe</span>
+                        <small class="sku">SKU: SSD-M2-1TB-PCIE4</small>
+                        <h3>SSD M.2 NVMe 1TB PCIe 4.0 x4</h3>
+                        <p class="caracteristicas">
+                            <strong>Velocidad Lectura:</strong> Hasta 7000 MB/s<br>
+                            <strong>Velocidad Escritura:</strong> Hasta 6000 MB/s<br>
+                            <strong>Formato:</strong> M.2 2280 | <strong>Controlador:</strong> NVMe 1.4<br>
+                            <strong>Durabilidad:</strong> 600 TBW (Terabytes Escritos)<br>
+                            <strong>Compatibilidad:</strong> PC Desktop, Laptops y PlayStation 5
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐☆ (4.7/5)</div>
+                        <strong class="precio">S/ 340.00</strong>
+                        <p class="promocion"><i class="fa-solid fa-gamepad"></i> 100% Compatible con PS5 + 5 años de garantía</p>
+                        <button class="btn-producto">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <!-- 5. Placa Madre -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/placa-madre.jpg" alt="ASUS TUF Gaming B650-PLUS WiFi">
+                        <span class="producto-etiqueta">Cupón S/40 OFF</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Placas Madre | Asus AM5</span>
+                        <small class="sku">SKU: MB-ASUS-B650-WIFI</small>
+                        <h3>ASUS TUF Gaming B650-PLUS WiFi AMD AM5</h3>
+                        <p class="caracteristicas">
+                            <strong>Socket:</strong> AMD AM5 (Ryzen Serie 9000/8000/7000)<br>
+                            <strong>Formato:</strong> ATX | <strong>Fases de Poder:</strong> 12+2 DrMOS<br>
+                            <strong>Ranuras RAM:</strong> 4x DDR5 (Hasta 128GB - 6400MHz+ OC)<br>
+                            <strong>Almacenamiento:</strong> 1x M.2 PCIe 5.0 + 2x M.2 PCIe 4.0 + 4x SATA III<br>
+                            <strong>Redes:</strong> WiFi 6 + Bluetooth 5.2 + LAN Realtek 2.5Gb
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                        <strong class="precio">S/ 585.59</strong>
+                        <p class="promocion"><i class="fa-solid fa-ticket"></i> Cupón GAMER40 (S/ 40 OFF en el carrito)</p>
+                        <button class="btn-producto">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <!-- 6. Fuente de Poder -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/fuente-poder.png" alt="Fuente de Poder 750W 80 Plus Gold">
+                        <span class="producto-etiqueta">Certificado Gold</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Fuentes de Poder | Modulares</span>
+                        <small class="sku">SKU: PSU-750W-80GOLD-MOD</small>
+                        <h3>Fuente de Poder 750W 80 Plus Gold</h3>
+                        <p class="caracteristicas">
+                            <strong>Potencia:</strong> 750 Watts Reales | <strong>Certificación:</strong> 80 Plus Gold (90% eficiencia)<br>
+                            <strong>Cableado:</strong> Totalmente Modular (Full Modular)<br>
+                            <strong>Protecciones (OPP/OVP/UVP/SCP/OCP):</strong> Protección total ante sobrevoltajes<br>
+                            <strong>Ventilador:</strong> 120mm Ultra Silencioso con rodamiento dinámico fluido<br>
+                            <strong>Soporte:</strong> Preparada para PCIe 5.0 y ATX 3.0
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐☆ (4.7/5)</div>
+                        <strong class="precio">S/ 450.00</strong>
+                        <p class="promocion"><i class="fa-solid fa-bolt"></i> Eficiencia energética garantizada + 5 años de garantía</p>
+                        <button class="btn-producto">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-columna">
+            <a href="index.html" class="footer-logo">Tecno<span>Store</span></a>
+            <p class="footer-descripcion">Tu tienda de confianza para componentes y hardware de PC.</p>
+        </div>
+        <div class="footer-columna">
+            <h3>Navegación</h3>
+            <ul>
+                <li><a href="computadoras.html">Computadoras</a></li>
+                <li><a href="componentes.html">Componentes</a></li>
+                <li><a href="gaming.html">Accesorios y Gaming</a></li>
+                <li><a href="electrodomesticos.html">Electrodomésticos</a></li>
+            </ul>
+        </div>
+        <div class="footer-columna">
+            <h3>Contacto</h3>
+            <p><i class="fa-solid fa-envelope"></i> tecnostore_gaming@gmail.com</p>
+            <p><i class="fa-solid fa-phone"></i> +51 987 654 321</p>
+        </div>
+    </footer>
+
+    <!-- Derechos de autor -->
+    <div class="footer-derechos">
+        <p>© 2026 TecnoStore. Todos los derechos reservados.</p>
+    </div>
+
+    <!-- Script del carrito JavaScript -->
+    <script src="../JS/inicio.js" defer></script>
+</body>
+
+</html>
