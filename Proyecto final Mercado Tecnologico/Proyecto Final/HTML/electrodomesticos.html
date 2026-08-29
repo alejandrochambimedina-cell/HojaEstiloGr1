@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Configuración responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="TecnoStore - Catálogo de electrodomésticos: refrigeradoras, microondas, licuadoras, cafeteras y más.">
+
+    <title>Electrodomésticos | TecnoStore</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="../CSS/estilos.css">
+    <link rel="stylesheet" href="../CSS/global.css">
+</head>
+
+<body>
+
+    <!-- ==HEADER / NAVBAR== -->
+
+    <header class="header">
+
+        <!-- Logo -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="../Imagenes/logo-tecno.png" alt="Logo de TecnoStore">
+            </a>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="navbar" aria-label="Navegación principal">
+
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+
+            <a href="computadoras.html">
+                <i class="fa-solid fa-laptop"></i>
+                <span>Computadoras</span>
+            </a>
+
+            <a href="componentes.html">
+                <i class="fa-solid fa-microchip"></i>
+                <span>Componentes</span>
+            </a>
+
+            <a href="gaming.html">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>Accesorios y Gaming</span>
+            </a>
+
+            <a href="electrodomesticos.html" class="activo">
+                <i class="fa-solid fa-blender"></i>
+                <span>Electrodomésticos</span>
+            </a>
+
+            <a href="#carrito" class="carrito-link" onclick="mostrarCarrito()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Carrito</span>
+                <span class="contador-carrito">0</span>
+            </a>
+
+        </nav>
+
+    </header>
+
+    <!-- ======CONTENIDO PRINCIPAL======== -->
+    <main>
+
+        <!-- ============ TÍTULO DE PÁGINA ============ -->
+        <section class="seccion" id="electrodomesticos">
+
+            <div class="titulo-seccion">
+                <span> <i class="fa-solid fa-blender"></i> Catálogo </span>
+                <h2>Electrodomésticos</h2>
+                <p> Productos tecnológicos para hacer tu hogar más práctico. </p>
+            </div>
+
+            <!-- ============ GRID DE PRODUCTOS ============ -->
+            <div class="productos" id="grid-electrodomesticos">
+
+                <!-- Producto 1 -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/freidora.jpg" alt="Freidora de Aire">
+                        <span class="producto-etiqueta oferta-etiqueta">-12%</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Hogar</span>
+                        <h3>Freidora de Aire</h3>
+                        <p>Capacidad de 4.5L, panel digital, cocina con poco o nada de aceite.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 399.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/refrigeradora.png" alt="Refrigeradora No Frost">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Hogar</span>
+                        <h3>Refrigeradora No Frost 300L</h3>
+                        <p>Sistema No Frost, congelador amplio, bajo consumo eléctrico.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 1,799.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/microondas.png" alt="Microondas Digital">
+                        <span class="producto-etiqueta oferta-etiqueta">-8%</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Hogar</span>
+                        <h3>Microondas Digital 20L</h3>
+                        <p>Panel táctil, múltiples funciones de cocción, grill incluido.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 349.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 4 -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/licuadora.png" alt="Licuadora de Alta Potencia">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Hogar</span>
+                        <h3>Licuadora de Alta Potencia</h3>
+                        <p>Vaso de vidrio de 1.5L, cuchillas de acero inoxidable, varias velocidades.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 229.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 5 -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/cafetera.png" alt="Cafetera Automática">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Hogar</span>
+                        <h3>Cafetera Automática</h3>
+                        <p>Prepara hasta 12 tazas, jarra de vidrio, apagado automático.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 189.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 6 -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/lavadora.png" alt="Lavadora Automática">
+                        <span class="producto-etiqueta oferta-etiqueta">-15%</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Hogar</span>
+                        <h3>Lavadora Automática 12kg</h3>
+                        <p>Carga superior, múltiples programas de lavado, ahorro de agua.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 1,299.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =============FOOTER=============== -->
+
+    <footer class="footer">
+
+        <!-- Información -->
+        <div class="footer-columna">
+
+            <a href="index.html#inicio" class="footer-logo">
+                Tecno<span>Store</span>
+            </a>
+
+            <p class="footer-descripcion">
+                Tecnología para todos.
+                Encuentra computadoras, componentes,
+                accesorios y productos para tu hogar.
+            </p>
+
+            <div class="footer-confianza">
+                <span>
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Compra segura
+                </span>
+                <span>
+                    <i class="fa-solid fa-truck-fast"></i>
+                    Envíos rápidos
+                </span>
+            </div>
+        </div>
+
+        <!-- Categorías -->
+        <div class="footer-columna">
+            <h3>Categorías</h3>
+            <ul>
+                <li><a href="computadoras.html">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Computadoras
+                    </a></li>
+
+                <li><a href="componentes.html">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Componentes
+                    </a></li>
+
+                <li><a href="gaming.html">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Accesorios y Gaming</a></li>
+
+                <li><a href="electrodomesticos.html">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Electrodomésticos
+                    </a></li>
+            </ul>
+        </div>
+
+
+        <!-- Contacto -->
+        <div class="footer-columna">
+            <h3>Contacto</h3>
+            <div class="footer-contacto">
+                <p><i class="fa-solid fa-envelope"></i>
+                    tecnostore_gaming@gmail.com</p>
+
+                <p><i class="fa-solid fa-phone"></i>
+                    +51 987 654 321</p>
+
+                <p><i class="fa-solid fa-location-dot"></i>
+                    Lima, Perú</p>
+            </div>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="footer-columna">
+
+            <h3>Síguenos</h3>
+
+            <p>Encuentra nuestras novedades,
+                promociones y productos.</p>
+
+            <div class="redes">
+
+                <a href="#" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =============DERECHOS================== -->
+
+    <div class="footer-derechos">
+        <p>© 2026 TecnoStore. Todos los derechos reservados.</p>
+
+        <p><i class="fa-solid fa-laptop"></i>
+            Tienda virtual de productos tecnológicos.</p>
+    </div>
+
+    <script src="../JS/inicio.js"></script>
+
+</body>
+</html>

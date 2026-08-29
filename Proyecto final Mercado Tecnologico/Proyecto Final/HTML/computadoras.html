@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Configuración responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="TecnoStore - Catálogo de computadoras y laptops para trabajo, estudio y gaming.">
+
+    <title>Computadoras | TecnoStore</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="../CSS/estilos.css">
+    <link rel="stylesheet" href="../CSS/global.css">
+</head>
+
+<body>
+
+    <!-- ==HEADER / NAVBAR== -->
+
+    <header class="header">
+
+        <!-- Logo -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="../Imagenes/logo-tecno.png" alt="Logo de TecnoStore">
+            </a>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="navbar" aria-label="Navegación principal">
+
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+
+            <a href="computadoras.html" class="activo">
+                <i class="fa-solid fa-laptop"></i>
+                <span>Computadoras</span>
+            </a>
+
+            <a href="componentes.html">
+                <i class="fa-solid fa-microchip"></i>
+                <span>Componentes</span>
+            </a>
+
+            <a href="gaming.html">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>Accesorios y Gaming</span>
+            </a>
+
+            <a href="electrodomesticos.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Electrodomésticos</span>
+            </a>
+
+            <a href="#carrito" class="carrito-link" onclick="mostrarCarrito()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Carrito</span>
+                <span class="contador-carrito">0</span>
+            </a>
+
+        </nav>
+
+    </header>
+
+    <!-- ======CONTENIDO PRINCIPAL======== -->
+    <main>
+
+        <!-- ============ TÍTULO DE PÁGINA ============ -->
+        <section class="seccion" id="computadoras">
+
+            <div class="titulo-seccion">
+                <span> <i class="fa-solid fa-laptop"></i> Catálogo </span>
+                <h2>Computadoras</h2>
+                <p> Laptops y equipos de escritorio para trabajo, estudio y gaming. </p>
+            </div>
+
+            <!-- ============ GRID DE PRODUCTOS ============ -->
+            <div class="productos" id="grid-computadoras">
+
+                <!-- Producto 1 -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/laptop.jpg" alt="Laptop Gamer">
+                        <span class="producto-etiqueta oferta-etiqueta">-15%</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Computadoras</span>
+                        <h3>Laptop Gamer</h3>
+                        <p>Ryzen 7, 16GB RAM, RTX 4060, 512GB SSD. Alto rendimiento para juegos y trabajo pesado.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 4,299.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/laptop1.jpg" alt="Laptop Lenovo IdeaPad">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Computadoras</span>
+                        <h3>Laptop Lenovo IdeaPad 3</h3>
+                        <p>Intel Core i5, 8GB RAM, 512GB SSD. Ideal para estudio, oficina y uso diario.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 1,899.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/laptop.jpg" alt="Laptop HP Pavilion">
+                        <span class="producto-etiqueta oferta-etiqueta">-10%</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Computadoras</span>
+                        <h3>Laptop HP Pavilion 15</h3>
+                        <p>Intel Core i7, 16GB RAM, 1TB SSD, pantalla FHD 15.6". Rendimiento versátil para todo el día.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 2,699.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 4 -->
+                <article class="producto">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/pc-gamer.jpg" alt="PC Gamer de Torre">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Computadoras</span>
+                        <h3>PC Gamer de Torre</h3>
+                        <p>Ryzen 5, 16GB RAM, RTX 3060, 1TB SSD. Armada y lista para exigir al máximo tus juegos.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 5,999.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =============FOOTER=============== -->
+
+    <footer class="footer">
+
+        <!-- Información -->
+        <div class="footer-columna">
+
+            <a href="index.html#inicio" class="footer-logo">
+                Tecno<span>Store</span>
+            </a>
+
+            <p class="footer-descripcion">
+                Tecnología para todos.
+                Encuentra computadoras, componentes,
+                accesorios y productos para tu hogar.
+            </p>
+
+            <div class="footer-confianza">
+                <span>
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Compra segura
+                </span>
+                <span>
+                    <i class="fa-solid fa-truck-fast"></i>
+                    Envíos rápidos
+                </span>
+            </div>
+        </div>
+
+        <!-- Categorías -->
+        <div class="footer-columna">
+            <h3>Categorías</h3>
+            <ul>
+                <li><a href="computadoras.html">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Computadoras
+                    </a></li>
+
+                <li><a href="componentes.html">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Componentes
+                    </a></li>
+
+                <li><a href="gaming.html">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Accesorios y Gaming</a></li>
+
+                <li><a href="electrodomesticos.html">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Electrodomésticos
+                    </a></li>
+            </ul>
+        </div>
+
+
+        <!-- Contacto -->
+        <div class="footer-columna">
+            <h3>Contacto</h3>
+            <div class="footer-contacto">
+                <p><i class="fa-solid fa-envelope"></i>
+                    tecnostore_gaming@gmail.com</p>
+
+                <p><i class="fa-solid fa-phone"></i>
+                    +51 987 654 321</p>
+
+                <p><i class="fa-solid fa-location-dot"></i>
+                    Lima, Perú</p>
+            </div>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="footer-columna">
+
+            <h3>Síguenos</h3>
+
+            <p>Encuentra nuestras novedades,
+                promociones y productos.</p>
+
+            <div class="redes">
+
+                <a href="#" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =============DERECHOS================== -->
+
+    <div class="footer-derechos">
+        <p>© 2026 TecnoStore. Todos los derechos reservados.</p>
+
+        <p><i class="fa-solid fa-laptop"></i>
+            Tienda virtual de productos tecnológicos.</p>
+    </div>
+
+    <script src="../JS/inicio.js"></script>
+
+</body>
+</html>
