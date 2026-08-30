@@ -58,6 +58,26 @@
             </a>
         </nav>
     </header>
+    <!-- Notificación Flotante (Toast) -->
+<div id="notificacion" class="notificacion"></div>
+
+<!-- Modal del Carrito -->
+<div id="modal-carrito" class="modal-carrito">
+    <div class="modal-contenido">
+        <div class="modal-header">
+            <h3><i class="fa-solid fa-cart-shopping"></i> Mi Carrito</h3>
+            <button class="btn-cerrar" onclick="cerrarCarrito()">&times;</button>
+        </div>
+        
+        <ul id="lista-carrito"></ul>
+
+        <div class="modal-footer">
+            <p>Total: <strong>S/ <span id="total-carrito">0.00</span></strong></p>
+            <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar</button>
+            <button class="btn-comprar" onclick="finalizarCompra()">Comprar</button>
+        </div>
+    </div>
+</div>
 
     <!-- Contenido Principal -->
     <main>
@@ -92,12 +112,13 @@
                             <strong>Compatibilidad:</strong> Memoria DDR4 y DDR5, PCIe 5.0 y 4.0
                         </p>
                         <div class="valoracion">⭐⭐⭐⭐⭐ (4.9/5)</div>
-                        <strong class="precio">S/ 1,899.00</strong>
-                        <p class="promocion"><i class="fa-solid fa-box-open"></i> Incluye pasta térmica de regalo +
-                            Garantía de 3 años</p>
-                        <button class="btn-producto">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
-                        </button>
+                        <p class="promocion"><i class="fa-solid fa-box-open"></i> Incluye pasta térmica de regalo + Garantía de 3 años</p>
+                        <div class="producto-pie">
+                            <strong>S/ 1,899.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
                     </div>
                 </article>
 
@@ -119,12 +140,13 @@
                             <strong>Fuente Recomendada:</strong> 550W (Conector 1x 8-pin)
                         </p>
                         <div class="valoracion">⭐⭐⭐⭐⭐ (4.8/5)</div>
-                        <strong class="precio">S/ 1,650.00</strong>
-                        <p class="promocion"><i class="fa-solid fa-truck-fast"></i> Envío gratis a todo el Perú +
-                            Garantía oficial de 2 años</p>
-                        <button class="btn-producto">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
-                        </button>
+                        <p class="promocion"><i class="fa-solid fa-truck-fast"></i> Envío gratis a todo el Perú + Garantía oficial de 2 años</p>
+                        <div class="producto-pie">
+                            <strong>S/ 1,650.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
                     </div>
                 </article>
 
@@ -146,12 +168,13 @@
                             <strong>Iluminación:</strong> RGB personalizable por software
                         </p>
                         <div class="valoracion">⭐⭐⭐⭐⭐ (4.9/5)</div>
-                        <strong class="precio">S/ 580.00</strong>
-                        <p class="promocion"><i class="fa-solid fa-shield-halved"></i> Garantía vitalicia de fabricante
-                        </p>
-                        <button class="btn-producto">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
-                        </button>
+                        <p class="promocion"><i class="fa-solid fa-shield-halved"></i> Garantía vitalicia de fabricante</p>
+                        <div class="producto-pie">
+                            <strong>S/ 580.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
                     </div>
                 </article>
 
@@ -173,12 +196,13 @@
                             <strong>Compatibilidad:</strong> PC Desktop, Laptops y PlayStation 5
                         </p>
                         <div class="valoracion">⭐⭐⭐⭐☆ (4.7/5)</div>
-                        <strong class="precio">S/ 340.00</strong>
-                        <p class="promocion"><i class="fa-solid fa-gamepad"></i> 100% Compatible con PS5 + 5 años de
-                            garantía</p>
-                        <button class="btn-producto">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
-                        </button>
+                        <p class="promocion"><i class="fa-solid fa-gamepad"></i> 100% Compatible con PS5 + 5 años de garantía</p>
+                        <div class="producto-pie">
+                            <strong>S/ 340.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
                     </div>
                 </article>
 
@@ -200,12 +224,13 @@
                             <strong>Redes:</strong> WiFi 6 + Bluetooth 5.2 + LAN Realtek 2.5Gb
                         </p>
                         <div class="valoracion">⭐⭐⭐⭐⭐ (4.9/5)</div>
-                        <strong class="precio">S/ 585.59</strong>
-                        <p class="promocion"><i class="fa-solid fa-ticket"></i> Cupón GAMER40 (S/ 40 OFF en el carrito)
-                        </p>
-                        <button class="btn-producto">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
-                        </button>
+                        <p class="promocion"><i class="fa-solid fa-ticket"></i> Cupón GAMER40 (S/ 40 OFF en el carrito)</p>
+                        <div class="producto-pie">
+                            <strong>S/ 585.59</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
                     </div>
                 </article>
 
@@ -220,26 +245,28 @@
                         <small class="sku">SKU: PSU-750W-80GOLD-MOD</small>
                         <h3>Fuente de Poder 750W 80 Plus Gold</h3>
                         <p class="caracteristicas">
-                            <strong>Potencia:</strong> 750 Watts Reales | <strong>Certificación:</strong> 80 Plus Gold
-                            (90% eficiencia)<br>
+                            <strong>Potencia:</strong> 750 Watts Reales | <strong>Certificación:</strong> 80 Plus Gold (90% eficiencia)<br>
                             <strong>Cableado:</strong> Totalmente Modular (Full Modular)<br>
                             <strong>Protecciones (OPP/OVP/UVP/SCP/OCP):</strong> Protección total ante sobrevoltajes<br>
                             <strong>Ventilador:</strong> 120mm Ultra Silencioso con rodamiento dinámico fluido<br>
                             <strong>Soporte:</strong> Preparada para PCIe 5.0 y ATX 3.0
                         </p>
                         <div class="valoracion">⭐⭐⭐⭐☆ (4.7/5)</div>
-                        <strong class="precio">S/ 450.00</strong>
-                        <p class="promocion"><i class="fa-solid fa-bolt"></i> Eficiencia energética garantizada + 5 años
-                            de garantía</p>
-                        <button class="btn-producto">
-                            <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
-                        </button>
+                        <p class="promocion"><i class="fa-solid fa-bolt"></i> Eficiencia energética garantizada + 5 años de garantía</p>
+                        <div class="producto-pie">
+                            <strong>S/ 450.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
                     </div>
                 </article>
 
             </div>
         </section>
     </main>
+
+   
 
     <!-- Footer -->
     <footer class="footer">

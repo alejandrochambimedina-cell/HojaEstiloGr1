@@ -75,7 +75,27 @@
         </nav>
 
     </header>
+<!-- ============================================== -->
+    <!-- Notificación Flotante (Toast) -->
+<div id="notificacion" class="notificacion"></div>
 
+<!-- Modal del Carrito -->
+<div id="modal-carrito" class="modal-carrito">
+    <div class="modal-contenido">
+        <div class="modal-header">
+            <h3><i class="fa-solid fa-cart-shopping"></i> Mi Carrito</h3>
+            <button class="btn-cerrar" onclick="cerrarCarrito()">&times;</button>
+        </div>
+        
+        <ul id="lista-carrito"></ul>
+
+        <div class="modal-footer">
+            <p>Total: <strong>S/ <span id="total-carrito">0.00</span></strong></p>
+            <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar</button>
+            <button class="btn-comprar" onclick="finalizarCompra()">Comprar</button>
+        </div>
+    </div>
+</div>
     <!-- ======CONTENIDO PRINCIPAL======== -->
     <main>
 

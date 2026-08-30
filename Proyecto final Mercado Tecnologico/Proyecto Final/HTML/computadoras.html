@@ -74,7 +74,26 @@
         </nav>
 
     </header>
+<!-- Notificación Flotante (Toast) -->
+<div id="notificacion" class="notificacion"></div>
 
+<!-- Modal del Carrito -->
+<div id="modal-carrito" class="modal-carrito">
+    <div class="modal-contenido">
+        <div class="modal-header">
+            <h3><i class="fa-solid fa-cart-shopping"></i> Mi Carrito</h3>
+            <button class="btn-cerrar" onclick="cerrarCarrito()">&times;</button>
+        </div>
+        
+        <ul id="lista-carrito"></ul>
+
+        <div class="modal-footer">
+            <p>Total: <strong>S/ <span id="total-carrito">0.00</span></strong></p>
+            <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar</button>
+            <button class="btn-comprar" onclick="finalizarCompra()">Comprar</button>
+        </div>
+    </div>
+</div>
     <!-- ======CONTENIDO PRINCIPAL======== -->
     <main>
 
@@ -369,66 +388,6 @@
     </div>
 
     <script src="../JS/inicio.js"></script>
-
-    <!-- Script propio de esta página: filtro de productos -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-
-            const inputBusqueda = document.getElementById("buscarProducto");
-            const botonesFiltro = document.querySelectorAll(".filtro-btn");
-            const productos = document.querySelectorAll("#grid-computadoras .producto");
-            const mensajeSinResultados = document.getElementById("mensajeSinResultados");
-
-            let filtroActivo = "todos";
-
-            function aplicarFiltros() {
-
-                const texto = inputBusqueda.value.trim().toLowerCase();
-                let visibles = 0;
-
-                productos.forEach(function (producto) {
-
-                    const tipo = producto.getAttribute("data-tipo");
-                    const nombre = producto.querySelector("h3").textContent.toLowerCase();
-
-                    const coincideCategoria =
-                        filtroActivo === "todos" || tipo === filtroActivo;
-
-                    const coincideTexto = nombre.includes(texto);
-
-                    if (coincideCategoria && coincideTexto) {
-                        producto.style.display = "";
-                        visibles++;
-                    } else {
-                        producto.style.display = "none";
-                    }
-
-                });
-
-                mensajeSinResultados.style.display =
-                    visibles === 0 ? "block" : "none";
-            }
-
-            botonesFiltro.forEach(function (boton) {
-
-                boton.addEventListener("click", function () {
-
-                    botonesFiltro.forEach(function (b) {
-                        b.classList.remove("activo");
-                    });
-
-                    boton.classList.add("activo");
-                    filtroActivo = boton.getAttribute("data-filtro");
-
-                    aplicarFiltros();
-                });
-
-            });
-
-            inputBusqueda.addEventListener("input", aplicarFiltros);
-
-        });
-    </script>
 
 </body>
 
