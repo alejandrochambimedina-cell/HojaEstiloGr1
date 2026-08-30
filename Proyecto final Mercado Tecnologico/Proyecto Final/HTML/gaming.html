@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Configuración responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="TecnoStore - Accesorios y productos gaming: teclados, mouse, audífonos, sillas y monitores.">
+
+    <title>Accesorios y Gaming | TecnoStore</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="../CSS/estilos.css">
+    <link rel="stylesheet" href="../CSS/global.css">
+</head>
+
+<body>
+
+    <!-- ==HEADER / NAVBAR== -->
+
+    <header class="header">
+
+        <!-- Logo -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="../Imagenes/logo-tecno.png" alt="Logo de TecnoStore">
+            </a>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="navbar" aria-label="Navegación principal">
+
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Inicio</span>
+            </a>
+
+            <a href="computadoras.html">
+                <i class="fa-solid fa-laptop"></i>
+                <span>Computadoras</span>
+            </a>
+
+            <a href="componentes.html">
+                <i class="fa-solid fa-microchip"></i>
+                <span>Componentes</span>
+            </a>
+
+            <a href="gaming.html" class="activo">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>Accesorios y Gaming</span>
+            </a>
+
+            <a href="electrodomesticos.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Electrodomésticos</span>
+            </a>
+
+            <a href="#carrito" class="carrito-link" onclick="mostrarCarrito()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Carrito</span>
+                <span class="contador-carrito">0</span>
+            </a>
+
+        </nav>
+
+    </header>
+
+    <!-- ======CONTENIDO PRINCIPAL======== -->
+    <main>
+
+        <!-- ============ TÍTULO DE PÁGINA ============ -->
+        <section class="seccion" id="gaming">
+
+            <div class="titulo-seccion">
+                <span> <i class="fa-solid fa-gamepad"></i> Catálogo </span>
+                <h2>Accesorios y Gaming</h2>
+                <p> Periféricos y productos gaming para jugar y trabajar al máximo nivel. </p>
+            </div>
+
+            <!-- ============ FILTRO DE PRODUCTOS ============ -->
+            <div class="filtro-productos">
+
+                <div class="filtro-busqueda">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="buscarProducto" placeholder="Buscar teclado, mouse, silla...">
+                </div>
+
+                <div class="filtro-categorias">
+                    <button type="button" class="filtro-btn activo" data-filtro="todos">Todos</button>
+                    <button type="button" class="filtro-btn" data-filtro="teclado">Teclados</button>
+                    <button type="button" class="filtro-btn" data-filtro="mouse">Mouse</button>
+                    <button type="button" class="filtro-btn" data-filtro="accesorio">Accesorios</button>
+                </div>
+
+            </div>
+
+            <!-- ============ GRID DE PRODUCTOS ============ -->
+            <div class="productos" id="grid-gaming">
+
+                <!-- Producto 1 -->
+                <article class="producto" data-tipo="teclado">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/teclado.jpg" alt="Teclado Mecánico RGB">
+                        <span class="producto-etiqueta oferta-etiqueta">-20%</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Gaming</span>
+                        <h3>Teclado Mecánico RGB</h3>
+                        <p>Switches mecánicos, retroiluminación RGB personalizable. Ideal para gaming y trabajo.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 239.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="producto" data-tipo="teclado">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/teclado.jpg" alt="Teclado Gamer TKL">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Gaming</span>
+                        <h3>Teclado Gamer TKL</h3>
+                        <p>Formato compacto sin teclado numérico, teclas anti-ghosting para partidas rápidas.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 179.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="producto" data-tipo="mouse">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/mouse.jpg" alt="Mouse Gamer">
+                        <span class="producto-etiqueta oferta-etiqueta">-10%</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Gaming</span>
+                        <h3>Mouse Gamer</h3>
+                        <p>Alta precisión y diseño ergonómico, ideal para juegos competitivos.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 134.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 4 -->
+                <article class="producto" data-tipo="mouse">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/mouse.jpg" alt="Mouse Inalámbrico Gaming">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Gaming</span>
+                        <h3>Mouse Inalámbrico Gaming</h3>
+                        <p>Sensor óptico de alta precisión, batería de larga duración y baja latencia.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 189.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 5 -->
+                <article class="producto" data-tipo="accesorio">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/mouse.jpg" alt="Audífonos Gamer">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Gaming</span>
+                        <h3>Audífonos Gamer con Micrófono</h3>
+                        <p>Sonido envolvente y micrófono con cancelación de ruido para partidas y llamadas.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 149.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 6 -->
+                <article class="producto" data-tipo="accesorio">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/teclado.jpg" alt="Silla Gamer Ergonómica">
+                        <span class="producto-etiqueta oferta-etiqueta">-12%</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Gaming</span>
+                        <h3>Silla Gamer Ergonómica</h3>
+                        <p>Respaldo reclinable, soporte lumbar y reposabrazos ajustables para largas sesiones.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 699.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 7 -->
+                <article class="producto" data-tipo="accesorio">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/mouse.jpg" alt="Monitor Gaming 144Hz">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Gaming</span>
+                        <h3>Monitor Gaming 24" 144Hz</h3>
+                        <p>Panel Full HD, 144Hz y 1ms de respuesta para juegos fluidos y competitivos.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 899.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 8 -->
+                <article class="producto" data-tipo="accesorio">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/teclado.jpg" alt="Mousepad XL Gaming">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Gaming</span>
+                        <h3>Mousepad XL Gaming</h3>
+                        <p>Superficie extendida con bordes cosidos, ideal para mouse y teclado a la vez.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 59.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <p class="sin-resultados" id="mensajeSinResultados">
+                    No se encontraron productos que coincidan con tu búsqueda.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =============FOOTER=============== -->
+
+    <footer class="footer">
+
+        <!-- Información -->
+        <div class="footer-columna">
+
+            <a href="index.html#inicio" class="footer-logo">
+                Tecno<span>Store</span>
+            </a>
+
+            <p class="footer-descripcion">
+                Tecnología para todos.
+                Encuentra computadoras, componentes,
+                accesorios y productos para tu hogar.
+            </p>
+
+            <div class="footer-confianza">
+                <span>
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Compra segura
+                </span>
+                <span>
+                    <i class="fa-solid fa-truck-fast"></i>
+                    Envíos rápidos
+                </span>
+            </div>
+        </div>
+
+        <!-- Categorías -->
+        <div class="footer-columna">
+            <h3>Categorías</h3>
+            <ul>
+                <li><a href="computadoras.html">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Computadoras
+                    </a></li>
+
+                <li><a href="componentes.html">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Componentes
+                    </a></li>
+
+                <li><a href="gaming.html">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Accesorios y Gaming</a></li>
+
+                <li><a href="electrodomesticos.html">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        Electrodomésticos
+                    </a></li>
+            </ul>
+        </div>
+
+
+        <!-- Contacto -->
+        <div class="footer-columna">
+            <h3>Contacto</h3>
+            <div class="footer-contacto">
+                <p><i class="fa-solid fa-envelope"></i>
+                    tecnostore_gaming@gmail.com</p>
+
+                <p><i class="fa-solid fa-phone"></i>
+                    +51 987 654 321</p>
+
+                <p><i class="fa-solid fa-location-dot"></i>
+                    Lima, Perú</p>
+            </div>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="footer-columna">
+
+            <h3>Síguenos</h3>
+
+            <p>Encuentra nuestras novedades,
+                promociones y productos.</p>
+
+            <div class="redes">
+
+                <a href="#" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =============DERECHOS================== -->
+
+    <div class="footer-derechos">
+        <p>© 2026 TecnoStore. Todos los derechos reservados.</p>
+
+        <p><i class="fa-solid fa-laptop"></i>
+            Tienda virtual de productos tecnológicos.</p>
+    </div>
+
+    <script src="../JS/inicio.js"></script>
+
+    <!-- Script propio de esta página: filtro de productos -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const inputBusqueda = document.getElementById("buscarProducto");
+            const botonesFiltro = document.querySelectorAll(".filtro-btn");
+            const productos = document.querySelectorAll("#grid-gaming .producto");
+            const mensajeSinResultados = document.getElementById("mensajeSinResultados");
+
+            let filtroActivo = "todos";
+
+            function aplicarFiltros() {
+
+                const texto = inputBusqueda.value.trim().toLowerCase();
+                let visibles = 0;
+
+                productos.forEach(function (producto) {
+
+                    const tipo = producto.getAttribute("data-tipo");
+                    const nombre = producto.querySelector("h3").textContent.toLowerCase();
+
+                    const coincideCategoria =
+                        filtroActivo === "todos" || tipo === filtroActivo;
+
+                    const coincideTexto = nombre.includes(texto);
+
+                    if (coincideCategoria && coincideTexto) {
+                        producto.style.display = "";
+                        visibles++;
+                    } else {
+                        producto.style.display = "none";
+                    }
+
+                });
+
+                mensajeSinResultados.style.display =
+                    visibles === 0 ? "block" : "none";
+            }
+
+            botonesFiltro.forEach(function (boton) {
+
+                boton.addEventListener("click", function () {
+
+                    botonesFiltro.forEach(function (b) {
+                        b.classList.remove("activo");
+                    });
+
+                    boton.classList.add("activo");
+                    filtroActivo = boton.getAttribute("data-filtro");
+
+                    aplicarFiltros();
+                });
+
+            });
+
+            inputBusqueda.addEventListener("input", aplicarFiltros);
+
+        });
+    </script>
+
+</body>
+</html>
