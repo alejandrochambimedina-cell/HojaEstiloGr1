@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portal responsivo de talleres tecnológicos UTP TechHub"
+    />
+    <title>UTP TechHub | Talleres tecnológicos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="#inicio" aria-label="UTP TechHub, inicio">
+          <span class="brand__mark" aria-hidden="true">&lt;/&gt;</span>
+          <span>UTP TechHub</span>
+        </a>
+        <nav aria-label="Navegación principal">
+          <ul class="nav-list">
+            <li><a href="#talleres">Talleres</a></li>
+            <li><a href="#agenda">Agenda</a></li>
+            <li><a href="#registro">Registro</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="contenido">
+      <section class="hero" id="inicio">
+        <div class="container hero__layout">
+          <div class="hero__content">
+            <p class="eyebrow">Aprende creando</p>
+            <h1>Domina herramientas web con proyectos breves</h1>
+            <p class="hero__lead">
+              Explora talleres de CSS, accesibilidad y experiencia de usuario,
+              diseñados para convertir conceptos en interfaces verificables.
+            </p>
+            <div class="button-group">
+              <a class="button button--primary" href="#talleres"
+                >Explorar talleres</a
+              >
+              <a class="button button--secondary" href="#agenda"
+                >Revisar agenda</a
+              >
+            </div>
+          </div>
+          <figure class="hero-media">
+            <img
+              src="assets/lab-hero.svg"
+              width="1280"
+              height="720"
+              alt="Estación de trabajo con paneles que representan Flexbox, Grid y media queries"
+            />
+            <figcaption>
+              Una estructura semántica puede admitir varias composiciones.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+      <div class="container content-shell">
+        <section
+          class="workshops"
+          id="talleres"
+          aria-labelledby="titulo-talleres"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Ruta de aprendizaje</p>
+              <h2 id="titulo-talleres">Talleres destacados</h2>
+            </div>
+            <ul class="tag-list" aria-label="Temas incluidos">
+              <li>Responsive</li>
+              <li>Flexbox</li>
+              <li>Grid</li>
+            </ul>
+          </div>
+          <div class="workshop-grid">
+            <article class="workshop-card">
+              <p class="workshop-card__tag">Fundamentos</p>
+              <h3>Interfaces mobile-first</h3>
+              <p>
+                Construye primero la experiencia esencial y amplía la
+                composición según el espacio.
+              </p>
+              <ul class="workshop-card__meta">
+                <li>90 min</li>
+                <li>Nivel inicial</li>
+              </ul>
+              <a class="workshop-card__link" href="#registro"
+                >Ver detalle <span aria-hidden="true">→</span></a
+              >
+            </article>
+            <article class="workshop-card">
+              <p class="workshop-card__tag">Distribución 1D</p>
+              <h3>Flexbox para componentes</h3>
+              <p>
+                Controla ejes, espacio disponible, alineación, salto de línea y
+                crecimiento.
+              </p>
+              <ul class="workshop-card__meta">
+                <li>120 min</li>
+                <li>Nivel intermedio</li>
+              </ul>
+              <a class="workshop-card__link" href="#registro"
+                >Ver detalle <span aria-hidden="true">→</span></a
+              >
+            </article>
+            <article class="workshop-card">
+              <p class="workshop-card__tag">Composición 2D</p>
+              <h3>Grid para tableros</h3>
+              <p>
+                Define tracks, áreas y colecciones intrínsecas sin alterar el
+                orden lógico.
+              </p>
+              <ul class="workshop-card__meta">
+                <li>120 min</li>
+                <li>Nivel intermedio</li>
+              </ul>
+              <a class="workshop-card__link" href="#registro"
+                >Ver detalle <span aria-hidden="true">→</span></a
+              >
+            </article>
+            <article class="workshop-card">
+              <p class="workshop-card__tag">Calidad</p>
+              <h3>Reflujo y zoom</h3>
+              <p>
+                Somete la interfaz a viewports estrechos, cadenas largas y zoom
+                del navegador.
+              </p>
+              <ul class="workshop-card__meta">
+                <li>75 min</li>
+                <li>Nivel intermedio</li>
+              </ul>
+              <a class="workshop-card__link" href="#registro"
+                >Ver detalle <span aria-hidden="true">→</span></a
+              >
+            </article>
+            <article class="workshop-card">
+              <p class="workshop-card__tag">Accesibilidad</p>
+              <h3>Navegación por teclado</h3>
+              <p>
+                Diseña foco visible y una secuencia que conserve el sentido sin
+                depender del CSS.
+              </p>
+              <ul class="workshop-card__meta">
+                <li>60 min</li>
+                <li>Nivel inicial</li>
+              </ul>
+              <a class="workshop-card__link" href="#registro"
+                >Ver detalle <span aria-hidden="true">→</span></a
+              >
+            </article>
+            <article class="workshop-card">
+              <p class="workshop-card__tag">Herramientas</p>
+              <h3>DevTools para layout</h3>
+              <p>
+                Inspecciona cajas, ejes flexibles, líneas Grid, media queries y
+                desbordamientos.
+              </p>
+              <ul class="workshop-card__meta">
+                <li>90 min</li>
+                <li>Nivel inicial</li>
+              </ul>
+              <a class="workshop-card__link" href="#registro"
+                >Ver detalle <span aria-hidden="true">→</span></a
+              >
+            </article>
+          </div>
+        </section>
+        <aside class="schedule" id="agenda" aria-labelledby="titulo-agenda">
+          <p class="eyebrow">Próxima fecha</p>
+          <h2 id="titulo-agenda">Laboratorio abierto</h2>
+          <p class="schedule__date">
+            <time datetime="2026-09-12">12 SEP 2026</time>
+          </p>
+          <p>
+            Trae tu proyecto y recibe retroalimentación sobre composición y
+            accesibilidad.
+          </p>
+          <dl class="schedule__details">
+            <div>
+              <dt>Hora</dt>
+              <dd>10:00–12:00</dd>
+            </div>
+            <div>
+              <dt>Modalidad</dt>
+              <dd>Presencial</dd>
+            </div>
+            <div>
+              <dt>Cupos</dt>
+              <dd>24 estudiantes</dd>
+            </div>
+          </dl>
+          <a class="button button--primary" href="#registro"
+            >Reservar un cupo</a
+          >
+        </aside>
+      </div>
+      <section class="registration" id="registro">
+        <div class="container registration__inner">
+          <div>
+            <p class="eyebrow">Siguiente paso</p>
+            <h2>Organiza tu ruta de talleres</h2>
+            <p>
+              Revisa los requisitos y selecciona la experiencia que corresponde
+              a tu nivel.
+            </p>
+          </div>
+          <a class="button button--light" href="#talleres"
+            >Volver a los talleres</a
+          >
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p><strong>UTP TechHub</strong> · Laboratorio de interfaces web</p>
+        <p>PC1 · Hojas de Estilo en Cascada Avanzado</p>
+      </div>
+    </footer>
+  </body>
+</html>
