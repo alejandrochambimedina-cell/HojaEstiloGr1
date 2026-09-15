@@ -1,0 +1,53 @@
+// Contenedor principal
+.container {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+}
+
+// Secciones
+.section {
+  padding-block: @space-5;
+}
+
+// Hero
+.hero {
+  display: grid;
+  gap: @space-4;
+  padding-block: 4rem;
+}
+
+// Grid de tarjetas
+.card-grid {
+  display: grid;
+  gap: @space-3;
+}
+
+// Diseño dividido
+.split-layout {
+  display: grid;
+  gap: @space-4;
+}
+
+// Adaptación para pantallas medianas
+@media (min-width: @bp-md) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .split-layout {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+
+  .hero {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+  }
+}
+
+// Adaptación para pantallas grandes
+@media (min-width: @bp-lg) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

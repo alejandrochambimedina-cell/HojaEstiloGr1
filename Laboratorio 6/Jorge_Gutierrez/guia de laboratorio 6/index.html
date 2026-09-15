@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruta Frontend</title>
+  <link rel="stylesheet" href="dist/css/main.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">Ruta Frontend</a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#temas">Temas</a>
+        <a href="#recursos">Recursos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="container">
+        <p class="eyebrow">Desarrollo web</p>
+
+        <h1>Aprende Frontend paso a paso</h1>
+
+        <p class="lead">
+          Una ruta práctica para comprender las bases del desarrollo
+          frontend utilizando HTML, CSS y herramientas modernas.
+        </p>
+
+        <a class="button button--primary button--large" href="#temas">
+          Ver temas
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="temas">
+      <div class="container">
+        <p class="eyebrow">Contenido</p>
+        <h2>Temas principales</h2>
+
+        <div class="card-grid">
+          <article class="card">
+            <span class="badge">HTML</span>
+            <h3 class="card__title">Estructura</h3>
+            <p class="card__text">
+              Aprende a organizar el contenido de una página
+              utilizando elementos semánticos.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="badge">CSS</span>
+            <h3 class="card__title">Estilos</h3>
+            <p class="card__text">
+              Conoce cómo aplicar estilos, diseño responsive
+              y organización visual.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="badge">LESS</span>
+            <h3 class="card__title">Preprocesador</h3>
+            <p class="card__text">
+              Utiliza variables, mixins, nesting y módulos
+              para escribir CSS de forma organizada.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="recursos">
+      <div class="container split-layout">
+        <div>
+          <p class="eyebrow">Recursos</p>
+          <h2>Una forma ordenada de trabajar</h2>
+          <p class="lead">
+            Separar los estilos en módulos permite mantener
+            el proyecto más claro y fácil de mantener.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="card__title">Buenas prácticas</h3>
+
+          <ul class="check-list">
+            <li>Usar variables reutilizables.</li>
+            <li>Crear mixins para estilos repetidos.</li>
+            <li>Organizar los estilos por módulos.</li>
+            <li>Verificar accesibilidad y responsive.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Ruta Frontend · Laboratorio LESS</p>
+    </div>
+  </footer>
+</body>
+</html>

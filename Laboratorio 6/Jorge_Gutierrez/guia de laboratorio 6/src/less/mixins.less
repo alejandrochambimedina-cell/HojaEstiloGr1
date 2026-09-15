@@ -1,0 +1,38 @@
+// Anillo de enfoque accesible
+.focus-ring(@color: @color-focus) {
+  outline: 3px solid @color;
+  outline-offset: 3px;
+}
+
+// Tarjeta reutilizable
+.surface-card(@padding: @space-3) {
+  background: @color-surface;
+  border: 1px solid @color-border;
+  border-radius: @radius-md;
+  box-shadow: @shadow-sm;
+  padding: @padding;
+}
+
+// Tamaños de botón con guardas
+.button-size(@size) when (@size = small) {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+.button-size(@size) when (@size = large) {
+  padding: 0.85rem 1.2rem;
+  font-size: 1rem;
+}
+
+// Quitar estilos por defecto de enlaces
+.link-reset() {
+  color: inherit;
+  text-decoration: none;
+}
+
+// Espaciado vertical reutilizable
+.stack(@gap: @space-2) {
+  display: flex;
+  flex-direction: column;
+  gap: @gap;
+}

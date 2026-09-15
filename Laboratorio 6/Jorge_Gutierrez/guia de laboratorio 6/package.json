@@ -1,0 +1,12 @@
+{
+  "name": "guia-de-laboratorio-6",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "lessc --source-map src/less/main.less dist/css/main.css",
+    "check:less": "lessc --version"
+  },
+  "devDependencies": {
+    "less": "4.9.1"
+  }
+}
