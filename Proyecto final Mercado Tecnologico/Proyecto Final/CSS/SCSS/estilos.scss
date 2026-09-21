@@ -279,6 +279,60 @@
     }
 }
 
+/* ============ORDENAR POR PRECIO============= */
+
+.filtro-orden-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+
+    // La flechita de Font Awesome, puesta encima del select
+    i {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.75rem;
+        color: var(--azul);
+        pointer-events: none;
+    }
+
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+}
+
+.filtro-orden {
+    // Quitamos la flecha nativa del navegador para usar la nuestra
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    padding: 0.6rem 2.2rem 0.6rem 1.1rem;
+    border: 1px solid #b8d5f7;
+    border-radius: 2rem;
+    background-color: var(--blanco);
+    color: var(--azul);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transicion);
+
+    &:hover {
+        background-color: var(--azul-suave);
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--azul);
+    }
+
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+}
+
 .sin-resultados {
     width: 100%;
     text-align: center;
@@ -286,6 +340,147 @@
     font-size: 0.95rem;
     padding: 2rem 0;
     display: none;
+}
+
+/* ============ORDENAR POR PRECIO============= */
+
+.filtro-orden {
+    padding: 0.65rem 1rem;
+    border: 1px solid #b8d5f7;
+    border-radius: 0.6rem;
+    background-color: var(--blanco);
+    color: var(--azul);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transicion);
+
+    &:hover {
+        background-color: var(--azul-suave);
+    }
+}
+
+/* ============MODAL DE VISTA RÁPIDA============= */
+
+.btn-ver-mas {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: none;
+    color: var(--azul);
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 0.8rem;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(7, 26, 61, 0.55);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+
+    &.activo {
+        display: flex;
+    }
+}
+
+.modal-contenido {
+    background-color: var(--blanco);
+    border-radius: var(--radio);
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem;
+    box-shadow: var(--sombra-hover);
+
+    @media (max-width: 700px) {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+}
+
+.modal-cerrar {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background-color: #f1f5f9;
+    color: var(--gris-texto);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transicion);
+
+    &:hover {
+        background-color: #e2e8f0;
+        color: var(--azul-oscuro);
+    }
+}
+
+.modal-imagen {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8fafc;
+    border-radius: 0.8rem;
+    padding: 1rem;
+
+    img {
+        max-width: 100%;
+        max-height: 300px;
+        object-fit: contain;
+    }
+}
+
+.modal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h3 {
+        color: var(--azul-oscuro);
+        font-size: 1.4rem;
+        margin: 0.4rem 0 0.8rem;
+    }
+
+    p {
+        color: var(--gris-texto);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.2rem;
+    }
+}
+
+.modal-precio {
+    display: block;
+    color: var(--azul);
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
 }
 
 /* ============CATEGORÍAS============= */
