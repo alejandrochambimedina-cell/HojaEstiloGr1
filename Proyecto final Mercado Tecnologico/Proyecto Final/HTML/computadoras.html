@@ -120,13 +120,22 @@
                     <button type="button" class="filtro-btn" data-filtro="pc">PC de Escritorio</button>
                 </div>
 
+                <div class="filtro-orden-wrap">
+                    <select class="filtro-orden" id="ordenarPrecio">
+                        <option value="relevancia">Ordenar por: Relevancia</option>
+                        <option value="menor">Precio: menor a mayor</option>
+                        <option value="mayor">Precio: mayor a menor</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
             </div>
 
             <!-- ============ GRID DE PRODUCTOS ============ -->
             <div class="productos" id="grid-computadoras">
 
                 <!-- Producto 1 -->
-                <article class="producto" data-tipo="laptop">
+                <article class="producto" data-tipo="laptop" data-orden="0">
                     <div class="producto-imagen">
                         <img src="../Imagenes/laptop.jpg" alt="Laptop Gamer">
                         <span class="producto-etiqueta oferta-etiqueta">-15%</span>
@@ -145,7 +154,7 @@
                 </article>
 
                 <!-- Producto 2 -->
-                <article class="producto" data-tipo="laptop">
+                <article class="producto" data-tipo="laptop" data-orden="1">
                     <div class="producto-imagen">
                         <img src="../Imagenes/laptop1.jpg" alt="Laptop Lenovo IdeaPad">
                     </div>
@@ -163,7 +172,7 @@
                 </article>
 
                 <!-- Producto 3 -->
-                <article class="producto" data-tipo="laptop">
+                <article class="producto" data-tipo="laptop" data-orden="2">
                     <div class="producto-imagen">
                         <img src="../Imagenes/Laptop HP Pavilion 15.jpg" alt="Laptop HP Pavilion">
                         <span class="producto-etiqueta oferta-etiqueta">-10%</span>
@@ -183,7 +192,7 @@
                 </article>
 
                 <!-- Producto 4 (nuevo) -->
-                <article class="producto" data-tipo="laptop">
+                <article class="producto" data-tipo="laptop" data-orden="3">
                     <div class="producto-imagen">
                         <img src="../Imagenes/Laptop ASUS Vivobook 15.png" alt="Laptop ASUS Vivobook">
                     </div>
@@ -201,7 +210,7 @@
                 </article>
 
                 <!-- Producto 5 -->
-                <article class="producto" data-tipo="pc">
+                <article class="producto" data-tipo="pc" data-orden="4">
                     <div class="producto-imagen">
                         <img src="../Imagenes/PC Gamer de Torre.png" alt="PC Gamer de Torre">
                     </div>
@@ -219,7 +228,7 @@
                 </article>
 
                 <!-- Producto 6 (nuevo) -->
-                <article class="producto" data-tipo="pc">
+                <article class="producto" data-tipo="pc" data-orden="5">
                     <div class="producto-imagen">
                         <img src="../Imagenes/PC Oficina Compacta.png" alt="PC Oficina Compacta">
                         <span class="producto-etiqueta oferta-etiqueta">-8%</span>
@@ -238,7 +247,7 @@
                 </article>
 
                 <!-- Producto 7 (nuevo) -->
-                <article class="producto" data-tipo="pc">
+                <article class="producto" data-tipo="pc" data-orden="6">
                     <div class="producto-imagen">
                         <img src="../Imagenes/PC Gamer RGB Pro.png" alt="PC Gamer RGB Pro">
                         <span class="producto-etiqueta oferta-etiqueta">-18%</span>
@@ -257,7 +266,7 @@
                 </article>
 
                 <!-- Producto 8 (nuevo) -->
-                <article class="producto" data-tipo="pc">
+                <article class="producto" data-tipo="pc" data-orden="7">
                     <div class="producto-imagen">
                         <img src="../Imagenes/Mini PC Intel NUC.png" alt="Mini PC Intel NUC">
                     </div>
@@ -388,6 +397,112 @@
     </div>
 
     <script src="../JS/inicio.js"></script>
+
+    <!-- Script propio de esta página: filtro y orden por precio -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const inputBusqueda = document.getElementById("buscarProducto");
+            const botonesFiltro = document.querySelectorAll(".filtro-btn");
+            const selectOrden = document.getElementById("ordenarPrecio");
+            const grid = document.getElementById("grid-computadoras");
+            const productos = document.querySelectorAll("#grid-computadoras .producto");
+            const mensajeSinResultados = document.getElementById("mensajeSinResultados");
+
+            let filtroActivo = "todos";
+
+            /* ============ FILTRO (buscar + categoría) ============ */
+
+            function aplicarFiltros() {
+
+                const texto = inputBusqueda.value.trim().toLowerCase();
+                let visibles = 0;
+
+                productos.forEach(function (producto) {
+
+                    const tipo = producto.getAttribute("data-tipo");
+                    const nombre = producto.querySelector("h3").textContent.toLowerCase();
+
+                    const coincideCategoria =
+                        filtroActivo === "todos" || tipo === filtroActivo;
+
+                    const coincideTexto = nombre.includes(texto);
+
+                    if (coincideCategoria && coincideTexto) {
+                        producto.style.display = "";
+                        visibles++;
+                    } else {
+                        producto.style.display = "none";
+                    }
+
+                });
+
+                mensajeSinResultados.style.display =
+                    visibles === 0 ? "block" : "none";
+            }
+
+            botonesFiltro.forEach(function (boton) {
+
+                boton.addEventListener("click", function () {
+
+                    botonesFiltro.forEach(function (b) {
+                        b.classList.remove("activo");
+                    });
+
+                    boton.classList.add("activo");
+                    filtroActivo = boton.getAttribute("data-filtro");
+
+                    aplicarFiltros();
+                });
+
+            });
+
+            inputBusqueda.addEventListener("input", aplicarFiltros);
+
+            /* ============ ORDENAR POR PRECIO ============ */
+
+            function obtenerPrecio(producto) {
+                const texto = producto.querySelector(".producto-pie strong").textContent;
+                return parseFloat(
+                    texto.replace("S/", "").replace(",", "").trim()
+                );
+            }
+
+            function aplicarOrden() {
+
+                const valor = selectOrden.value;
+                const listaProductos = Array.from(productos);
+
+                if (valor === "menor") {
+
+                    listaProductos.sort(function (a, b) {
+                        return obtenerPrecio(a) - obtenerPrecio(b);
+                    });
+
+                } else if (valor === "mayor") {
+
+                    listaProductos.sort(function (a, b) {
+                        return obtenerPrecio(b) - obtenerPrecio(a);
+                    });
+
+                } else {
+
+                    // "Relevancia": volvemos al orden original del catálogo
+                    listaProductos.sort(function (a, b) {
+                        return Number(a.getAttribute("data-orden")) -
+                            Number(b.getAttribute("data-orden"));
+                    });
+                }
+
+                listaProductos.forEach(function (producto) {
+                    grid.insertBefore(producto, mensajeSinResultados);
+                });
+            }
+
+            selectOrden.addEventListener("change", aplicarOrden);
+
+        });
+    </script>
 
 </body>
 
