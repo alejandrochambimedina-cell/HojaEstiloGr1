@@ -1,0 +1,16 @@
+{
+  "name": "css-build-lab-semana5",
+  "version": "1.0.0",
+  "description": "Laboratorio comparativo de Sass y Less - Semana 5",
+  "private": true,
+  "scripts": {
+    "build:sass": "sass src/scss/main.scss dist/css/main-sass.css --source-map",
+    "build:less": "lessc --source-map src/less/main.less dist/css/main-less.css",
+    "build": "npm run build:sass && npm run build:less",
+    "watch:sass": "sass --watch src/scss/main.scss:dist/css/main-sass.css --source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.105.0",
+    "less": "^4.9.1"
+  }
+}

@@ -1,0 +1,464 @@
+/* ==========================================================================
+   UTP TechHub — Laboratorio 4 (PC1)
+   Autora: Vanessa Tito Valerio
+   Enfoque: Mobile-first, Flexbox + Grid, breakpoints en 768/1024/1440px
+   ========================================================================== */
+
+/* ---- 1. Variables (design tokens) ---- */
+:root {
+  --color-primary: #0f4c5c;
+  --color-primary-dark: #0a3540;
+  --color-accent: #e08e45;
+  --color-ink: #1c2b2f;
+  --color-muted: #5a6b6f;
+  --color-surface: #ffffff;
+  --color-bg: #f4f7f7;
+  --color-border: #d9e2e2;
+  --radius: 1rem;
+  --shadow: 0 1rem 2.4rem rgba(15, 76, 92, 0.12);
+  --container: 70rem;
+  --gap: 1.5rem;
+}
+
+/* ---- 2. Reset básico ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body,
+h1, h2, h3, p, ul, dl, dd, figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---- 3. Base tipográfica ---- */
+body {
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  color: var(--color-ink);
+  background: var(--color-bg);
+  line-height: 1.55;
+  /* clamp evita overflow y se adapta de 320px a 1440px+ */
+  font-size: clamp(1rem, 0.94rem + 0.3vw, 1.0625rem);
+}
+
+/* Evita que cadenas largas sin espacios rompan el layout (prueba de 80 caracteres) */
+p, h1, h2, h3, dd, .workshop-card__link {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 1.5rem + 2vw, 3rem);
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 2rem);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 1.1rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ---- 4. Utilidades de layout ---- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* ---- 5. Accesibilidad: skip-link y foco visible ---- */
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -3rem;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  transition: top 0.2s ease;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* ---- 6. Header (Flexbox) ---- */
+.site-header {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-block: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+}
+
+.brand__mark {
+  color: var(--color-accent);
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.25rem;
+}
+
+.nav-list a {
+  font-weight: 600;
+  color: var(--color-muted);
+  padding: 0.25rem 0;
+}
+
+.nav-list a:hover {
+  color: var(--color-primary);
+}
+
+/* ---- 7. Hero (mobile: columna | tablet+: Grid 2 columnas) ---- */
+.hero {
+  background: linear-gradient(180deg, #eef5f4, transparent);
+  padding-block: 2.5rem;
+}
+
+.hero__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero__lead {
+  color: var(--color-muted);
+  margin-block: 1rem 1.5rem;
+  max-width: 42ch;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.3rem;
+  border-radius: 0.6rem;
+  font-weight: 700;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.button--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.button--secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.button--light {
+  background: #fff;
+  color: var(--color-primary);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.hero-media {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.hero-media figcaption {
+  padding: 0.75rem 1rem;
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+/* ---- 8. Contenido: talleres + agenda ---- */
+.content-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-block: 2.5rem;
+}
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-list li {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Grid: 1 col en mobile, 2 en tablet, 3 en desktop (ver media queries) */
+.workshop-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+}
+
+.workshop-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.workshop-card__tag {
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.workshop-card__meta {
+  display: flex;
+  gap: 0.75rem;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  margin-block: 0.25rem 0.5rem;
+}
+
+.workshop-card__link {
+  margin-top: auto;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.schedule {
+  background: var(--color-primary-dark);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.schedule .eyebrow {
+  color: #bfe3e8;
+}
+
+.schedule__date {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.schedule__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-block: 0.5rem 1rem;
+}
+
+.schedule__details div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 0.4rem;
+}
+
+.schedule__details dt {
+  color: #bfe3e8;
+}
+
+.schedule .button--primary {
+  background: var(--color-accent);
+  align-self: flex-start;
+}
+
+/* ---- 9. Registro (Flexbox) ---- */
+.registration {
+  background: var(--color-primary);
+  color: #fff;
+  padding-block: 2.5rem;
+}
+
+.registration__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.registration p {
+  color: #d7ecee;
+}
+
+/* ---- 10. Footer ---- */
+.site-footer {
+  background: var(--color-ink);
+  color: #cdd9da;
+  padding-block: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* ==========================================================================
+   BREAKPOINTS
+   ========================================================================== */
+
+/* ---- 768px: tablet — header en fila, hero en 2 columnas, grid 2 cols ---- */
+@media (min-width: 48em) {
+  .site-header__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero__layout {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero__content,
+  .hero-media {
+    flex: 1;
+  }
+
+  .workshop-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-heading {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .registration__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* ---- 1024px: desktop — se agrega la columna de agenda y grid a 3 cols ---- */
+@media (min-width: 64em) {
+  .content-shell {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .workshops {
+    flex: 2;
+  }
+
+  .schedule {
+    flex: 1;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .workshop-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---- 1440px: pantallas grandes — más aire y contenedor más ancho ---- */
+@media (min-width: 90em) {
+  :root {
+    --container: 80rem;
+  }
+
+  .hero__lead {
+    max-width: 48ch;
+  }
+}
+
+/* ---- Preferencia de movimiento reducido ---- */
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}
