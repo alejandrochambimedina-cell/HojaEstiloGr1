@@ -1,0 +1,9 @@
+{
+  "name": "semana-7-sass",
+  "version": "1.0.0",
+  "scripts": {
+	"build:css": "sass src/scss/main.scss dist/css/main.css --style=expanded --source-map",
+	"watch:css": "sass --watch src/scss/main.scss:dist/css/main.css --style=expanded --source-map",
+	"build:prod": "sass src/scss/main.scss dist/css/main.css --style=compressed --no-source-map"
+  }
+}
