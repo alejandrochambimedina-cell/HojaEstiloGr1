@@ -1,9 +1,4 @@
 # Semana 7 · FrontLab (SASS: módulos, mixins, funciones)
-## Autor
-- Apellidos y nombres: Tito Valerio, Vanessa
-- Código: [COMPLETAR]
-- Sección: [COMPLETAR]
-
 ## Versiones y comandos
 - Node.js: v22.x · sass: 1.104.1 (Dart Sass, `npx sass --version` confirmado)
 - Instalar: `npm install`
