@@ -1,8 +1,4 @@
 # PC1 · UTP TechHub
-## Autor
-- Apellidos y nombres: Tito Valerio, Vanessa
-- Código: [COMPLETAR]
-- Sección: [COMPLETAR]
 
 ## Decisiones de diseño
 1. Base mobile-first: Todos los estilos parten de una columna única a 320px (Flexbox en `column` y Grid a 1 columna); las reglas para pantallas más grandes se agregan con `min-width` en `em`, nunca al revés.

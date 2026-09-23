@@ -1,8 +1,4 @@
 # Semana 6 · LESS Modular (Ruta Frontend)
-## Autor
-- Apellidos y nombres: Tito Valerio, Vanessa
-- Código: [COMPLETAR]
-- Sección: [COMPLETAR]
 
 ## Versiones y comandos
 - Node.js: v22.x · less: 4.9.1

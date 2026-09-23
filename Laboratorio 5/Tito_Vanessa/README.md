@@ -1,8 +1,4 @@
 # Semana 5 · CSS Build Lab (Sass vs Less)
-## Autor
-- Apellidos y nombres: Tito Valerio, Vanessa
-- Código: [COMPLETAR]
-- Sección: [COMPLETAR]
 
 ## Versiones y comandos
 - Node.js: v22.x
