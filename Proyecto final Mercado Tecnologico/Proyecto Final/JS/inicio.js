@@ -165,3 +165,62 @@ document.addEventListener("DOMContentLoaded", function () {
         inputBusqueda.addEventListener("input", aplicarFiltros);
     }
 });
+
+/* ========================================================
+   MENÚ HAMBURGUESA (solo se ve en celular)
+   ======================================================== */
+document.addEventListener("DOMContentLoaded", function () {
+    const btnMenu = document.getElementById("btnMenu");
+    const navbar = document.querySelector(".navbar");
+
+    if (!btnMenu || !navbar) return;
+
+    function alternarMenu() {
+        const abierto = navbar.classList.toggle("abierto");
+        btnMenu.setAttribute("aria-expanded", abierto ? "true" : "false");
+
+        // Cambia el ícono de tres rayitas (☰) a una X y viceversa
+        const icono = btnMenu.querySelector("i");
+        if (icono) {
+            icono.classList.toggle("fa-bars", !abierto);
+            icono.classList.toggle("fa-xmark", abierto);
+        }
+    }
+
+    function cerrarMenu() {
+        navbar.classList.remove("abierto");
+        btnMenu.setAttribute("aria-expanded", "false");
+
+        const icono = btnMenu.querySelector("i");
+        if (icono) {
+            icono.classList.add("fa-bars");
+            icono.classList.remove("fa-xmark");
+        }
+    }
+
+    btnMenu.addEventListener("click", function (e) {
+        e.stopPropagation();
+        alternarMenu();
+    });
+
+    // Cierra el menú al hacer clic en cualquier link de adentro
+    // (incluido el carrito), para no dejarlo abierto tapando la página
+    navbar.querySelectorAll("a").forEach(function (enlace) {
+        enlace.addEventListener("click", cerrarMenu);
+    });
+
+    // Cierra el menú al tocar fuera de él
+    document.addEventListener("click", function (e) {
+        if (navbar.classList.contains("abierto") && !navbar.contains(e.target)) {
+            cerrarMenu();
+        }
+    });
+
+    // Si la pantalla vuelve a agrandarse (ej. giras el celular u
+    // pasas de responsive a escritorio), reseteamos el estado
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 600) {
+            cerrarMenu();
+        }
+    });
+});

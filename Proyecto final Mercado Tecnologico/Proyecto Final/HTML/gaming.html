@@ -38,8 +38,13 @@
             </a>
         </div>
 
+        <button class="btn-menu" id="btnMenu" aria-label="Abrir menú" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
         <!-- Navegación -->
         <nav class="navbar" aria-label="Navegación principal">
+
 
             <a href="index.html">
                 <i class="fa-solid fa-house"></i>
@@ -75,26 +80,26 @@
         </nav>
 
     </header>
-<!-- Notificación Flotante (Toast) -->
-<div id="notificacion" class="notificacion"></div>
+    <!-- Notificación Flotante (Toast) -->
+    <div id="notificacion" class="notificacion"></div>
 
-<!-- Modal del Carrito -->
-<div id="modal-carrito" class="modal-carrito">
-    <div class="modal-contenido">
-        <div class="modal-header">
-            <h3><i class="fa-solid fa-cart-shopping"></i> Mi Carrito</h3>
-            <button class="btn-cerrar" onclick="cerrarCarrito()">&times;</button>
-        </div>
-        
-        <ul id="lista-carrito"></ul>
+    <!-- Modal del Carrito -->
+    <div id="modal-carrito" class="modal-carrito">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-cart-shopping"></i> Mi Carrito</h3>
+                <button class="btn-cerrar" onclick="cerrarCarrito()">&times;</button>
+            </div>
 
-        <div class="modal-footer">
-            <p>Total: <strong>S/ <span id="total-carrito">0.00</span></strong></p>
-            <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar</button>
-            <button class="btn-comprar" onclick="finalizarCompra()">Comprar</button>
+            <ul id="lista-carrito"></ul>
+
+            <div class="modal-footer">
+                <p>Total: <strong>S/ <span id="total-carrito">0.00</span></strong></p>
+                <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar</button>
+                <button class="btn-comprar" onclick="finalizarCompra()">Comprar</button>
+            </div>
         </div>
     </div>
-</div>
     <!-- ======CONTENIDO PRINCIPAL======== -->
     <main>
 
@@ -389,4 +394,5 @@
 
     <script src="../JS/inicio.js"></script>
 </body>
+
 </html>
