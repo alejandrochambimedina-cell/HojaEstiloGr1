@@ -19,6 +19,27 @@
 }
 
 /* =========================================
+   VARIABLE SASS (con $, no CSS) PARA HACER
+   OPERACIONES MATEMÁTICAS EN TIEMPO DE COMPILACIÓN.
+   No es lo mismo que las variables CSS de arriba:
+   estas se calculan ANTES de generar el CSS final.
+========================================= */
+$espaciado-base: 1rem;
+
+/* =========================================
+   PLACEHOLDER (%) PARA HERENCIA CON @extend
+   Cualquier selector que use "@extend %texto-truncado"
+   hereda estas reglas sin duplicar código ni generar
+   una clase CSS propia para el placeholder.
+========================================= */
+%texto-truncado {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+/* =========================================
    MIXIN: efecto hover de esta tarjeta
    (elevación + línea brillante arriba, con ::before)
 ========================================= */
@@ -63,12 +84,14 @@
     .grid-componentes {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-        gap: 2rem;
-        padding: 2rem 0;
+        // Operaciones matemáticas con la variable Sass $espaciado-base:
+        // 1rem * 2 = 2rem en escritorio, y en mobile se usa el valor base.
+        gap: $espaciado-base * 2;
+        padding: ($espaciado-base * 2) 0;
 
         @media (max-width: 600px) {
-            gap: 1rem;
-            padding: 1rem 0;
+            gap: $espaciado-base;
+            padding: $espaciado-base 0;
         }
     }
 
@@ -146,10 +169,16 @@
             }
 
             .sku {
+                // Herencia con @extend: hereda overflow/ellipsis/white-space
+                // del placeholder %texto-truncado en vez de repetir esas
+                // 4 líneas aquí (si mañana cambia el placeholder, cambia en
+                // todos los selectores que lo extienden, sin tocar cada uno).
+                @extend %texto-truncado;
                 font-size: 0.75rem;
                 color: var(--text-muted);
-                margin-bottom: 0.5rem;
-                display: block;
+                // Multiplicación por 0.5 en vez de "/" (Dart Sass moderno
+                // marca la división "/" como obsoleta fuera de math.div()).
+                margin-bottom: $espaciado-base * 0.5;
             }
 
             // Título con truncado a 2 líneas (line-clamp)
