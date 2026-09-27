@@ -45,8 +45,7 @@
         <!-- Navegación -->
         <nav class="navbar" aria-label="Navegación principal">
 
-
-            <a href="index.html">
+            <a href="index.html" class="activo">
                 <i class="fa-solid fa-house"></i>
                 <span>Inicio</span>
             </a>
@@ -76,9 +75,7 @@
                 <span>Carrito</span>
                 <span class="contador-carrito">0</span>
             </a>
-
         </nav>
-
     </header>
     <!-- ============================================== -->
     <!-- Notificación Flotante (Toast) -->
@@ -106,21 +103,25 @@
         <!-- ==============HERO / PRESENTACIÓN ================ -->
 
         <section class="hero" id="inicio">
-            <div class="hero-contenido"> <span class="hero-etiqueta"> <i class="fa-solid fa-bolt"></i> Tecnología para
-                    todos </span>
-                <h1> La tecnología que <span>necesitas</span> </h1>
-                <p> Encuentra computadoras, componentes, accesorios, productos gaming y electrodomésticos en un solo
-                    lugar. </p>
-                <div class="hero-botones"> <a href="gaming.html" class="btn"> <i class="fa-solid fa-store"></i> Ver
-                        productos </a> <a href="#categorias" class="btn btn-secundario"> <i
-                            class="fa-solid fa-layer-group"></i> Ver categorías </a> </div>
+
+            <div class="hero-contenido">
+
+                <span class="hero-etiqueta"><i class="fa-solid fa-bolt"></i>Tecnología para todos</span>
+                <h1> La tecnología que <span>necesitas</span></h1>
+                <p>Encuentra computadoras, componentes, accesorios,
+                    productos gaming y electrodomésticos en un solo lugar.</p>
+                <div class="hero-botones">
+                    <a href="gaming.html" class="btn"><i class="fa-solid fa-store"></i>Ver productos</a>
+                    <a href="#categorias" class="btn btn-secundario"><i class="fa-solid fa-layer-group"></i>Ver categorías</a>
+                </div>
             </div>
-            <div class="hero-imagen"> <img src="../Imagenes/laptop.jpg" </div>
+            <div class="hero-imagen">
+                <img src="../Imagenes/laptop.jpg" alt="Laptop tecnológica">
+            </div>
         </section>
 
         <!-- =============== CATEGORÍAS ================== -->
         <section class="seccion" id="categorias">
-
             <div class="titulo-seccion"> <span> <i class="fa-solid fa-layer-group"></i> Explora </span>
                 <h2>Categorías</h2>
                 <p> Encuentra la tecnología que necesitas según tus preferencias. </p>
@@ -226,8 +227,62 @@
                             href="electrodomesticos.html" class="btn-producto"> Ver producto </a>
                     </div>
                 </article>
+
+                <!-- Oferta 5 -->
+                <article class="producto oferta">
+                    <div class="producto-imagen"> <img src="../Imagenes/monitor.jpg" alt="Monitor Gamer">
+                        <span class="producto-etiqueta oferta-etiqueta">-17%</span>
+                    </div>
+                    <div class="producto-info"> <span class="producto-categoria">Gaming</span>
+                        <h3>Monitor Gamer</h3>
+                        <p>Monitor de alta calidad ideal para gaming y entretenimiento.</p>
+                        <div class="precio-oferta"> <span>S/ 899</span> <strong>S/ 749</strong>
+                        </div> <a href="gaming.html" class="btn-producto"> Ver producto </a>
+                    </div>
+                </article>
+
+                <!-- Oferta 6 -->
+                <article class="producto oferta">
+                    <div class="producto-imagen"> <img src="../Imagenes/ssd.jpg" alt="SSD NVMe">
+                        <span class="producto-etiqueta oferta-etiqueta">-19%</span>
+                    </div>
+                    <div class="producto-info"> <span class="producto-categoria">Componentes</span>
+                        <h3>SSD NVMe</h3>
+                        <p>Almacenamiento rápido para mejorar el rendimiento de tu PC.</p>
+                        <div class="precio-oferta"><span>S/ 429</span><strong>S/ 349</strong>
+                        </div> <a href="componentes.html" class="btn-producto"> Ver producto </a>
+                    </div>
+                </article>
+
+                <!-- Oferta 7 -->
+                <article class="producto oferta">
+                    <div class="producto-imagen"><img src="../Imagenes/audifonos.jpg" alt="Audífonos Gaming">
+                        <span class="producto-etiqueta oferta-etiqueta">-20%</span>
+                    </div>
+                    <div class="producto-info"><span class="producto-categoria">Accesorios</span>
+                        <h3>Audífonos Gaming</h3>
+                        <p>Sonido envolvente y comodidad para tus partidas y entretenimiento.</p>
+                        <div class="precio-oferta"><span>S/ 249</span><strong>S/ 199</strong>
+                        </div> <a href="gaming.html" class="btn-producto"> Ver producto </a>
+                    </div>
+                </article>
+
+                <!-- Oferta 8 -->
+                <article class="producto oferta">
+                    <div class="producto-imagen"><img src="../Imagenes/smart-tv.jpg" alt="Smart TV">
+                        <span class="producto-etiqueta oferta-etiqueta">-19%</span>
+                    </div>
+                    <div class="producto-info"><span class="producto-categoria">Electrodomésticos</span>
+                        <h3>Smart TV</h3>
+                        <p>Disfruta de tus películas y series favoritas con gran calidad de imagen.</p>
+                        <div class="precio-oferta"><span>S/ 1,599</span><strong>S/ 1,299</strong>
+                        </div><a href="electrodomesticos.html" class="btn-producto">Ver producto</a>
+                    </div>
+                </article>
+
             </div>
-        </section>
+        </section>+
+        
 
         <!-- =================== MÁS VENDIDOS ======================= -->
 
@@ -286,14 +341,47 @@
                 <!-- Producto 5 -->
 
                 <article class="producto">
-                    <div class="producto-imagen"> <img src="../Imagenes/freidora.jpg" alt="Freidora de Aire">
-                    </div>
+                    <div class="producto-imagen"> <img src="../Imagenes/freidora.jpg" alt="Freidora de Aire"></div>
                     <div class="producto-info"> <span class="producto-categoria"> Hogar </span>
                         <h3>Freidora de Aire</h3>
                         <div class="valoracion"> ⭐⭐⭐⭐☆ </div> <strong class="precio"> S/ 399 </strong> <a
                             href="electrodomesticos.html" class="btn-producto"> Ver producto </a>
                     </div>
                 </article>
+
+                <!-- Producto 6 -->
+
+                <article class="producto">
+                    <div class="producto-imagen"> <img src="../Imagenes/monitor.jpg" alt="Monitor Gamer"></div>
+                    <div class="producto-info"> <span class="producto-categoria">Gaming</span>
+                        <h3>Monitor Gamer</h3>
+                        <div class="valoracion">⭐⭐⭐⭐⭐</div> <strong class="precio">S/ 749</strong>
+                        <a href="gaming.html" class="btn-producto">Ver producto</a>
+                    </div>
+                </article>
+
+                <!-- Producto 7 -->
+
+                <article class="producto">
+                    <div class="producto-imagen"><img src="../Imagenes/ssd.jpg" alt="SSD NVMe"></div>
+                    <div class="producto-info"> <span class="producto-categoria">Componentes</span>
+                        <h3>SSD NVMe</h3>
+                        <div class="valoracion">⭐⭐⭐⭐⭐</div> <strong class="precio">S/ 349</strong>
+                        <a href="componentes.html" class="btn-producto">Ver producto</a>
+                    </div>
+                </article>
+
+                <!-- Producto 8 -->
+
+                <article class="producto">
+                    <div class="producto-imagen"><img src="../Imagenes/audifonos.jpg" alt="Audífonos Gaming"></div>
+                    <div class="producto-info"><span class="producto-categoria">Accesorios</span>
+                        <h3>Audífonos Gaming</h3>
+                        <div class="valoracion">⭐⭐⭐⭐⭐</div><strong class="precio">S/ 199</strong>
+                        <a href="gaming.html" class="btn-producto">Ver producto</a>
+                    </div>
+                </article>
+
             </div>
         </section>
 
@@ -347,7 +435,7 @@
             <div class="cta-contenido"> <span> <i class="fa-solid fa-magnifying-glass"></i> Encuentra lo que buscas
                 </span>
                 <h2> Explora nuestro catálogo </h2>
-                <p> Descubre productos tecnológicos para tus necesidades. </p> <a href="productos.html" class="btn"> <i
+                <p> Descubre productos tecnológicos para tus necesidades. </p> <a href="computadoras.html" class="btn"> <i
                         class="fa-solid fa-store"></i> Ver mas productos </a>
             </div>
         </section>
@@ -356,29 +444,20 @@
     <!-- =============FOOTER=============== -->
 
     <footer class="footer">
-
         <!-- Información -->
         <div class="footer-columna">
 
             <a href="#inicio" class="footer-logo">
-                Tecno<span>Store</span>
-            </a>
+                Tecno<span>Store</span></a>
 
             <p class="footer-descripcion">
                 Tecnología para todos.
                 Encuentra computadoras, componentes,
-                accesorios y productos para tu hogar.
-            </p>
+                accesorios y productos para tu hogar.</p>
 
             <div class="footer-confianza">
-                <span>
-                    <i class="fa-solid fa-shield-halved"></i>
-                    Compra segura
-                </span>
-                <span>
-                    <i class="fa-solid fa-truck-fast"></i>
-                    Envíos rápidos
-                </span>
+                <span><i class="fa-solid fa-shield-halved"></i>Compra segura</span>
+                <span><i class="fa-solid fa-truck-fast"></i>Envíos rápidos</span>
             </div>
         </div>
 
@@ -386,27 +465,12 @@
         <div class="footer-columna">
             <h3>Categorías</h3>
             <ul>
-                <li><a href="computadoras.html">
-                        <i class="fa-solid fa-chevron-right"></i>
-                        Computadoras
-                    </a></li>
-
-                <li><a href="componentes.html">
-                        <i class="fa-solid fa-chevron-right"></i>
-                        Componentes
-                    </a></li>
-
-                <li><a href="gaming.html">
-                        <i class="fa-solid fa-chevron-right"></i>
-                        Accesorios y Gaming</a></li>
-
-                <li><a href="electrodomesticos.html">
-                        <i class="fa-solid fa-chevron-right"></i>
-                        Electrodomésticos
-                    </a></li>
+                <li><a href="computadoras.html"><i class="fa-solid fa-chevron-right"></i>Computadoras</a></li>
+                <li><a href="componentes.html"><i class="fa-solid fa-chevron-right"></i>Componentes</a></li>
+                <li><a href="gaming.html"><i class="fa-solid fa-chevron-right"></i>Accesorios y Gaming</a></li>
+                <li><a href="electrodomesticos.html"><i class="fa-solid fa-chevron-right"></i>Electrodomésticos</a></li>
             </ul>
         </div>
-
 
         <!-- Contacto -->
         <div class="footer-columna">
@@ -414,10 +478,8 @@
             <div class="footer-contacto">
                 <p><i class="fa-solid fa-envelope"></i>
                     tecnostore_gaming@gmail.com</p>
-
                 <p><i class="fa-solid fa-phone"></i>
                     +51 987 654 321</p>
-
                 <p><i class="fa-solid fa-location-dot"></i>
                     Lima, Perú</p>
             </div>
@@ -425,25 +487,13 @@
 
         <!-- Redes sociales -->
         <div class="footer-columna">
-
             <h3>Síguenos</h3>
-
             <p>Encuentra nuestras novedades,
                 promociones y productos.</p>
-
             <div class="redes">
-
-                <a href="#" aria-label="Facebook">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-
-                <a href="#" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-
-                <a href="#" aria-label="TikTok">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
     </footer>
@@ -459,5 +509,4 @@
     <script src="../JS/inicio.js"></script>
 
 </body>
-
 </html>
