@@ -83,13 +83,24 @@ $espaciado-base: 1rem;
 
     .grid-componentes {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+        // 4 columnas fijas en escritorio (antes se ajustaba solo y
+        // dejaba 3 por fila); se reduce en pantallas más chicas.
+        grid-template-columns: repeat(4, 1fr);
         // Operaciones matemáticas con la variable Sass $espaciado-base:
         // 1rem * 2 = 2rem en escritorio, y en mobile se usa el valor base.
         gap: $espaciado-base * 2;
         padding: ($espaciado-base * 2) 0;
 
+        @media (max-width: 1100px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 800px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
         @media (max-width: 600px) {
+            grid-template-columns: 1fr;
             gap: $espaciado-base;
             padding: $espaciado-base 0;
         }

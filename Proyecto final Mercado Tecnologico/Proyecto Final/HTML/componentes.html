@@ -85,40 +85,68 @@
 
     <!-- Contenido Principal -->
     <main>
-        <!-- Banner de la sección -->
-        <section class="seccion-header">
+
+        <!-- Título + Filtro + Catálogo, todo en una sola sección (igual que computadoras.html) -->
+        <section class="seccion" id="catalogo-componentes">
+
             <div class="titulo-seccion">
-                <span><i class="fa-solid fa-microchip"></i> Piezas de Alto Rendimiento</span>
+                <span><i class="fa-solid fa-microchip"></i> Catálogo</span>
                 <h2>Componentes para PC</h2>
                 <p>Arma o repotencia tu computadora con la mejor tecnología en hardware.</p>
             </div>
-        </section>
 
-        <!-- Catálogo de productos -->
-        <section class="seccion" id="catalogo-componentes">
-            <div class="productos grid-componentes">
+            <!-- ============ FILTRO DE PRODUCTOS ============ -->
+            <div class="filtro-productos">
 
-                <!-- 1. Procesador -->
-                <article class="producto">
+                <div class="filtro-busqueda">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="buscarProducto" placeholder="Buscar pieza o componente...">
+                </div>
+
+                <div class="filtro-categorias">
+                    <button type="button" class="filtro-btn activo" data-filtro="todos">Todos</button>
+                    <button type="button" class="filtro-btn" data-filtro="cpu">Procesadores</button>
+                    <button type="button" class="filtro-btn" data-filtro="gpu">Tarjetas Gráficas</button>
+                    <button type="button" class="filtro-btn" data-filtro="ram">Memorias RAM</button>
+                    <button type="button" class="filtro-btn" data-filtro="placa">Placas Base</button>
+                    <button type="button" class="filtro-btn" data-filtro="ssd">Almacenamiento</button>
+                    <button type="button" class="filtro-btn" data-filtro="psu">Fuentes de Poder</button>
+                </div>
+
+                <div class="filtro-orden-wrap">
+                    <select class="filtro-orden" id="ordenarPrecio">
+                        <option value="relevancia">Ordenar por: Relevancia</option>
+                        <option value="menor">Precio: menor a mayor</option>
+                        <option value="mayor">Precio: mayor a menor</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+            </div>
+
+            <div class="productos grid-componentes" id="grid-componentes">
+
+                <!-- 1. Procesador Intel i7 -->
+                <article class="producto" data-tipo="cpu">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/procesador.jpg" alt="Procesador Intel Core i7-13700K">
+                        <img src="../Imagenes/Procesador_IntelCore7.png" alt="Intel Core i7-14700K">
                         <span class="producto-etiqueta">Top Ventas</span>
                     </div>
                     <div class="producto-info">
                         <span class="producto-categoria">Procesadores | Intel</span>
-                        <small class="sku">SKU: CPU-INTEL-I7-13700K</small>
-                        <h3>Procesador Intel Core i7-13700K</h3>
+                        <small class="sku">SKU: CPU-INTEL-I7-14700K</small>
+                        <h3>Intel Core i7-14700K</h3>
                         <p class="caracteristicas">
-                            <strong>Núcleos:</strong> 16 (8 Performance + 8 Efficient) | <strong>Hilos:</strong> 24<br>
-                            <strong>Frecuencia:</strong> Base 3.4 GHz - Turbo hasta 5.4 GHz<br>
-                            <strong>Caché:</strong> 30MB Smart Cache | <strong>Socket:</strong> LGA1700<br>
-                            <strong>Gráficos Integrados:</strong> Intel UHD Graphics 770<br>
+                            <strong>Núcleos:</strong> 20 (8 Performance + 12 Efficient) | <strong>Hilos:</strong> 28<br>
+                            <strong>Frecuencia:</strong> Base 3.4 GHz - Turbo hasta 5.6 GHz<br>
+                            <strong>Caché:</strong> 33MB Smart Cache | <strong>Socket:</strong> LGA1700<br>
+                            <strong>Ideal para:</strong> Gaming y multitarea pesada<br>
                             <strong>Compatibilidad:</strong> Memoria DDR4 y DDR5, PCIe 5.0 y 4.0
                         </p>
                         <div class="valoracion">⭐⭐⭐⭐⭐ (4.9/5)</div>
                         <p class="promocion"><i class="fa-solid fa-box-open"></i> Incluye pasta térmica de regalo + Garantía de 3 años</p>
                         <div class="producto-pie">
-                            <strong>S/ 1,899.00</strong>
+                            <strong>S/ 1,950.00</strong>
                             <button type="button">
                                 <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
                             </button>
@@ -126,11 +154,67 @@
                     </div>
                 </article>
 
-                <!-- 2. Tarjeta Gráfica -->
-                <article class="producto">
+                <!-- 1b. Procesador AMD Ryzen 7 (nuevo) -->
+                <article class="producto" data-tipo="cpu">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/tarjeta.jpg" alt="Tarjeta Gráfica NVIDIA GeForce RTX 4060">
-                        <span class="producto-etiqueta">DLSS 3 & Ray Tracing</span>
+                        <img src="../Imagenes/Procesador_AMDRyzen7.png" alt="AMD Ryzen 7 7800X3D">
+                        <span class="producto-etiqueta">Favorito Gamers</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Procesadores | AMD</span>
+                        <small class="sku">SKU: CPU-AMD-R7-7800X3D</small>
+                        <h3>AMD Ryzen 7 7800X3D</h3>
+                        <p class="caracteristicas">
+                            <strong>Núcleos:</strong> 8 | <strong>Hilos:</strong> 16<br>
+                            <strong>Frecuencia:</strong> Base 4.2 GHz - Boost hasta 5.0 GHz<br>
+                            <strong>Caché:</strong> 96MB 3D V-Cache | <strong>Socket:</strong> AM5<br>
+                            <strong>Ideal para:</strong> Alto rendimiento en juegos<br>
+                            <strong>Compatibilidad:</strong> Memoria DDR5
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐⭐ (5.0/5)</div>
+                        <p class="promocion"><i class="fa-solid fa-fire"></i> El preferido para gaming puro + Garantía de 3 años</p>
+                        <div class="producto-pie">
+                            <strong>S/ 1,780.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 1c. Procesador Intel i5 (nuevo) -->
+                <article class="producto" data-tipo="cpu">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/Procesador_IntelCore5.png" alt="Intel Core i5-13400F">
+                        <span class="producto-etiqueta">Calidad-Precio</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Procesadores | Intel</span>
+                        <small class="sku">SKU: CPU-INTEL-I5-13400F</small>
+                        <h3>Intel Core i5-13400F</h3>
+                        <p class="caracteristicas">
+                            <strong>Núcleos:</strong> 10 (6 Performance + 4 Efficient) | <strong>Hilos:</strong> 16<br>
+                            <strong>Frecuencia:</strong> Base 2.5 GHz - Turbo hasta 4.6 GHz<br>
+                            <strong>Caché:</strong> 20MB Smart Cache | <strong>Socket:</strong> LGA1700<br>
+                            <strong>Ideal para:</strong> Gama media, requiere GPU dedicada (sin gráficos integrados)<br>
+                            <strong>Compatibilidad:</strong> Memoria DDR4 y DDR5
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐☆ (4.6/5)</div>
+                        <p class="promocion"><i class="fa-solid fa-tag"></i> Excelente opción calidad-precio + Garantía de 2 años</p>
+                        <div class="producto-pie">
+                            <strong>S/ 750.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2. Tarjeta Gráfica RTX 4060 -->
+                <article class="producto" data-tipo="gpu">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/GPU_NVIDIA4060.png" alt="Tarjeta Gráfica NVIDIA GeForce RTX 4060">
+                        <span class="producto-etiqueta">Más Popular</span>
                     </div>
                     <div class="producto-info">
                         <span class="producto-categoria">Tarjetas Gráficas | NVIDIA</span>
@@ -154,16 +238,72 @@
                     </div>
                 </article>
 
-                <!-- 3. Memoria RAM -->
-                <article class="producto">
+                <!-- 2b. Tarjeta Gráfica RTX 4070 Super (nueva) -->
+                <article class="producto" data-tipo="gpu">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/memoria-ram.jpg" alt="Memoria RAM DDR5 32GB">
+                        <img src="../Imagenes/GPU_NVIDIA4070.png" alt="NVIDIA GeForce RTX 4070 Super">
+                        <span class="producto-etiqueta">DLSS 3 & Ray Tracing</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Tarjetas Gráficas | NVIDIA</span>
+                        <small class="sku">SKU: GPU-RTX4070S-12G</small>
+                        <h3>NVIDIA GeForce RTX 4070 Super</h3>
+                        <p class="caracteristicas">
+                            <strong>Memoria:</strong> 12GB GDDR6X (192-bit)<br>
+                            <strong>Frecuencia Boost:</strong> 2475 MHz<br>
+                            <strong>Arquitectura:</strong> Ada Lovelace (DLSS 3 y Ray Tracing 3ª Gen)<br>
+                            <strong>Ideal para:</strong> Jugar en 1440p con gráficos al máximo<br>
+                            <strong>Fuente Recomendada:</strong> 650W
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                        <p class="promocion"><i class="fa-solid fa-truck-fast"></i> Envío gratis a todo el Perú + Garantía oficial de 2 años</p>
+                        <div class="producto-pie">
+                            <strong>S/ 2,890.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2c. Tarjeta Gráfica AMD RX 7800 XT (nueva) -->
+                <article class="producto" data-tipo="gpu">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/GPU_AMDRX7800.png" alt="AMD Radeon RX 7800 XT">
+                        <span class="producto-etiqueta">Gran VRAM</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Tarjetas Gráficas | AMD</span>
+                        <small class="sku">SKU: GPU-RX7800XT-16G</small>
+                        <h3>AMD Radeon RX 7800 XT</h3>
+                        <p class="caracteristicas">
+                            <strong>Memoria:</strong> 16GB GDDR6 (256-bit)<br>
+                            <strong>Arquitectura:</strong> RDNA 3<br>
+                            <strong>Ideal para:</strong> Diseño y juegos, gran potencia y VRAM<br>
+                            <strong>Conectividad:</strong> DisplayPort 2.1, HDMI 2.1<br>
+                            <strong>Fuente Recomendada:</strong> 700W
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐☆ (4.7/5)</div>
+                        <p class="promocion"><i class="fa-solid fa-truck-fast"></i> Envío gratis a todo el Perú + Garantía oficial de 2 años</p>
+                        <div class="producto-pie">
+                            <strong>S/ 2,450.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3. Memoria RAM Corsair -->
+                <article class="producto" data-tipo="ram">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/RAM_RGB32GB_2X16.png" alt="Corsair Vengeance RGB DDR5 32GB">
                         <span class="producto-etiqueta">RGB Sync</span>
                     </div>
                     <div class="producto-info">
-                        <span class="producto-categoria">Memorias RAM | DDR5</span>
-                        <small class="sku">SKU: RAM-DDR5-32G-6000</small>
-                        <h3>Kit Memoria RAM 32GB (2x16GB) DDR5 6000MHz</h3>
+                        <span class="producto-categoria">Memorias RAM | Corsair DDR5</span>
+                        <small class="sku">SKU: RAM-CORSAIR-DDR5-32G-6000</small>
+                        <h3>Corsair Vengeance RGB DDR5 32GB (2x16GB) 6000MHz</h3>
                         <p class="caracteristicas">
                             <strong>Capacidad:</strong> 32 GB (2 Módulos de 16 GB Dual Channel)<br>
                             <strong>Frecuencia:</strong> 6000 MHz | <strong>Latencia:</strong> CL36 (1.35V)<br>
@@ -182,27 +322,26 @@
                     </div>
                 </article>
 
-                <!-- 4. Almacenamiento SSD -->
-                <article class="producto">
+                <!-- 3b. Memoria RAM Kingston (nueva) -->
+                <article class="producto" data-tipo="ram">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/disco-ssd.jpg" alt="SSD M.2 NVMe 1TB">
-                        <span class="producto-etiqueta">Ultra Rápido</span>
+                        <img src="../Imagenes/RAM_Kingston16GB_3200MHz.png" alt="Kingston Fury Beast DDR4 16GB">
+                        <span class="producto-etiqueta">Entrada / Actualización</span>
                     </div>
                     <div class="producto-info">
-                        <span class="producto-categoria">Almacenamiento | SSD NVMe</span>
-                        <small class="sku">SKU: SSD-M2-1TB-PCIE4</small>
-                        <h3>SSD M.2 NVMe 1TB PCIe 4.0 x4</h3>
+                        <span class="producto-categoria">Memorias RAM | Kingston DDR4</span>
+                        <small class="sku">SKU: RAM-KINGSTON-DDR4-16G-3200</small>
+                        <h3>Kingston Fury Beast DDR4 16GB 3200MHz</h3>
                         <p class="caracteristicas">
-                            <strong>Velocidad Lectura:</strong> Hasta 7000 MB/s<br>
-                            <strong>Velocidad Escritura:</strong> Hasta 6000 MB/s<br>
-                            <strong>Formato:</strong> M.2 2280 | <strong>Controlador:</strong> NVMe 1.4<br>
-                            <strong>Durabilidad:</strong> 600 TBW (Terabytes Escritos)<br>
-                            <strong>Compatibilidad:</strong> PC Desktop, Laptops y PlayStation 5
+                            <strong>Capacidad:</strong> 16 GB (1 Módulo)<br>
+                            <strong>Frecuencia:</strong> 3200 MHz | <strong>Latencia:</strong> CL16<br>
+                            <strong>Ideal para:</strong> Equipos de gama de entrada o actualización<br>
+                            <strong>Diseño:</strong> Disipador de aluminio bajo perfil
                         </p>
-                        <div class="valoracion">⭐⭐⭐⭐☆ (4.7/5)</div>
-                        <p class="promocion"><i class="fa-solid fa-gamepad"></i> 100% Compatible con PS5 + 5 años de garantía</p>
+                        <div class="valoracion">⭐⭐⭐⭐☆ (4.6/5)</div>
+                        <p class="promocion"><i class="fa-solid fa-shield-halved"></i> Garantía de por vida de fabricante</p>
                         <div class="producto-pie">
-                            <strong>S/ 340.00</strong>
+                            <strong>S/ 195.00</strong>
                             <button type="button">
                                 <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
                             </button>
@@ -210,27 +349,79 @@
                     </div>
                 </article>
 
-                <!-- 5. Placa Madre -->
-                <article class="producto">
+                <!-- 4. Almacenamiento SSD Samsung -->
+                <article class="producto" data-tipo="ssd">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/placa-madre.jpg" alt="ASUS TUF Gaming B650-PLUS WiFi">
+                        <img src="../Imagenes/DiscoSSD_Samsung990PROSSD_2TBM.2NVMe.png" alt="Samsung 990 PRO SSD 2TB">
+                        <span class="producto-etiqueta">Ultra Rápido</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Almacenamiento | Samsung NVMe</span>
+                        <small class="sku">SKU: SSD-SAMSUNG-990PRO-2TB</small>
+                        <h3>Samsung 990 PRO SSD 2TB M.2 NVMe</h3>
+                        <p class="caracteristicas">
+                            <strong>Velocidad Lectura:</strong> Hasta 7450 MB/s<br>
+                            <strong>Velocidad Escritura:</strong> Hasta 6900 MB/s<br>
+                            <strong>Formato:</strong> M.2 2280 | <strong>Controlador:</strong> NVMe 2.0<br>
+                            <strong>Compatibilidad:</strong> PC Desktop, Laptops y PlayStation 5
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                        <p class="promocion"><i class="fa-solid fa-gamepad"></i> 100% Compatible con PS5 + 5 años de garantía</p>
+                        <div class="producto-pie">
+                            <strong>S/ 780.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 4b. Almacenamiento SSD Kingston (nueva) -->
+                <article class="producto" data-tipo="ssd">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/DiscoSSD_KingstonNV2_1TBM.2 2280NVMe.png" alt="Kingston NV2 1TB SSD">
+                        <span class="producto-etiqueta">Económico</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Almacenamiento | Kingston NVMe</span>
+                        <small class="sku">SKU: SSD-KINGSTON-NV2-1TB</small>
+                        <h3>Kingston NV2 1TB M.2 2280 NVMe</h3>
+                        <p class="caracteristicas">
+                            <strong>Velocidad Lectura:</strong> Hasta 3500 MB/s<br>
+                            <strong>Formato:</strong> M.2 2280 | <strong>Controlador:</strong> NVMe Gen 3<br>
+                            <strong>Ideal para:</strong> Uso diario, económico y eficiente
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐☆ (4.5/5)</div>
+                        <p class="promocion"><i class="fa-solid fa-tag"></i> La mejor relación precio-rendimiento + 3 años de garantía</p>
+                        <div class="producto-pie">
+                            <strong>S/ 290.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 5. Placa Madre ASUS ROG -->
+                <article class="producto" data-tipo="placa">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/PlacaBase_ASUS_ROGStrixB650-A.jpg" alt="ASUS ROG Strix B650-A Gaming WiFi">
                         <span class="producto-etiqueta">Cupón S/40 OFF</span>
                     </div>
                     <div class="producto-info">
-                        <span class="producto-categoria">Placas Madre | Asus AM5</span>
-                        <small class="sku">SKU: MB-ASUS-B650-WIFI</small>
-                        <h3>ASUS TUF Gaming B650-PLUS WiFi AMD AM5</h3>
+                        <span class="producto-categoria">Placas Base | Asus AM5</span>
+                        <small class="sku">SKU: MB-ASUS-ROG-B650A-WIFI</small>
+                        <h3>ASUS ROG Strix B650-A Gaming WiFi</h3>
                         <p class="caracteristicas">
-                            <strong>Socket:</strong> AMD AM5 (Ryzen Serie 9000/8000/7000)<br>
-                            <strong>Formato:</strong> ATX | <strong>Fases de Poder:</strong> 12+2 DrMOS<br>
-                            <strong>Ranuras RAM:</strong> 4x DDR5 (Hasta 128GB - 6400MHz+ OC)<br>
-                            <strong>Almacenamiento:</strong> 1x M.2 PCIe 5.0 + 2x M.2 PCIe 4.0 + 4x SATA III<br>
-                            <strong>Redes:</strong> WiFi 6 + Bluetooth 5.2 + LAN Realtek 2.5Gb
+                            <strong>Socket:</strong> AMD AM5 (Ryzen de última generación)<br>
+                            <strong>Formato:</strong> ATX | <strong>Ranuras RAM:</strong> 4x DDR5<br>
+                            <strong>Almacenamiento:</strong> Múltiples M.2 PCIe 4.0/5.0 + SATA III<br>
+                            <strong>Redes:</strong> WiFi 6E + Bluetooth 5.3
                         </p>
                         <div class="valoracion">⭐⭐⭐⭐⭐ (4.9/5)</div>
                         <p class="promocion"><i class="fa-solid fa-ticket"></i> Cupón GAMER40 (S/ 40 OFF en el carrito)</p>
                         <div class="producto-pie">
-                            <strong>S/ 585.59</strong>
+                            <strong>S/ 895.00</strong>
                             <button type="button">
                                 <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
                             </button>
@@ -238,40 +429,93 @@
                     </div>
                 </article>
 
-                <!-- 6. Fuente de Poder -->
-                <article class="producto">
+                <!-- 5b. Placa Madre MSI (nueva) -->
+                <article class="producto" data-tipo="placa">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/fuente-poder.png" alt="Fuente de Poder 750W 80 Plus Gold">
-                        <span class="producto-etiqueta">Certificado Gold</span>
+                        <img src="../Imagenes/PlacaBase_MAG B760_TOMAHAWK.png" alt="MSI MAG B760 TOMAHAWK WIFI">
+                        <span class="producto-etiqueta">Para Intel</span>
                     </div>
                     <div class="producto-info">
-                        <span class="producto-categoria">Fuentes de Poder | Modulares</span>
-                        <small class="sku">SKU: PSU-750W-80GOLD-MOD</small>
-                        <h3>Fuente de Poder 750W 80 Plus Gold</h3>
+                        <span class="producto-categoria">Placas Base | MSI Intel</span>
+                        <small class="sku">SKU: MB-MSI-B760-TOMAHAWK</small>
+                        <h3>MSI MAG B760 TOMAHAWK WIFI</h3>
                         <p class="caracteristicas">
-                            <strong>Potencia:</strong> 750 Watts Reales | <strong>Certificación:</strong> 80 Plus Gold (90% eficiencia)<br>
-                            <strong>Cableado:</strong> Totalmente Modular (Full Modular)<br>
-                            <strong>Protecciones (OPP/OVP/UVP/SCP/OCP):</strong> Protección total ante sobrevoltajes<br>
-                            <strong>Ventilador:</strong> 120mm Ultra Silencioso con rodamiento dinámico fluido<br>
-                            <strong>Soporte:</strong> Preparada para PCIe 5.0 y ATX 3.0
+                            <strong>Socket:</strong> Intel LGA1700 (Gen 12/13/14)<br>
+                            <strong>Formato:</strong> ATX | <strong>Ranuras RAM:</strong> 4x DDR5<br>
+                            <strong>Redes:</strong> WiFi 6E + Bluetooth 5.3<br>
+                            <strong>Ideal para:</strong> Procesadores Intel de gama media-alta
                         </p>
                         <div class="valoracion">⭐⭐⭐⭐☆ (4.7/5)</div>
-                        <p class="promocion"><i class="fa-solid fa-bolt"></i> Eficiencia energética garantizada + 5 años de garantía</p>
+                        <p class="promocion"><i class="fa-solid fa-microchip"></i> Excelente compatibilidad con Intel + 3 años de garantía</p>
                         <div class="producto-pie">
-                            <strong>S/ 450.00</strong>
+                            <strong>S/ 820.00</strong>
                             <button type="button">
                                 <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
                             </button>
                         </div>
                     </div>
                 </article>
+
+                <!-- 6. Fuente de Poder Corsair -->
+                <article class="producto" data-tipo="psu">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/PSU_CorsairRM850xShift850W80PlusGold.jpg" alt="Corsair RM850x Shift 850W">
+                        <span class="producto-etiqueta">Certificado Gold</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Fuentes de Poder | Corsair</span>
+                        <small class="sku">SKU: PSU-CORSAIR-RM850X-SHIFT</small>
+                        <h3>Corsair RM850x Shift 850W 80 Plus Gold</h3>
+                        <p class="caracteristicas">
+                            <strong>Potencia:</strong> 850 Watts | <strong>Certificación:</strong> 80 Plus Gold<br>
+                            <strong>Cableado:</strong> Totalmente Modular, conectores laterales (Shift)<br>
+                            <strong>Ideal para:</strong> Componentes exigentes, potencia de sobra
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                        <p class="promocion"><i class="fa-solid fa-bolt"></i> Eficiencia energética garantizada + 5 años de garantía</p>
+                        <div class="producto-pie">
+                            <strong>S/ 650.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 6b. Fuente de Poder Gigabyte (nueva) -->
+                <article class="producto" data-tipo="psu">
+                    <div class="producto-imagen">
+                        <img src="../Imagenes/PSU_GigabyteP650B650W80PlusBronze.jpg" alt="Gigabyte P650B 650W">
+                        <span class="producto-etiqueta">Certificado Bronze</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Fuentes de Poder | Gigabyte</span>
+                        <small class="sku">SKU: PSU-GIGABYTE-P650B</small>
+                        <h3>Gigabyte P650B 650W 80 Plus Bronze</h3>
+                        <p class="caracteristicas">
+                            <strong>Potencia:</strong> 650 Watts | <strong>Certificación:</strong> 80 Plus Bronze<br>
+                            <strong>Protecciones:</strong> OVP/UVP/SCP/OPP<br>
+                            <strong>Ideal para:</strong> Configuraciones estándar, segura y confiable
+                        </p>
+                        <div class="valoracion">⭐⭐⭐⭐☆ (4.5/5)</div>
+                        <p class="promocion"><i class="fa-solid fa-shield-halved"></i> Protección total + 3 años de garantía</p>
+                        <div class="producto-pie">
+                            <strong>S/ 320.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <p class="sin-resultados" id="mensajeSinResultados">
+                    No se encontraron productos que coincidan con tu búsqueda.
+                </p>
 
             </div>
         </section>
     </main>
 
-   
-|   |
     <!-- Footer -->
     <footer class="footer">
         <!-- Información -->
