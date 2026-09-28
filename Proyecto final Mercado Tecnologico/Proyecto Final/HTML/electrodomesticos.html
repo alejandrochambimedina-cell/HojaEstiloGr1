@@ -23,9 +23,10 @@
     <!-- CSS principal -->
     <link rel="stylesheet" href="../CSS/estilos.css">
     <link rel="stylesheet" href="../CSS/global.css">
+    <link rel="stylesheet" href="../CSS/electrodomesticos.css">
 </head>
 
-<body>
+<body class="electrodomesticos-page">
 
     <!-- ==HEADER / NAVBAR== -->
 
@@ -104,22 +105,51 @@
     <!-- ======CONTENIDO PRINCIPAL======== -->
     <main>
 
+        <section class="hogar-portada" aria-labelledby="titulo-hogar">
+            <div class="hogar-portada-contenido">
+                <span class="hogar-sobretitulo"><i class="fa-solid fa-house"></i> Tecnología para tu hogar</span>
+                <h1 id="titulo-hogar">Un hogar que <span>funciona mejor.</span></h1>
+                <p>Encuentra esos electrodomésticos que hacen más simples tus días, desde la cocina hasta el lavado.</p>
+                <a class="hogar-cta" href="#grid-electrodomesticos">
+                    Explorar productos <i class="fa-solid fa-arrow-down"></i>
+                </a>
+            </div>
+            <div class="hogar-portada-imagen">
+                <img src="../imagenes/freidora.jpg" alt="Freidora de aire para una cocina más práctica">
+                <span><i class="fa-solid fa-bolt"></i> Pequeños cambios, grandes días</span>
+            </div>
+        </section>
+
         <!-- ============ TÍTULO DE PÁGINA ============ -->
         <section class="seccion" id="electrodomesticos">
 
             <div class="titulo-seccion">
-                <span> <i class="fa-solid fa-blender"></i> Catálogo </span>
-                <h2>Electrodomésticos</h2>
-                <p> Productos tecnológicos para hacer tu hogar más práctico. </p>
+                <span><i class="fa-solid fa-blender"></i> SELECCIÓN PARA EL HOGAR</span>
+                <h2>Encuentra tu próximo esencial</h2>
+                <p>Ideas prácticas para cocinar, conservar y cuidar tu ropa.</p>
+            </div>
+
+            <div class="electro-controles">
+                <label class="electro-busqueda" for="buscarProducto">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input id="buscarProducto" type="search" placeholder="Buscar un electrodoméstico..." autocomplete="off">
+                    <span>Buscar</span>
+                </label>
+                <div class="electro-filtros" role="group" aria-label="Filtrar por categoría">
+                    <button class="filtro-btn activo" type="button" data-filtro="todos" aria-pressed="true">Todos</button>
+                    <button class="filtro-btn" type="button" data-filtro="cocina" aria-pressed="false">Cocina</button>
+                    <button class="filtro-btn" type="button" data-filtro="refrigeracion" aria-pressed="false">Refrigeración</button>
+                    <button class="filtro-btn" type="button" data-filtro="limpieza" aria-pressed="false">Lavado</button>
+                </div>
             </div>
 
             <!-- ============ GRID DE PRODUCTOS ============ -->
             <div class="productos" id="grid-electrodomesticos">
 
                 <!-- Producto 1 -->
-                <article class="producto">
+                <article class="producto" data-tipo="cocina">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/freidora.jpg" alt="Freidora de Aire">
+                        <img src="../imagenes/freidora.jpg" alt="Freidora de aire de 4.5 litros">
                         <span class="producto-etiqueta oferta-etiqueta">-12%</span>
                     </div>
                     <div class="producto-info">
@@ -136,9 +166,9 @@
                 </article>
 
                 <!-- Producto 2 -->
-                <article class="producto">
+                <article class="producto" data-tipo="refrigeracion">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/refrigeradora.png" alt="Refrigeradora No Frost">
+                        <img src="../imagenes/refrigeradora.png" alt="Refrigeradora No Frost de 300 litros">
                     </div>
                     <div class="producto-info">
                         <span class="producto-categoria">Hogar</span>
@@ -154,9 +184,9 @@
                 </article>
 
                 <!-- Producto 3 -->
-                <article class="producto">
+                <article class="producto" data-tipo="cocina">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/microondas.png" alt="Microondas Digital">
+                        <img src="../imagenes/microondas.png" alt="Microondas digital de 20 litros">
                         <span class="producto-etiqueta oferta-etiqueta">-8%</span>
                     </div>
                     <div class="producto-info">
@@ -173,9 +203,9 @@
                 </article>
 
                 <!-- Producto 4 -->
-                <article class="producto">
+                <article class="producto" data-tipo="cocina">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/licuadora.png" alt="Licuadora de Alta Potencia">
+                        <img src="../imagenes/licuadora.png" alt="Licuadora de alta potencia con vaso de vidrio">
                     </div>
                     <div class="producto-info">
                         <span class="producto-categoria">Hogar</span>
@@ -191,9 +221,9 @@
                 </article>
 
                 <!-- Producto 5 -->
-                <article class="producto">
+                <article class="producto" data-tipo="cocina">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/cafetera.png" alt="Cafetera Automática">
+                        <img src="../imagenes/cafetera.png" alt="Cafetera automática para 12 tazas">
                     </div>
                     <div class="producto-info">
                         <span class="producto-categoria">Hogar</span>
@@ -209,9 +239,9 @@
                 </article>
 
                 <!-- Producto 6 -->
-                <article class="producto">
+                <article class="producto" data-tipo="limpieza">
                     <div class="producto-imagen">
-                        <img src="../Imagenes/lavadora.png" alt="Lavadora Automática">
+                        <img src="../imagenes/lavadora.png" alt="Lavadora automática de carga superior, 12 kilogramos">
                         <span class="producto-etiqueta oferta-etiqueta">-15%</span>
                     </div>
                     <div class="producto-info">
@@ -227,7 +257,63 @@
                     </div>
                 </article>
 
+                <!--Producto 7-->
+                <article class="producto" data-tipo="limpieza">
+                    <div class="producto-imagen">
+                        <img src="../imagenes/secadora.png" alt="Secadora automática de 8 kilogramos">
+                        <span class="producto-etiqueta oferta-etiqueta">-20%</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Hogar</span>
+                        <h3>Secadora Automática 8kg</h3>
+                        <p>Carga superior, funciones de desinfección, ahorro de energía.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 999.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!--Producto 8-->
+                <article class="producto" data-tipo="cocina">
+                    <div class="producto-imagen">
+                        <img src="../imagenes/horno.jpg" alt="Horno eléctrico de 30 litros">
+                        <span class="producto-etiqueta oferta-etiqueta">-25%</span>
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Hogar</span>
+                        <h3>Horno Eléctrico 30L</h3>
+                        <p>Capacidad de 30 litros, funciones de cocción avanzadas.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 799.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </article>
+                
+                <!--Producto 9-->
+                <article class="producto" data-tipo="refrigeracion">
+                    <div class="producto-imagen">
+                        <img src="../imagenes/congeladora.webp" alt="Congeladora vertical de 200 litros">
+                    </div>
+                    <div class="producto-info">
+                        <span class="producto-categoria">Hogar</span>
+                        <h3>Congeladora Vertical 200L</h3>
+                        <p>Diseño vertical, control de temperatura ajustable, eficiente en energía.</p>
+                        <div class="producto-pie">
+                            <strong>S/ 1,099.00</strong>
+                            <button type="button">
+                                <i class="fa-solid fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+
             </div>
+            <p class="electro-sin-resultados" id="mensajeSinResultados" role="status">No encontramos productos con esa búsqueda.</p>
         </section>
 
     </main>

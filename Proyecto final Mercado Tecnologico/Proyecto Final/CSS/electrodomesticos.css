@@ -1,0 +1,283 @@
+.electrodomesticos-page .hogar-portada {
+  position: relative;
+  isolation: isolate;
+  width: 90%;
+  max-width: 1200px;
+  min-height: 360px;
+  margin: 2.25rem auto 4rem;
+  padding: 3.5rem 5%;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 3rem;
+  overflow: hidden;
+  color: #fff;
+  background-color: #073b3a;
+  background-image: repeating-linear-gradient(135deg, transparent 0 34px, rgba(255, 255, 255, 0.035) 34px 35px);
+  border-radius: 1rem;
+}
+
+.hogar-portada-contenido,
+.hogar-portada-imagen {
+  position: relative;
+  z-index: 1;
+}
+
+.hogar-sobretitulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+  color: #a9e8cf;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.hogar-portada h1 {
+  max-width: 620px;
+  margin-bottom: 1rem;
+  font-size: 3.1rem;
+  line-height: 1.12;
+  color: #fff;
+}
+
+.hogar-portada h1 span {
+  color: #ffc47a;
+}
+
+.hogar-portada-contenido > p {
+  max-width: 490px;
+  margin-bottom: 1.7rem;
+  color: #d5e9e2;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.hogar-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 48px;
+  padding: 0.75rem 1.15rem;
+  color: #073b3a;
+  background: #ffc47a;
+  border-radius: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.hogar-cta:hover {
+  transform: translateY(-2px);
+  background: #ffd39d;
+}
+
+.hogar-portada-imagen {
+  justify-self: end;
+  width: 100%;
+  max-width: 390px;
+  padding: 0.8rem;
+  background: #f5f8f3;
+  border-radius: 0.65rem;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
+  transform: rotate(1.5deg);
+}
+
+.hogar-portada-imagen img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 0.35rem;
+}
+
+.hogar-portada-imagen > span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0.25rem 0.15rem;
+  color: #24564b;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.hogar-portada-imagen > span i {
+  color: #e27b4e;
+}
+
+.electrodomesticos-page .titulo-seccion {
+  max-width: 760px;
+  margin-bottom: 1.8rem;
+}
+
+.electrodomesticos-page .titulo-seccion > span {
+  color: #16735f;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+}
+
+.electrodomesticos-page .titulo-seccion h2 {
+  font-size: 2rem;
+}
+
+.electro-controles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.electro-busqueda {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: min(100%, 390px);
+  min-height: 48px;
+  padding: 0.55rem 0.8rem 0.55rem 1rem;
+  color: #16735f;
+  background: #fff;
+  border: 1px solid #d8e4df;
+  border-radius: 0.4rem;
+}
+
+.electro-busqueda input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: #172033;
+  background: transparent;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.electro-busqueda input:focus-visible {
+  outline: 2px solid #16735f;
+  outline-offset: 4px;
+}
+
+.electro-busqueda > span {
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.electro-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.electro-filtros .filtro-btn {
+  padding: 0.58rem 0.85rem;
+  color: #31554c;
+  background: transparent;
+  border: 1px solid #cbd9d3;
+  border-radius: 0.35rem;
+  font-size: 0.8rem;
+}
+
+.electro-filtros .filtro-btn:hover,
+.electro-filtros .filtro-btn.activo {
+  color: #fff;
+  background: #16735f;
+  border-color: #16735f;
+}
+
+.electro-filtros .filtro-btn:focus-visible,
+.hogar-cta:focus-visible {
+  outline: 3px solid #e27b4e;
+  outline-offset: 3px;
+}
+
+.electrodomesticos-page .producto {
+  overflow: hidden;
+  border: 1px solid #e3eae6;
+  border-radius: 0.55rem;
+  box-shadow: 0 7px 20px rgba(7, 26, 61, 0.06);
+}
+
+.electrodomesticos-page .producto:hover {
+  box-shadow: 0 14px 28px rgba(7, 26, 61, 0.12);
+}
+
+.electrodomesticos-page .producto-imagen {
+  background: #f3f7f4;
+}
+
+.electrodomesticos-page .producto-info .producto-categoria {
+  color: #16735f;
+}
+
+.electrodomesticos-page .producto-pie button {
+  background: #16735f;
+}
+
+.electrodomesticos-page .producto-pie button:hover {
+  background: #0d594a;
+}
+
+.electro-sin-resultados {
+  display: none;
+  padding: 2rem 1rem;
+  color: #64748b;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .electrodomesticos-page .hogar-portada {
+    grid-template-columns: 1fr 0.8fr;
+    gap: 1.5rem;
+    padding: 2.5rem 4%;
+  }
+
+  .hogar-portada h1 {
+    font-size: 2.5rem;
+  }
+
+  .electro-controles {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .electro-busqueda {
+    width: 100%;
+  }
+
+  .electro-filtros {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .electrodomesticos-page .hogar-portada {
+    width: 94%;
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    margin: 1.25rem auto 3rem;
+    padding: 2rem 1.25rem;
+  }
+
+  .hogar-portada h1 {
+    font-size: 2.2rem;
+  }
+
+  .hogar-portada-imagen {
+    justify-self: center;
+    max-width: 340px;
+  }
+
+  .electrodomesticos-page .titulo-seccion h2 {
+    font-size: 1.7rem;
+  }
+
+  .electro-filtros {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .electro-filtros .filtro-btn {
+    min-height: 42px;
+  }
+}

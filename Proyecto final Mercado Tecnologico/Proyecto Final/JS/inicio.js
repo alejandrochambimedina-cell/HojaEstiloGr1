@@ -153,8 +153,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Eventos para los botones de categoría
     botonesFiltro.forEach(function (boton) {
         boton.addEventListener("click", function () {
-            botonesFiltro.forEach(b => b.classList.remove("activo"));
+            botonesFiltro.forEach(function (filtro) {
+                filtro.classList.remove("activo");
+                filtro.setAttribute("aria-pressed", "false");
+            });
             boton.classList.add("activo");
+            boton.setAttribute("aria-pressed", "true");
             filtroActivo = boton.getAttribute("data-filtro");
             aplicarFiltros();
         });
