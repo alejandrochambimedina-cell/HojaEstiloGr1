@@ -1,0 +1,131 @@
+@charset "UTF-8";
+/* =========================================================
+   GAMING.SCSS  ·  Estilos exclusivos de gaming.html
+   Todo va dentro de #gaming, así que NO afecta a las
+   páginas de los demás integrantes del grupo.
+========================================================= */
+/* ---------- 1. VARIABLES ---------- */
+/* ---------- 2. MAP (sombras de la tarjeta) ---------- */
+/* ---------- 3. FUNCIÓN ---------- */
+/* ---------- 4. MIXINS ---------- */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ---------- 5. ESTILOS (solo dentro de #gaming) ---------- */
+#gaming .filtro-btn,
+#gaming .filtro-orden {
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicion);
+  border: 1px solid #15803d;
+  background-color: #fff;
+  color: #15803d;
+}
+#gaming .filtro-btn:hover,
+#gaming .filtro-orden:hover {
+  background-color: rgba(21, 128, 61, 0.1);
+}
+#gaming .filtro-btn.activo,
+#gaming .filtro-orden.activo {
+  background-color: #15803d;
+  color: #fff;
+}
+#gaming .filtro-btn:focus,
+#gaming .filtro-orden:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.2);
+}
+#gaming .filtro-orden-wrap i {
+  color: #15803d;
+}
+#gaming .filtro-busqueda i {
+  color: #15803d;
+}
+#gaming .filtro-busqueda:focus-within {
+  border-color: #15803d;
+  box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.2);
+}
+#gaming .producto {
+  position: relative;
+  box-shadow: 0 6px 18px rgba(7, 26, 61, 0.08);
+}
+#gaming .producto:hover {
+  box-shadow: 0 18px 38px rgba(8, 102, 232, 0.2);
+}
+#gaming .producto::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #0866e8, rgb(4.6, 58.65, 133.4));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: 2;
+}
+#gaming .producto:hover::before {
+  transform: scaleX(1);
+}
+#gaming .producto .producto-pie button {
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicion);
+  border: 1px solid #15803d;
+  background: linear-gradient(135deg, #15803d, rgb(12.3744966443, 75.4255033557, 35.944966443));
+  color: #fff;
+}
+#gaming .producto .producto-pie button:hover {
+  background: linear-gradient(135deg, rgb(17.4060402685, 106.0939597315, 50.5604026846), rgb(10.2181208054, 62.2818791946, 29.6812080537));
+}
+#gaming .producto .producto-pie strong {
+  font-size: 1.25rem;
+}
+#gaming .producto:nth-child(1) {
+  animation: aparecer 0.6s ease backwards;
+  animation-delay: 0.08s;
+}
+#gaming .producto:nth-child(2) {
+  animation: aparecer 0.6s ease backwards;
+  animation-delay: 0.16s;
+}
+#gaming .producto:nth-child(3) {
+  animation: aparecer 0.6s ease backwards;
+  animation-delay: 0.24s;
+}
+#gaming .producto:nth-child(4) {
+  animation: aparecer 0.6s ease backwards;
+  animation-delay: 0.32s;
+}
+#gaming .producto:nth-child(5) {
+  animation: aparecer 0.6s ease backwards;
+  animation-delay: 0.4s;
+}
+#gaming .producto:nth-child(6) {
+  animation: aparecer 0.6s ease backwards;
+  animation-delay: 0.48s;
+}
+#gaming .producto:nth-child(7) {
+  animation: aparecer 0.6s ease backwards;
+  animation-delay: 0.56s;
+}
+#gaming .producto:nth-child(8) {
+  animation: aparecer 0.6s ease backwards;
+  animation-delay: 0.64s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #gaming .producto {
+    animation: none;
+  }
+}/*# sourceMappingURL=gaming.css.map */

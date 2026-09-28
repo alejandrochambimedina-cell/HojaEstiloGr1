@@ -23,6 +23,7 @@
     <!-- CSS principal -->
     <link rel="stylesheet" href="../CSS/estilos.css">
     <link rel="stylesheet" href="../CSS/global.css">
+    <link rel="stylesheet" href="../CSS/gaming.css">
 </head>
 
 <body>
@@ -125,6 +126,15 @@
                     <button type="button" class="filtro-btn" data-filtro="teclado">Teclados</button>
                     <button type="button" class="filtro-btn" data-filtro="mouse">Mouse</button>
                     <button type="button" class="filtro-btn" data-filtro="accesorio">Accesorios</button>
+                </div>
+
+                <div class="filtro-orden-wrap">
+                    <select class="filtro-orden" id="ordenarPrecio">
+                        <option value="relevancia">Ordenar por: Relevancia</option>
+                        <option value="menor">Precio: menor a mayor</option>
+                        <option value="mayor">Precio: mayor a menor</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down"></i>
                 </div>
 
             </div>
@@ -393,6 +403,54 @@
     </div>
 
     <script src="../JS/inicio.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const selectOrden = document.getElementById("ordenarPrecio");
+        const grid = document.getElementById("grid-gaming");
+        const mensajeSinResultados = document.getElementById("mensajeSinResultados");
+
+        if (!selectOrden || !grid) return;
+
+        function obtenerPrecio(producto) {
+            const texto = producto.querySelector(".producto-pie strong").textContent;
+
+            return parseFloat(
+                texto.replace("S/", "").replace(/,/g, "").trim()
+            );
+        }
+
+        function aplicarOrden() {
+            const valor = selectOrden.value;
+
+            const productos = Array.from(
+                grid.querySelectorAll(".producto")
+            );
+
+            if (valor === "menor") {
+
+                productos.sort(function (a, b) {
+                    return obtenerPrecio(a) - obtenerPrecio(b);
+                });
+
+            } else if (valor === "mayor") {
+
+                productos.sort(function (a, b) {
+                    return obtenerPrecio(b) - obtenerPrecio(a);
+                });
+
+            }
+
+            productos.forEach(function (producto) {
+                grid.insertBefore(producto, mensajeSinResultados);
+            });
+        }
+
+        selectOrden.addEventListener("change", aplicarOrden);
+
+    });
+</script>
+
 </body>
 
 </html>
