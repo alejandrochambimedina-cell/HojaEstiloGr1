@@ -1,0 +1,58 @@
+.focus-ring() {
+    outline: 2px solid @color-brand-accent;
+    outline-offset: 2px;
+}
+
+.surface-card() {
+    background-color: @color-surface;
+    border-radius: @radius-md;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-size(@size) when (@size = compact) {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.button-size(@size) when (@size = regular) {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+}
+
+.link-reset() {
+    text-decoration: none;
+    color: inherit;
+    &:hover, &:focus {
+        text-decoration: underline;
+    }
+}
+
+.stack() {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.level-accent(@level) when (@level = beginner) {
+    border-top: 4px solid @color-level-beginner;
+    .badge {
+        background-color: @color-level-beginner;
+        color: white;
+    }
+}
+
+.level-accent(@level) when (@level = intermediate) {
+    border-top: 4px solid @color-level-intermediate;
+    .badge {
+        background-color: @color-level-intermediate;
+        color: white;
+    }
+}
+
+.level-accent(@level) when (@level = advanced) {
+    border-top: 4px solid @color-level-advanced;
+    .badge {
+        background-color: @color-level-advanced;
+        color: white;
+    }
+}

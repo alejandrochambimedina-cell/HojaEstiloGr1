@@ -1,0 +1,30 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.hero {
+    display: grid;
+    place-items: center;
+    padding-block: 4rem;
+    text-align: center;
+    
+    &__content {
+        .stack();
+        align-items: center;
+    }
+}
+
+.card-grid {
+    display: grid;
+    gap: 2rem;
+    margin-block: 2rem;
+    
+    @media (min-width: @bp-md) {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    }
+}
