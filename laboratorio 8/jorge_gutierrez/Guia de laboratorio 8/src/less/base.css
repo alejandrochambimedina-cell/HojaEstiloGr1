@@ -1,0 +1,44 @@
+:root {
+  --brand: #174ea6;
+  --surface: #ffffff;
+  --ink: #17243b;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--ink);
+  background: #f1f5f9;
+}
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+p {
+  margin-block: 0 1rem;
+}
+a {
+  color: var(--brand);
+}
+:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 4px;
+}
+.skip-link {
+  position: absolute;
+  inset-block-start: -10rem;
+  inset-inline-start: 1rem;
+  padding: 0.75rem;
+  background: white;
+  z-index: 10;
+}
+.skip-link:focus {
+  inset-block-start: 1rem;
+}
+.muted {
+  color: #475569;
+}

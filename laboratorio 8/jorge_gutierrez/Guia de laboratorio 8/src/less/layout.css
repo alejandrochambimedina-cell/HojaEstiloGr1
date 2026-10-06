@@ -1,0 +1,40 @@
+.container {
+  width: min(70rem, calc(100% - 2rem));
+  margin-inline: auto;
+}
+.site-header {
+  padding-block: 1.5rem;
+  border-bottom: 1px solid #cbd5e1;
+}
+.header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.hero {
+  padding-block: 2.5rem;
+}
+.workshops {
+  display: grid;
+  gap: 1.5rem;
+  padding-block-end: 2.5rem;
+}
+@media (min-width: 36rem) {
+  .workshops {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 48rem) {
+  .workshops {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.info-panel {
+  margin-block-end: 2.5rem;
+}
+.site-footer {
+  padding-block: 1.5rem;
+  border-top: 1px solid #cbd5e1;
+}
