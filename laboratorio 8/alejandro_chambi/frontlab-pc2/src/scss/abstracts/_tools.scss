@@ -1,0 +1,24 @@
+@use "tokens" as t;
+
+@function space($steps) {
+  @return $steps * 0.25rem;
+}
+
+@mixin surface($padding: 1.5rem) {
+  padding: $padding;
+  background: var(--surface);
+  border: 1px solid t.$line;
+  border-radius: t.$radius;
+}
+
+@mixin wide {
+  @media (min-width: t.$wide) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (min-width: t.$medium) and (max-width: (t.$wide - 0.02rem)) {
+    @content;
+  }
+}
