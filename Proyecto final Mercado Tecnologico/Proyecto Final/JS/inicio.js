@@ -13,7 +13,18 @@ function agregarAlCarrito(nombre, precio) {
     }
 
     renderizarCarrito();
+    animarContador();
     mostrarNotificacion(`Agregado: ${nombre}`);
+}
+
+// Reinicia la animación de "rebote" del contador del carrito
+function animarContador() {
+    const contador = document.querySelector(".contador-carrito");
+    if (!contador) return;
+
+    contador.classList.remove("rebote");
+    void contador.offsetWidth; // fuerza al navegador a reiniciar la animación
+    contador.classList.add("rebote");
 }
 
 // 3. Notificación flotante visual
@@ -153,12 +164,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Eventos para los botones de categoría
     botonesFiltro.forEach(function (boton) {
         boton.addEventListener("click", function () {
-            botonesFiltro.forEach(function (filtro) {
-                filtro.classList.remove("activo");
-                filtro.setAttribute("aria-pressed", "false");
-            });
+            botonesFiltro.forEach(b => b.classList.remove("activo"));
             boton.classList.add("activo");
-            boton.setAttribute("aria-pressed", "true");
             filtroActivo = boton.getAttribute("data-filtro");
             aplicarFiltros();
         });

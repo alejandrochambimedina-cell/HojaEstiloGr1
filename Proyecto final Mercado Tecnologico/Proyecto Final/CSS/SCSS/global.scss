@@ -1,3 +1,48 @@
+@use "animaciones" as anim;
+
+/* =========================================
+   KEYFRAMES GLOBALES (menú, carrito, modal)
+========================================= */
+
+// Panel del menú móvil: baja y aparece
+@keyframes deslizar-abajo {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Contador del carrito: "rebota" al agregar un producto
+@keyframes rebote {
+    0%   { transform: scale(1); }
+    30%  { transform: scale(1.55); }
+    50%  { transform: scale(0.85); }
+    70%  { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+// Fondo oscuro del modal
+@keyframes fundido {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+// Ventana del modal: entra con zoom desde el centro
+@keyframes zoom-entrada {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* =========================================
    CONFIGURACIÓN GENERAL
 ========================================= */
@@ -156,6 +201,16 @@ a {
     cursor: pointer;
     padding: 0.4rem;
 
+    // El ícono gira suavemente al pasar de ☰ a ✕
+    i {
+        display: inline-block;
+        transition: transform var(--transicion);
+    }
+
+    &[aria-expanded="true"] i {
+        transform: rotate(180deg);
+    }
+
     @media (max-width: 600px) {
         display: block;
     }
@@ -186,6 +241,7 @@ a {
 
         &.abierto {
             display: flex;
+            @include anim.animar(deslizar-abajo, anim.$duracion-corta + 0.05s);
         }
     }
 
@@ -287,12 +343,18 @@ a {
 /* Badge del contador en el header */
 
 .contador-carrito {
+    display: inline-block;
     background: #e11d48;
     color: #fff;
     border-radius: 50%;
     padding: 2px 7px;
     font-size: 0.75rem;
     margin-left: 5px;
+
+    // JavaScript agrega esta clase cada vez que se agrega un producto
+    &.rebote {
+        @include anim.animar(rebote, anim.$duracion-media, $fill: none);
+    }
 }
 
 /* =========================================
@@ -311,12 +373,24 @@ a {
     justify-content: center;
     align-items: center;
 
+    // El modal se muestra cambiando display (desde JS), y la
+    // animación se dispara sola cada vez que aparece
+    @include anim.animar(fundido, anim.$duracion-corta);
+
+    // Mejora progresiva: si el navegador soporta desenfoque
+    // de fondo lo usa; si no, simplemente se omite.
+    @supports ((backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px))) {
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+    }
+
     .modal-contenido {
         background: #fff;
         width: 90%;
         max-width: 440px;
         border-radius: 10px;
         padding: 20px;
+        @include anim.animar(zoom-entrada, anim.$duracion-media - 0.15s, anim.$easing-rebote);
     }
 
     .modal-header {
@@ -650,5 +724,23 @@ a {
         flex-direction: column;
         text-align: center;
         padding: 1rem;
+    }
+}
+
+/* =========================================
+   ACCESIBILIDAD: REDUCIR MOVIMIENTO
+   Si el usuario desactivó las animaciones en su
+   sistema, se apagan todas (el contenido sigue visible).
+========================================= */
+
+@include anim.sin-movimiento {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }

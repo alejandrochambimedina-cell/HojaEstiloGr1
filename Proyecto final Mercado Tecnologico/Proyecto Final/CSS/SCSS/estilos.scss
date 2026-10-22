@@ -1,5 +1,34 @@
-/* ================= MIXINS ================= */
+@use "animaciones" as anim;
 
+/* =========================================
+   KEYFRAMES (tarjetas, títulos y etiquetas)
+========================================= */
+
+// Entrada: sube desde abajo mientras aparece
+@keyframes aparecer-arriba {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Pulso suave y continuo para las etiquetas de descuento
+@keyframes pulso {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.12); }
+}
+
+/* =========================================
+   MIXINS REUTILIZABLES
+========================================= */
+
+// Efecto "tarjeta que se eleva" al pasar el mouse.
+// Lo usan .categoria, .producto y .beneficio, cada una
+// con su propia altura de elevación y sombra.
 @mixin efecto-hover($elevacion: -7px, $sombra: var(--sombra-hover)) {
     transition: var(--transicion);
 
@@ -9,98 +38,94 @@
     }
 }
 
-/* ================= HERO ================= */
+/* ===================HERO================= */
 
 .hero {
-    position: relative;
     width: 90%;
     max-width: 1200px;
     min-height: 500px;
     margin: 2.5rem auto;
     padding: 4rem 5%;
-    background:
-        radial-gradient(circle at 15% 85%, rgba(180, 30, 220, 0.45), transparent 35%),
-        radial-gradient(circle at 80% 15%, rgba(0, 180, 220, 0.40), transparent 38%),
-        linear-gradient(120deg, #4b168f 0%, #4430b8 35%, #2850c7 65%, #087fa8 100%);
+    background: linear-gradient(135deg, #e7f2ff 0%, #ffffff 60%, #eef6ff 100%);
     border-radius: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 3rem;
     overflow: hidden;
-    box-shadow: 0 20px 45px rgba(7, 26, 61, 0.20);
+    box-shadow: var(--sombra);
 
-    &::before {
-        content: "";
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        right: -180px;
-        top: -280px;
-        background: rgba(255, 255, 255, 0.07);
-        border-radius: 50%;
-        filter: blur(5px);
-        pointer-events: none;
+    // Tablet pequeña
+    @media (max-width: 800px) {
+        flex-direction: column;
+        text-align: center;
     }
 
-    &::after {
-        content: "";
-        position: absolute;
-        width: 500px;
-        height: 500px;
-        left: -250px;
-        bottom: -300px;
-        background: rgba(255, 50, 255, 0.10);
-        border-radius: 50%;
-        filter: blur(15px);
-        pointer-events: none;
+    // Celulares
+    @media (max-width: 600px) {
+        width: 94%;
+        min-height: auto;
+        margin: 1.5rem auto;
+        padding: 2.5rem 1.2rem;
+        border-radius: 1rem;
     }
+
+    /* ===== Contenido del hero ===== */
 
     .hero-contenido {
-        position: relative;
-        z-index: 2;
         flex: 1;
         max-width: 600px;
 
-        .hero-etiqueta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #fff;
-            background-color: rgba(255, 255, 255, 0.14);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 0.45rem 0.8rem;
-            border-radius: 2rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            backdrop-filter: blur(5px);
-
-            i {
-                color: #facc15;
-            }
+        @media (max-width: 800px) {
+            max-width: 700px;
         }
 
         h1 {
-            color: #fff;
+            color: var(--azul-oscuro);
             font-size: clamp(2.2rem, 5vw, 4rem);
             line-height: 1.15;
             margin-bottom: 1.2rem;
-            text-shadow: 0 4px 15px rgba(7, 26, 61, 0.20);
 
             span {
-                color: #a5f3fc;
-                text-shadow: 0 0 20px rgba(165, 243, 252, 0.35);
+                color: var(--azul);
+            }
+
+            @media (max-width: 600px) {
+                font-size: 2.2rem;
             }
         }
 
         p {
             max-width: 560px;
-            color: #071a3d !important;
+            color: var(--gris-texto);
             font-size: 1.05rem;
             margin-bottom: 1.8rem;
-            line-height: 1.7;
-            font-weight: 500;
+
+            @media (max-width: 800px) {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            @media (max-width: 600px) {
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+    .hero-etiqueta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--azul);
+        background-color: rgba(8, 102, 232, 0.1);
+        padding: 0.45rem 0.8rem;
+        border-radius: 2rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+
+        i {
+            color: #f59e0b;
         }
     }
 
@@ -109,98 +134,12 @@
         align-items: center;
         gap: 0.8rem;
         flex-wrap: wrap;
-    }
 
-    .hero-imagen {
-        position: relative;
-        z-index: 2;
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &::before {
-            content: "";
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(
-                circle,
-                rgba(255, 255, 255, 0.28) 0%,
-                rgba(0, 220, 255, 0.18) 35%,
-                transparent 70%
-            );
-            border-radius: 50%;
-            filter: blur(8px);
-            z-index: 0;
-        }
-
-        img {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 500px;
-            border-radius: 1.2rem;
-            object-fit: cover;
-            box-shadow:
-                0 25px 50px rgba(7, 26, 61, 0.30),
-                0 0 40px rgba(255, 255, 255, 0.15);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-            &:hover {
-                transform: scale(1.03);
-                box-shadow:
-                    0 30px 55px rgba(7, 26, 61, 0.35),
-                    0 0 55px rgba(255, 255, 255, 0.22);
-            }
-        }
-    }
-
-    @media (max-width: 800px) {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 3.5rem;
-
-        .hero-contenido {
-            max-width: 700px;
-
-            p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-
-        .hero-botones {
+        @media (max-width: 800px) {
             justify-content: center;
         }
 
-        .hero-imagen {
-            width: 100%;
-
-            img {
-                max-width: 550px;
-            }
-        }
-    }
-
-    @media (max-width: 600px) {
-        width: 94%;
-        min-height: auto;
-        margin: 1.5rem auto;
-        padding: 2.5rem 1.2rem;
-        border-radius: 1rem;
-
-        .hero-contenido {
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            p {
-                font-size: 0.9rem;
-            }
-        }
-
-        .hero-botones {
+        @media (max-width: 600px) {
             flex-direction: column;
             width: 100%;
 
@@ -208,26 +147,44 @@
                 width: 100%;
             }
         }
+    }
 
-        .hero-imagen {
-            &::before {
-                width: 280px;
-                height: 280px;
+    .hero-imagen {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-width: 800px) {
+            width: 100%;
+        }
+
+        img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 1.2rem;
+            object-fit: cover;
+            box-shadow: 0 15px 35px rgba(7, 26, 61, 0.15);
+            transition: 0.3s ease;
+
+            &:hover {
+                transform: scale(1.02);
             }
 
-            img {
-                max-width: 100%;
+            @media (max-width: 800px) {
+                max-width: 550px;
             }
         }
     }
 }
 
-/* ============== TÍTULOS ============== */
+/* ============TÍTULOS DE SECCIÓN=============== */
 
 .titulo-seccion {
     text-align: center;
     max-width: 650px;
     margin: 0 auto 2.5rem;
+    @include anim.animar(aparecer-arriba, anim.$duracion-larga);
 
     > span {
         display: inline-flex;
@@ -251,7 +208,7 @@
     }
 }
 
-/* ============== SECCIONES ============== */
+/* =======SECCIONES================ */
 
 .seccion {
     width: 90%;
@@ -264,7 +221,7 @@
     }
 }
 
-/* ============== FILTROS ============== */
+/* ============FILTRO DE PRODUCTOS============= */
 
 .filtro-productos {
     width: 90%;
@@ -275,6 +232,7 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    @include anim.animar(aparecer-arriba, anim.$duracion-larga, $retraso: 0.15s);
 
     @media (max-width: 600px) {
         width: 94%;
@@ -334,10 +292,16 @@
         background-color: var(--azul-suave);
     }
 
+    // JavaScript agrega esta clase al botón seleccionado
     &.activo {
         background-color: var(--azul);
         border-color: var(--azul);
         color: var(--blanco);
+    }
+
+    // Efecto "botón presionado"
+    &:active {
+        transform: scale(0.94);
     }
 
     @media (max-width: 600px) {
@@ -346,11 +310,14 @@
     }
 }
 
+/* ============ORDENAR POR PRECIO============= */
+
 .filtro-orden-wrap {
     position: relative;
     display: inline-flex;
     align-items: center;
 
+    // La flechita de Font Awesome, puesta encima del select
     i {
         position: absolute;
         right: 1rem;
@@ -359,6 +326,12 @@
         font-size: 0.75rem;
         color: var(--azul);
         pointer-events: none;
+        transition: transform var(--transicion);
+    }
+
+    // La flecha gira mientras el selector está abierto/enfocado
+    &:focus-within i {
+        transform: translateY(-50%) rotate(180deg);
     }
 
     @media (max-width: 600px) {
@@ -367,9 +340,11 @@
 }
 
 .filtro-orden {
+    // Quitamos la flecha nativa del navegador para usar la nuestra
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+
     padding: 0.6rem 2.2rem 0.6rem 1.1rem;
     border: 1px solid #b8d5f7;
     border-radius: 2rem;
@@ -404,7 +379,7 @@
     display: none;
 }
 
-/* ============== CATEGORÍAS ============== */
+/* ============CATEGORÍAS============= */
 
 .categorias {
     display: grid;
@@ -429,6 +404,8 @@
     border-radius: var(--radio);
     box-shadow: var(--sombra);
 
+    // Antes: transition + :hover repetidos a mano.
+    // Ahora: un solo mixin con los valores que usa esta tarjeta.
     @include efecto-hover(-7px, var(--sombra-hover));
 
     &:hover {
@@ -508,7 +485,7 @@
     }
 }
 
-/* ============== OFERTAS ============== */
+/* ==============OFERTAS================= */
 
 .ofertas {
     width: 100%;
@@ -519,20 +496,19 @@
     @media (max-width: 600px) {
         padding: 3rem 3%;
     }
-}
 
-.ofertas .productos.ofertas-grid {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    grid-template-columns: repeat(4, 1fr);
+    .ofertas-grid {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
 
-    @media (max-width: 1000px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: 600px) {
-        grid-template-columns: 1fr;
+        @media (max-width: 600px) {
+            width: 100%;
+            grid-template-columns: 1fr;
+        }
     }
 }
 
@@ -546,6 +522,7 @@
 
 .oferta-etiqueta {
     background-color: #ef4444;
+    @include anim.animar(pulso, 2s, ease-in-out, $repeticion: infinite, $fill: none);
 }
 
 .precio-oferta {
@@ -584,7 +561,7 @@
     }
 }
 
-/* ============== MÁS VENDIDOS ============== */
+/* =============MÁS VENDIDOS============= */
 
 .vendidos-grid {
     display: grid;
@@ -604,12 +581,20 @@
     }
 }
 
-/* ============== PRODUCTOS ============== */
+/* ======PRODUCTOS========= */
 
 .productos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
+
+    // Cada tarjeta entra subiendo y apareciendo, una tras otra.
+    // Como el filtro oculta/muestra tarjetas (display), la animación
+    // se repite sola cuando vuelven a aparecer.
+    > .producto {
+        @include anim.animar(aparecer-arriba, anim.$duracion-larga);
+        @include anim.escalonar(8);
+    }
 
     @media (max-width: 600px) {
         grid-template-columns: 1fr;
@@ -649,6 +634,7 @@
         }
     }
 
+    // Cuando el mouse pasa sobre la tarjeta, la imagen hace zoom
     &:hover .producto-imagen img {
         transform: scale(1.05);
     }
@@ -752,6 +738,11 @@
                 transform: translateY(-2px);
             }
 
+            // Efecto "botón presionado" (va después de :hover para ganar)
+            &:active {
+                transform: scale(0.94);
+            }
+
             @media (max-width: 400px) {
                 width: 100%;
             }
@@ -759,7 +750,7 @@
     }
 }
 
-/* ============== BENEFICIOS ============== */
+/* ========= BENEFICIOS=================== */
 
 .beneficios {
     width: 90%;
@@ -793,6 +784,8 @@
     background-color: var(--blanco);
     border-radius: var(--radio);
 
+    // Esta tarjeta se eleva un poco menos (-5px) y usa
+    // la sombra normal, no la de hover -> se lo pasamos al mixin
     @include efecto-hover(-5px, var(--sombra));
 
     .beneficio-icono {
@@ -820,7 +813,7 @@
     }
 }
 
-/* ============== CALL TO ACTION ============== */
+/* ========CALL TO ACTION================= */
 
 .cta {
     width: 90%;
