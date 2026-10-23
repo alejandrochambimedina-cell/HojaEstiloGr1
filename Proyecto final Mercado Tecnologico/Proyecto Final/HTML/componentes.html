@@ -103,7 +103,17 @@
                     <input type="text" id="buscarProducto" placeholder="Buscar pieza o componente...">
                 </div>
 
-                <div class="filtro-categorias">
+                <!-- Botón que despliega las categorías (solo se ve en móvil) -->
+                <button type="button" class="filtro-toggle" id="filtroToggle" aria-expanded="false"
+                    aria-controls="filtroCategorias">
+                    <span class="filtro-toggle-texto">
+                        <i class="fa-solid fa-sliders"></i>
+                        Categorías: <span class="filtro-toggle-actual" id="filtroActual">Todos</span>
+                    </span>
+                    <i class="fa-solid fa-chevron-down filtro-toggle-flecha"></i>
+                </button>
+
+                <div class="filtro-categorias" id="filtroCategorias">
                     <button type="button" class="filtro-btn activo" data-filtro="todos">Todos</button>
                     <button type="button" class="filtro-btn" data-filtro="cpu">Procesadores</button>
                     <button type="button" class="filtro-btn" data-filtro="gpu">Tarjetas Gráficas</button>
@@ -580,6 +590,93 @@
 
     <!-- Script del carrito JavaScript -->
     <script src="../JS/inicio.js" defer></script>
+
+    <!-- Script propio de esta página: filtros desplegables en móvil y efecto al agregar -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const contenedor = document.querySelector("#catalogo-componentes .filtro-productos");
+            const toggle = document.getElementById("filtroToggle");
+            const panel = document.getElementById("filtroCategorias");
+            const textoActual = document.getElementById("filtroActual");
+            const grid = document.getElementById("grid-componentes");
+
+            /* ---------- Cuadro desplegable de categorías (móvil) ---------- */
+            if (contenedor && toggle && panel) {
+
+                // Si este script corre, los estilos de "cajón" se activan.
+                // (Sin JavaScript los botones se ven normales.)
+                contenedor.classList.add("filtro-js");
+
+                function abrirPanel() {
+                    panel.classList.add("abierta");
+                    toggle.setAttribute("aria-expanded", "true");
+                }
+
+                function cerrarPanel() {
+                    panel.classList.remove("abierta");
+                    toggle.setAttribute("aria-expanded", "false");
+                }
+
+                toggle.addEventListener("click", function () {
+                    if (panel.classList.contains("abierta")) {
+                        cerrarPanel();
+                    } else {
+                        abrirPanel();
+                    }
+                });
+
+                // Al elegir una categoría: se actualiza el texto y se cierra el cuadro
+                // (el filtrado en sí lo hace inicio.js)
+                panel.querySelectorAll(".filtro-btn").forEach(function (boton) {
+                    boton.addEventListener("click", function () {
+                        textoActual.textContent = boton.textContent.trim();
+                        cerrarPanel();
+                    });
+                });
+
+                // Tecla Escape cierra el cuadro y devuelve el foco al botón
+                document.addEventListener("keydown", function (e) {
+                    if (e.key === "Escape" && panel.classList.contains("abierta")) {
+                        cerrarPanel();
+                        toggle.focus();
+                    }
+                });
+
+                // Clic fuera del filtro: se cierra
+                document.addEventListener("click", function (e) {
+                    if (panel.classList.contains("abierta") && !contenedor.contains(e.target)) {
+                        cerrarPanel();
+                    }
+                });
+
+                // Si la pantalla pasa a escritorio, se reinicia el estado
+                window.addEventListener("resize", function () {
+                    if (window.innerWidth > 600) {
+                        cerrarPanel();
+                    }
+                });
+            }
+
+            /* ---------- Efecto "salto" al agregar al carrito ---------- */
+            if (grid) {
+                grid.addEventListener("click", function (e) {
+                    const boton = e.target.closest(".producto-pie button");
+                    if (!boton) return;
+
+                    boton.classList.remove("agregado");
+                    void boton.offsetWidth; // reinicia la animación si se hace clic seguido
+                    boton.classList.add("agregado");
+                });
+
+                grid.addEventListener("animationend", function (e) {
+                    if (e.animationName === "boton-agregado") {
+                        e.target.classList.remove("agregado");
+                    }
+                });
+            }
+        });
+    </script>
 
     <!-- Script propio de esta página: ordenar por precio -->
     <!-- (el buscador y los filtros de categoría ya los maneja inicio.js) -->
