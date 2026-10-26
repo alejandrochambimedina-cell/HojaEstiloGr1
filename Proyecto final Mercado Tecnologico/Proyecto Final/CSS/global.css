@@ -1,5 +1,53 @@
 @charset "UTF-8";
 /* =========================================
+   KEYFRAMES GLOBALES (menú, carrito, modal)
+========================================= */
+@keyframes deslizar-abajo {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes rebote {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.55);
+  }
+  50% {
+    transform: scale(0.85);
+  }
+  70% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes fundido {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes zoom-entrada {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* =========================================
    CONFIGURACIÓN GENERAL
 ========================================= */
 * {
@@ -134,6 +182,13 @@ a {
   cursor: pointer;
   padding: 0.4rem;
 }
+.btn-menu i {
+  display: inline-block;
+  transition: transform var(--transicion);
+}
+.btn-menu[aria-expanded=true] i {
+  transform: rotate(180deg);
+}
 @media (max-width: 600px) {
   .btn-menu {
     display: block;
@@ -164,6 +219,7 @@ a {
   }
   .navbar.abierto {
     display: flex;
+    animation: deslizar-abajo 0.3s ease-out 0s 1 normal backwards;
   }
 }
 .navbar a {
@@ -253,12 +309,16 @@ a {
 
 /* Badge del contador en el header */
 .contador-carrito {
+  display: inline-block;
   background: #e11d48;
   color: #fff;
   border-radius: 50%;
   padding: 2px 7px;
   font-size: 0.75rem;
   margin-left: 5px;
+}
+.contador-carrito.rebote {
+  animation: rebote 0.5s ease-out 0s 1 normal none;
 }
 
 /* =========================================
@@ -275,6 +335,13 @@ a {
   z-index: 2000;
   justify-content: center;
   align-items: center;
+  animation: fundido 0.25s ease-out 0s 1 normal backwards;
+}
+@supports (backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px)) {
+  .modal-carrito {
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+  }
 }
 .modal-carrito .modal-contenido {
   background: #fff;
@@ -282,6 +349,7 @@ a {
   max-width: 440px;
   border-radius: 10px;
   padding: 20px;
+  animation: zoom-entrada 0.35s cubic-bezier(0.2, 0.8, 0.3, 1.2) 0s 1 normal backwards;
 }
 .modal-carrito .modal-header {
   border-bottom: 1px solid #ddd;
@@ -670,6 +738,23 @@ a {
     flex-direction: column;
     text-align: center;
     padding: 1rem;
+  }
+}
+
+/* =========================================
+   ACCESIBILIDAD: REDUCIR MOVIMIENTO
+   Si el usuario desactivó las animaciones en su
+   sistema, se apagan todas (el contenido sigue visible).
+========================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

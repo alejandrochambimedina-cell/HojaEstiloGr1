@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* =========================================
    VARIABLES DE ESTA PÁGINA
    (nombres distintos a los de global.css:
@@ -19,18 +18,111 @@
 }
 
 /* =========================================
+   VARIABLE SASS (con $, no CSS) PARA HACER
+   OPERACIONES MATEMÁTICAS EN TIEMPO DE COMPILACIÓN.
+   No es lo mismo que las variables CSS de arriba:
+   estas se calculan ANTES de generar el CSS final.
+========================================= */
+/* =========================================
+   PLACEHOLDER (%) PARA HERENCIA CON @extend
+   Cualquier selector que use "@extend %texto-truncado"
+   hereda estas reglas sin duplicar código ni generar
+   una clase CSS propia para el placeholder.
+========================================= */
+#catalogo-componentes .producto .producto-info .sku {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+}
+
+/* =========================================
    MIXIN: efecto hover de esta tarjeta
    (elevación + línea brillante arriba, con ::before)
 ========================================= */
+/* =========================================
+   ANIMACIONES DE ESTA PÁGINA (solo componentes)
+   Todas usan solo opacity y transform: se ven igual
+   en Chrome, Edge y Firefox y no recalculan el layout.
+========================================= */
+@keyframes entrada-tarjeta {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes entrada-etiqueta {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes carrito-mover {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  40% {
+    transform: translateX(4px) rotate(-12deg);
+  }
+  70% {
+    transform: translateX(-2px) rotate(8deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}
+@keyframes boton-agregado {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.12);
+  }
+  65% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes panel-filtros {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* Grid adaptativo para las tarjetas */
 #catalogo-componentes .grid-componentes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   padding: 2rem 0;
 }
+@media (max-width: 1100px) {
+  #catalogo-componentes .grid-componentes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 800px) {
+  #catalogo-componentes .grid-componentes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media (max-width: 600px) {
   #catalogo-componentes .grid-componentes {
+    grid-template-columns: 1fr;
     gap: 1rem;
     padding: 1rem 0;
   }
@@ -128,7 +220,6 @@
   font-size: 0.75rem;
   color: var(--text-muted);
   margin-bottom: 0.5rem;
-  display: block;
 }
 #catalogo-componentes .producto .producto-info h3 {
   font-size: 1.1rem;
@@ -192,6 +283,172 @@
 }
 #catalogo-componentes .btn-producto:active {
   transform: scale(0.97);
+}
+#catalogo-componentes {
+  /* =========================================
+     ANIMACIÓN DE ENTRADA DE LAS TARJETAS
+     Cada tarjeta entra un poco después que la anterior.
+     Como el filtro oculta/muestra con display, la entrada
+     se repite sola al filtrar. "backwards" libera transform
+     al terminar, así el efecto :hover sigue funcionando.
+  ========================================= */
+}
+#catalogo-componentes .grid-componentes > .producto {
+  animation: entrada-tarjeta 0.6s ease-out backwards;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(1) {
+  animation-delay: 0s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(2) {
+  animation-delay: 0.07s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(3) {
+  animation-delay: 0.14s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(4) {
+  animation-delay: 0.21s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(5) {
+  animation-delay: 0.28s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(6) {
+  animation-delay: 0.35s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(7) {
+  animation-delay: 0.42s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(8) {
+  animation-delay: 0.49s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(9) {
+  animation-delay: 0.56s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(10) {
+  animation-delay: 0.63s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(11) {
+  animation-delay: 0.7s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(12) {
+  animation-delay: 0.77s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(13) {
+  animation-delay: 0.84s;
+}
+#catalogo-componentes .grid-componentes > .producto:nth-child(14) {
+  animation-delay: 0.91s;
+}
+#catalogo-componentes .grid-componentes > .producto .producto-etiqueta {
+  animation: entrada-etiqueta 0.5s ease-out 0.35s backwards;
+}
+#catalogo-componentes {
+  /* Botón "Agregar al carrito": el ícono se mueve al pasar el mouse */
+}
+#catalogo-componentes .producto .producto-pie button i {
+  display: inline-block;
+}
+#catalogo-componentes .producto .producto-pie button:hover i {
+  animation: carrito-mover 0.5s ease-in-out;
+}
+#catalogo-componentes .producto .producto-pie button.agregado {
+  animation: boton-agregado 0.45s ease-out;
+}
+#catalogo-componentes {
+  /* =========================================
+     FILTROS EN MÓVIL: cuadro desplegable
+     Solo se activa cuando el script agrega la clase
+     .filtro-js (si JavaScript falla, los botones se
+     siguen viendo normales). En escritorio el botón
+     "Categorías" no se muestra.
+  ========================================= */
+}
+#catalogo-componentes .filtro-toggle {
+  display: none;
+}
+@media (max-width: 600px) {
+  #catalogo-componentes .filtro-productos.filtro-js .filtro-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1px solid #b8d5f7;
+    border-radius: 0.6rem;
+    background-color: #ffffff;
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transicion);
+  }
+  #catalogo-componentes .filtro-productos.filtro-js .filtro-toggle:hover {
+    background-color: #e8f2ff;
+  }
+  #catalogo-componentes .filtro-productos.filtro-js .filtro-toggle:focus-visible {
+    outline: 3px solid rgba(0, 102, 255, 0.35);
+    outline-offset: 2px;
+  }
+  #catalogo-componentes .filtro-productos.filtro-js .filtro-toggle .filtro-toggle-texto {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  #catalogo-componentes .filtro-productos.filtro-js .filtro-toggle .filtro-toggle-actual {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  #catalogo-componentes .filtro-productos.filtro-js .filtro-toggle .filtro-toggle-flecha {
+    transition: transform 0.3s ease;
+  }
+  #catalogo-componentes .filtro-productos.filtro-js .filtro-toggle[aria-expanded=true] .filtro-toggle-flecha {
+    transform: rotate(180deg);
+  }
+  #catalogo-componentes .filtro-productos.filtro-js .filtro-categorias {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    max-height: 0;
+    margin-top: -1rem;
+    padding: 0 0.6rem;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 0.8rem;
+    transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.35s ease, padding 0.35s ease, visibility 0s linear 0.35s;
+  }
+  #catalogo-componentes .filtro-productos.filtro-js .filtro-categorias .filtro-btn {
+    flex: none;
+    border-radius: 0.5rem;
+  }
+  #catalogo-componentes .filtro-productos.filtro-js .filtro-categorias.abierta {
+    max-height: 30rem;
+    margin-top: 0;
+    padding: 0.6rem;
+    opacity: 1;
+    visibility: visible;
+    border-color: #e2e8f0;
+    box-shadow: var(--shadow);
+    transition-delay: 0s;
+    animation: panel-filtros 0.3s ease-out;
+  }
+}
+#catalogo-componentes {
+  /* =========================================
+     FILTRO EN ESCRITORIO: misma distribución que
+     Computadoras. Buscador + "Ordenar por" arriba,
+     y las categorías centradas en su propia fila.
+     (En móvil sigue el cuadro desplegable.)
+  ========================================= */
+}
+@media (min-width: 601px) {
+  #catalogo-componentes .filtro-categorias {
+    flex-basis: 100%;
+    justify-content: center;
+  }
 }
 
 /*# sourceMappingURL=componentes.css.map */

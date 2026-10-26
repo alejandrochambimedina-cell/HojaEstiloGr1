@@ -70,6 +70,67 @@ $espaciado-base: 1rem;
     }
 }
 
+/* =========================================
+   ANIMACIONES DE ESTA PÁGINA (solo componentes)
+   Todas usan solo opacity y transform: se ven igual
+   en Chrome, Edge y Firefox y no recalculan el layout.
+========================================= */
+
+$retraso-tarjeta: 0.07s;   // pausa entre una tarjeta y la siguiente
+$total-tarjetas: 14;       // productos que tiene el catálogo
+
+// Entrada de cada tarjeta: sube, se agranda un poquito y aparece
+@keyframes entrada-tarjeta {
+    from {
+        opacity: 0;
+        transform: translateY(28px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+// La etiqueta flotante (Top Ventas, etc.) llega desde la izquierda
+@keyframes entrada-etiqueta {
+    from {
+        opacity: 0;
+        transform: translateX(-14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// El carrito del botón "se mueve" al pasar el mouse
+@keyframes carrito-mover {
+    0%   { transform: translateX(0) rotate(0); }
+    40%  { transform: translateX(4px) rotate(-12deg); }
+    70%  { transform: translateX(-2px) rotate(8deg); }
+    100% { transform: translateX(0) rotate(0); }
+}
+
+// Confirmación al agregar un producto: el botón "salta"
+@keyframes boton-agregado {
+    0%   { transform: scale(1); }
+    35%  { transform: scale(1.12); }
+    65%  { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+// Apertura del cuadro de filtros en móvil
+@keyframes panel-filtros {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Grid adaptativo para las tarjetas */
 
 // Todo lo de aquí para abajo queda "encerrado" dentro de
@@ -262,6 +323,161 @@ $espaciado-base: 1rem;
 
         &:active {
             transform: scale(0.97);
+        }
+    }
+
+    /* =========================================
+       ANIMACIÓN DE ENTRADA DE LAS TARJETAS
+       Cada tarjeta entra un poco después que la anterior.
+       Como el filtro oculta/muestra con display, la entrada
+       se repite sola al filtrar. "backwards" libera transform
+       al terminar, así el efecto :hover sigue funcionando.
+    ========================================= */
+
+    .grid-componentes > .producto {
+        animation: entrada-tarjeta 0.6s ease-out backwards;
+    }
+
+    @for $i from 1 through $total-tarjetas {
+        .grid-componentes > .producto:nth-child(#{$i}) {
+            animation-delay: ($i - 1) * $retraso-tarjeta;
+        }
+    }
+
+    .grid-componentes > .producto .producto-etiqueta {
+        animation: entrada-etiqueta 0.5s ease-out 0.35s backwards;
+    }
+
+    /* Botón "Agregar al carrito": el ícono se mueve al pasar el mouse */
+
+    .producto .producto-pie button i {
+        display: inline-block;
+    }
+
+    .producto .producto-pie button:hover i {
+        animation: carrito-mover 0.5s ease-in-out;
+    }
+
+    // JavaScript agrega esta clase un instante al hacer clic
+    .producto .producto-pie button.agregado {
+        animation: boton-agregado 0.45s ease-out;
+    }
+
+    /* =========================================
+       FILTROS EN MÓVIL: cuadro desplegable
+       Solo se activa cuando el script agrega la clase
+       .filtro-js (si JavaScript falla, los botones se
+       siguen viendo normales). En escritorio el botón
+       "Categorías" no se muestra.
+    ========================================= */
+
+    .filtro-toggle {
+        display: none;
+    }
+
+    @media (max-width: 600px) {
+
+        .filtro-productos.filtro-js {
+
+            .filtro-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.6rem;
+                width: 100%;
+                padding: 0.7rem 1rem;
+                border: 1px solid #b8d5f7;
+                border-radius: 0.6rem;
+                background-color: #ffffff;
+                color: var(--primary);
+                font-family: inherit;
+                font-size: 0.9rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: var(--transicion);
+
+                &:hover {
+                    background-color: #e8f2ff;
+                }
+
+                &:focus-visible {
+                    outline: 3px solid rgba(0, 102, 255, 0.35);
+                    outline-offset: 2px;
+                }
+
+                .filtro-toggle-texto {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+
+                .filtro-toggle-actual {
+                    color: var(--text-muted);
+                    font-weight: 500;
+                }
+
+                // La flechita gira al abrir
+                .filtro-toggle-flecha {
+                    transition: transform 0.3s ease;
+                }
+
+                &[aria-expanded="true"] .filtro-toggle-flecha {
+                    transform: rotate(180deg);
+                }
+            }
+
+            // Cuadro de botones: cerrado por defecto (alto 0, invisible)
+            .filtro-categorias {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.5rem;
+                max-height: 0;
+                margin-top: -1rem;   // compensa el gap del contenedor mientras está cerrado
+                padding: 0 0.6rem;
+                overflow: hidden;
+                opacity: 0;
+                visibility: hidden;
+                background-color: #ffffff;
+                border: 1px solid transparent;
+                border-radius: 0.8rem;
+                transition:
+                    max-height 0.35s ease,
+                    opacity 0.25s ease,
+                    margin-top 0.35s ease,
+                    padding 0.35s ease,
+                    visibility 0s linear 0.35s;
+
+                .filtro-btn {
+                    flex: none;
+                    border-radius: 0.5rem;
+                }
+
+                &.abierta {
+                    max-height: 30rem;
+                    margin-top: 0;
+                    padding: 0.6rem;
+                    opacity: 1;
+                    visibility: visible;
+                    border-color: #e2e8f0;
+                    box-shadow: var(--shadow);
+                    transition-delay: 0s;
+                    animation: panel-filtros 0.3s ease-out;
+                }
+            }
+        }
+    }
+
+    /* =========================================
+       FILTRO EN ESCRITORIO: misma distribución que
+       Computadoras. Buscador + "Ordenar por" arriba,
+       y las categorías centradas en su propia fila.
+       (En móvil sigue el cuadro desplegable.)
+    ========================================= */
+
+    @media (min-width: 601px) {
+        .filtro-categorias {
+            flex-basis: 100%;
+            justify-content: center;
         }
     }
 }

@@ -18,7 +18,18 @@ function agregarAlCarrito(nombre, precio) {
     }
 
     renderizarCarrito();
+    animarContador();
     mostrarNotificacion(`Agregado: ${nombre}`);
+}
+
+// Reinicia la animación de "rebote" del contador del carrito
+function animarContador() {
+    const contador = document.querySelector(".contador-carrito");
+    if (!contador) return;
+
+    contador.classList.remove("rebote");
+    void contador.offsetWidth; // fuerza al navegador a reiniciar la animación
+    contador.classList.add("rebote");
 }
 
 // 3. Notificación flotante visual
@@ -226,12 +237,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Eventos para los botones de categoría
     botonesFiltro.forEach(function (boton) {
         boton.addEventListener("click", function () {
-            botonesFiltro.forEach(function (filtro) {
-                filtro.classList.remove("activo");
-                filtro.setAttribute("aria-pressed", "false");
-            });
+            botonesFiltro.forEach(b => b.classList.remove("activo"));
             boton.classList.add("activo");
-            boton.setAttribute("aria-pressed", "true");
             filtroActivo = boton.getAttribute("data-filtro");
             aplicarFiltros();
         });
@@ -298,6 +305,108 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", function () {
         if (window.innerWidth > 600) {
             cerrarMenu();
+        }
+    });
+});
+
+
+
+/* ========================================================
+   VISTA AMPLIADA DE PRODUCTOS
+   ======================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("modal-producto");
+    const imagenModal = document.getElementById("modal-imagen");
+    const nombreModal = document.getElementById("modal-producto-nombre");
+    const categoriaModal = document.getElementById("modal-categoria");
+    const valoracionModal = document.getElementById("modal-valoracion");
+    const precioModal = document.getElementById("modal-precio");
+    const descuentoModal = document.getElementById("modal-descuento");
+    const precioAnteriorModal = document.getElementById("modal-precio-anterior");
+    const botonModal = document.getElementById("modal-boton-compra");
+    const botonCerrar = document.getElementById("modal-producto-cerrar");
+
+    if (!modal || !imagenModal || !botonCerrar) return;
+
+    let elementoAnterior = null;
+
+    function abrirModal(tarjeta) {
+        const imagen = tarjeta.querySelector(".producto-imagen img");
+        const nombre = tarjeta.querySelector(".producto-info h3");
+        const categoria = tarjeta.querySelector(".producto-categoria");
+        const valoracion = tarjeta.querySelector(".valoracion");
+        const precioNormal = tarjeta.querySelector(".precio");
+        const preciosOferta = tarjeta.querySelector(".precio-oferta");
+        const descuento = tarjeta.querySelector(".oferta-etiqueta");
+        const enlace = tarjeta.querySelector(".btn-producto");
+
+        if (!imagen || !nombre) return;
+
+        elementoAnterior = document.activeElement;
+
+        imagenModal.src = imagen.src;
+        imagenModal.alt = imagen.alt || nombre.textContent.trim();
+        nombreModal.textContent = nombre.textContent.trim();
+        categoriaModal.textContent = categoria ? categoria.textContent.trim() : "";
+        valoracionModal.textContent = valoracion ? valoracion.textContent.trim() : "";
+
+        if (preciosOferta) {
+            const precioAnterior = preciosOferta.querySelector("span");
+            const precioActual = preciosOferta.querySelector("strong");
+
+            precioModal.textContent = precioActual ? precioActual.textContent.trim() : "";
+
+            precioAnteriorModal.textContent = precioAnterior ? precioAnterior.textContent.trim() : "";
+            precioAnteriorModal.style.display = precioAnterior ? "inline" : "none";
+
+            descuentoModal.textContent = descuento ? descuento.textContent.trim() : "";
+            descuentoModal.style.display = descuento ? "inline-block" : "none";
+        } else {
+            precioModal.textContent = precioNormal ? precioNormal.textContent.trim() : "";
+            precioAnteriorModal.textContent = "";
+            precioAnteriorModal.style.display = "none";
+            descuentoModal.textContent = "";
+            descuentoModal.style.display = "none";
+        }
+
+        botonModal.href = enlace ? enlace.href : "#";
+        botonModal.textContent = enlace ? enlace.textContent.trim() : "Ver producto";
+
+        modal.classList.add("activo");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        botonCerrar.focus();
+    }
+
+    function cerrarModal() {
+        modal.classList.remove("activo");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+
+        if (elementoAnterior) {
+            elementoAnterior.focus();
+        }
+    }
+
+    document.querySelectorAll(".producto .producto-imagen img").forEach(function (imagen) {
+        imagen.style.cursor = "zoom-in";
+
+        imagen.addEventListener("click", function () {
+            const tarjeta = imagen.closest(".producto");
+            if (tarjeta) abrirModal(tarjeta);
+        });
+    });
+
+    botonCerrar.addEventListener("click", cerrarModal);
+
+    modal.addEventListener("click", function (evento) {
+        if (evento.target === modal) cerrarModal();
+    });
+
+    document.addEventListener("keydown", function (evento) {
+        if (evento.key === "Escape" && modal.classList.contains("activo")) {
+            cerrarModal();
         }
     });
 });
