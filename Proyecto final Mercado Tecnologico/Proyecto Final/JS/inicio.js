@@ -1,5 +1,10 @@
-// 1. Arreglo en memoria
-let carrito = [];
+// 1. Arreglo del carrito: se carga desde localStorage para no perderlo al cambiar de página
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+// Guarda el carrito en localStorage (se llama cada vez que el carrito cambia)
+function guardarCarrito() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
 
 // 2. Agregar producto o incrementar cantidad
 function agregarAlCarrito(nombre, precio) {
@@ -37,6 +42,18 @@ function eliminarDelCarrito(posicion) {
     renderizarCarrito();
 }
 
+// 4.1 Modificar cantidad: cambio vale +1 (botón +) o -1 (botón -)
+function cambiarCantidad(posicion, cambio) {
+    carrito[posicion].cantidad += cambio;
+
+    // Si la cantidad llega a 0, se quita el producto del carrito
+    if (carrito[posicion].cantidad <= 0) {
+        carrito.splice(posicion, 1);
+    }
+
+    renderizarCarrito();
+}
+
 // 5. Vaciar carrito
 function vaciarCarrito() {
     carrito = [];
@@ -54,6 +71,8 @@ function cerrarCarrito() {
 
 // 7. Renderizar datos en el DOM
 function renderizarCarrito() {
+    guardarCarrito(); // Cada vez que se redibuja el carrito, también se guarda
+
     const lista = document.getElementById("lista-carrito");
     const totalSpan = document.getElementById("total-carrito");
     const contador = document.querySelector(".contador-carrito");
@@ -76,10 +95,15 @@ function renderizarCarrito() {
 
             lista.innerHTML += `
                 <li>
-                    <span><strong>${prod.cantidad}x</strong> ${prod.nombre} (S/ ${subtotal.toFixed(2)})</span>
-                    <button class="btn-eliminar" onclick="eliminarDelCarrito(${index})">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
+                    <span>${prod.nombre} (S/ ${subtotal.toFixed(2)})</span>
+                    <div class="controles-cantidad">
+                        <button class="btn-cantidad" onclick="cambiarCantidad(${index}, -1)">-</button>
+                        <strong>${prod.cantidad}</strong>
+                        <button class="btn-cantidad" onclick="cambiarCantidad(${index}, 1)">+</button>
+                        <button class="btn-eliminar" onclick="eliminarDelCarrito(${index})">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
                 </li>
             `;
         });
@@ -88,13 +112,62 @@ function renderizarCarrito() {
     totalSpan.textContent = totalPrecio.toFixed(2);
 }
 
-// 8. Finalizar compra
+// 8. Finalizar compra: cierra el carrito y abre el modal de pago con el total
 function finalizarCompra() {
     if (carrito.length === 0) return alert("Agrega productos primero.");
-    alert("¡Compra procesada con éxito!");
-    vaciarCarrito();
+
+    const total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+    document.getElementById("total-pago").textContent = total.toFixed(2);
+
     cerrarCarrito();
+    document.getElementById("modal-pago").style.display = "flex";
 }
+
+// 8.1 Validar los campos del pago; devuelve el mensaje de error o "" si todo está bien
+function validarPago(nombre, tarjeta, vencimiento, cvv) {
+    if (nombre === "") return "Ingresa el nombre del titular.";
+    if (!/^\d{16}$/.test(tarjeta)) return "La tarjeta debe tener 16 números.";
+    if (!/^\d{2}\/\d{2}$/.test(vencimiento)) return "El vencimiento debe tener el formato MM/AA.";
+    if (!/^\d{3}$/.test(cvv)) return "El CVV debe tener 3 números.";
+    return "";
+}
+
+// 8.2 Procesar el pago (se ejecuta al enviar el formulario)
+function procesarPago(e) {
+    e.preventDefault(); // Evita que la página se recargue
+
+    const nombre = document.getElementById("pago-nombre").value.trim();
+    const tarjeta = document.getElementById("pago-tarjeta").value.trim();
+    const vencimiento = document.getElementById("pago-vencimiento").value.trim();
+    const cvv = document.getElementById("pago-cvv").value.trim();
+
+    const error = validarPago(nombre, tarjeta, vencimiento, cvv);
+    document.getElementById("mensaje-error").textContent = error;
+    if (error !== "") return; // Si hay error, se muestra y no se continúa
+
+    // Pago "aprobado": se oculta el formulario, se muestra el éxito y se vacía el carrito
+    document.getElementById("form-pago").style.display = "none";
+    document.getElementById("mensaje-exito").style.display = "block";
+    vaciarCarrito();
+}
+
+// 8.3 Cerrar el modal de pago y dejarlo listo para la próxima vez
+function cerrarPago() {
+    document.getElementById("modal-pago").style.display = "none";
+    document.getElementById("form-pago").reset();
+    document.getElementById("form-pago").style.display = ""; // "" = vuelve al estilo del CSS (flex)
+    document.getElementById("mensaje-exito").style.display = "none";
+    document.getElementById("mensaje-error").textContent = "";
+}
+
+// 8.4 Cancelar el pago: se cierra el modal pero el carrito NO se borra
+function cancelarPago() {
+    cerrarPago();
+    mostrarNotificacion("Pago cancelado. Tus productos siguen en el carrito.");
+}
+
+// Al cargar cualquier página, se muestra el carrito guardado (contador del header incluido)
+document.addEventListener("DOMContentLoaded", renderizarCarrito);
 
 // 9. Delegación global de clics para todas las páginas
 document.addEventListener("click", function (e) {

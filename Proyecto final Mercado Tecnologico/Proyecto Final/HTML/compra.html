@@ -102,6 +102,47 @@
         </div>
     </div>
 
+    <!-- Modal de Pago (se abre al presionar "Comprar" en el carrito) -->
+    <div id="modal-pago" class="modal-carrito">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-credit-card"></i> Procesar Pago</h3>
+                <button class="btn-cerrar" onclick="cerrarPago()">&times;</button>
+            </div>
+
+            <!-- Formulario de pago (simulado) -->
+            <form id="form-pago" class="form-pago" onsubmit="procesarPago(event)" autocomplete="off" novalidate>
+                <p>Total a pagar: <strong>S/ <span id="total-pago">0.00</span></strong></p>
+
+                <label for="pago-nombre">Nombre del titular</label>
+                <input type="text" id="pago-nombre" placeholder="Ej: Juan Pérez">
+
+                <label for="pago-tarjeta">Número de tarjeta (16 dígitos)</label>
+                <input type="text" id="pago-tarjeta" maxlength="16" placeholder="1234567812345678">
+
+                <label for="pago-vencimiento">Vencimiento (MM/AA)</label>
+                <input type="text" id="pago-vencimiento" maxlength="5" placeholder="08/28">
+
+                <label for="pago-cvv">CVV</label>
+                <input type="password" id="pago-cvv" maxlength="3" placeholder="123">
+
+                <p id="mensaje-error" class="mensaje-error"></p>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-vaciar" onclick="cancelarPago()">Cancelar</button>
+                    <button type="submit" class="btn-comprar">Pagar</button>
+                </div>
+            </form>
+
+            <!-- Mensaje de éxito (oculto hasta que se procesa el pago) -->
+            <div id="mensaje-exito" class="mensaje-exito">
+                <i class="fa-solid fa-circle-check"></i>
+                <h3>¡Pago procesado con éxito!</h3>
+                <button class="btn-comprar" onclick="cerrarPago()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- ================================================= CONTENIDO DE COMPRA ================================================== -->
     <main class="pagina-compra">
         <section class="seccion-compra">
