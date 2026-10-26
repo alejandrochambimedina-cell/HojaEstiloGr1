@@ -103,6 +103,16 @@
                     <input type="text" id="buscarProducto" placeholder="Buscar pieza o componente...">
                 </div>
 
+                <!-- "Ordenar por" va junto al buscador (primera fila), igual que en las otras páginas -->
+                <div class="filtro-orden-wrap">
+                    <select class="filtro-orden" id="ordenarPrecio">
+                        <option value="relevancia">Ordenar por: Relevancia</option>
+                        <option value="menor">Precio: menor a mayor</option>
+                        <option value="mayor">Precio: mayor a menor</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
                 <!-- Botón que despliega las categorías (solo se ve en móvil) -->
                 <button type="button" class="filtro-toggle" id="filtroToggle" aria-expanded="false"
                     aria-controls="filtroCategorias">
@@ -121,15 +131,6 @@
                     <button type="button" class="filtro-btn" data-filtro="placa">Placas Base</button>
                     <button type="button" class="filtro-btn" data-filtro="ssd">Almacenamiento</button>
                     <button type="button" class="filtro-btn" data-filtro="psu">Fuentes de Poder</button>
-                </div>
-
-                <div class="filtro-orden-wrap">
-                    <select class="filtro-orden" id="ordenarPrecio">
-                        <option value="relevancia">Ordenar por: Relevancia</option>
-                        <option value="menor">Precio: menor a mayor</option>
-                        <option value="mayor">Precio: mayor a menor</option>
-                    </select>
-                    <i class="fa-solid fa-chevron-down"></i>
                 </div>
 
             </div>
