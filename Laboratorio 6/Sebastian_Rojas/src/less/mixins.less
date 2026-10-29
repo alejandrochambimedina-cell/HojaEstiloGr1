@@ -1,0 +1,47 @@
+// ==========================================================================
+// mixins.less — bloques reutilizables
+// ==========================================================================
+
+// Anillo de foco accesible
+.focus-ring(@color: @color-focus) {
+  outline: 3px solid @color;
+  outline-offset: 3px;
+}
+
+// Tarjeta de superficie reutilizable
+.surface-card(@padding: @space-3) {
+  background: @color-surface;
+  border: 1px solid @color-border;
+  border-radius: @radius-md;
+  box-shadow: @shadow-sm;
+  padding: @padding;
+}
+
+// Quitar estilos por defecto de enlaces
+.link-reset() {
+  color: inherit;
+  text-decoration: none;
+}
+
+// Apilado vertical con separación
+.stack(@gap: @space-2) {
+  display: flex;
+  flex-direction: column;
+  gap: @gap;
+}
+
+// Tamaños de botón usando guardas (mixin con "when")
+.button-size(@size) when (@size = small) {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.button-size(@size) when (@size = large) {
+  padding: 0.85rem 1.3rem;
+  font-size: 1rem;
+}
+
+.button-size(@size) when (default()) {
+  padding: 0.7rem 1.1rem;
+  font-size: 0.95rem;
+}

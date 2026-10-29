@@ -1,0 +1,134 @@
+// ==========================================================================
+// components.less — piezas visuales del sitio
+// ==========================================================================
+
+// Encabezado
+.site-header {
+  background: @color-surface;
+  border-bottom: 1px solid @color-border;
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: @space-2;
+    min-height: 72px;
+  }
+}
+
+// Marca / logotipo textual
+.brand {
+  .link-reset();
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: @color-primary;
+}
+
+// Navegación principal
+.nav {
+  display: flex;
+  gap: @space-2;
+
+  a {
+    .link-reset();
+    color: @color-text;
+    font-weight: 600;
+
+    &:hover {
+      color: @color-primary;
+    }
+
+    &:focus-visible {
+      .focus-ring();
+    }
+  }
+}
+
+// Botones
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: @radius-sm;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+
+  &--primary {
+    background: @color-primary;
+    color: @color-surface;
+
+    &:hover {
+      background: @color-primary-dark;
+    }
+
+    &:focus-visible {
+      .focus-ring();
+    }
+  }
+
+  &--small {
+    .button-size(small);
+  }
+
+  &--large {
+    .button-size(large);
+  }
+}
+
+// Texto pequeño de introducción a una sección
+.eyebrow {
+  margin: 0 0 @space-1;
+  color: @color-primary;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+// Texto introductorio
+.lead {
+  color: @color-muted;
+  font-size: 1.1rem;
+}
+
+// Tarjetas
+.card {
+  .surface-card();
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: @space-1;
+  }
+
+  &__text {
+    margin-bottom: @space-2;
+    color: @color-muted;
+  }
+}
+
+// Etiqueta pequeña
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: @color-bg;
+  color: @color-primary;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+// Lista de comprobación
+.check-list {
+  .stack(@space-1);
+  padding-left: 1.2rem;
+}
+
+// Pie de página
+.site-footer {
+  margin-top: @space-5;
+  padding-block: @space-4;
+  background: @color-text;
+  color: @color-surface;
+  text-align: center;
+}

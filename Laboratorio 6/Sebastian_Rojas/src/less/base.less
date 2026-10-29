@@ -1,0 +1,84 @@
+// ==========================================================================
+// base.less — reset y estilos base del documento
+// ==========================================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @color-text;
+  background: @color-bg;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: @color-primary;
+
+  &:hover {
+    color: @color-primary-dark;
+  }
+
+  &:focus-visible {
+    .focus-ring();
+  }
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+// Enlace para saltar al contenido (oculto hasta recibir foco)
+.skip-link {
+  position: absolute;
+  left: -9999px;
+
+  &:focus {
+    left: @space-2;
+    top: @space-2;
+    z-index: 1000;
+    padding: @space-1 @space-2;
+    background: @color-surface;
+    border-radius: @radius-sm;
+    .focus-ring();
+  }
+}
+
+// Respeta la preferencia de movimiento reducido del sistema
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
