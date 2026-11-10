@@ -1,0 +1,108 @@
+
+/* ==========================================
+   IDENTIDAD VISUAL DEL CATÁLOGO
+   ========================================== */
+
+.lab14 {
+    background: #f6f8fb;
+    color: #182536;
+}
+
+/* ==========================================
+   PORTADA PRINCIPAL
+   ========================================== */
+
+.lab14 .hero-panel {
+    background: #173450;
+    color: #ffffff;
+}
+
+.lab14 .lab-intro {
+    max-width: 58ch;
+}
+
+/* ==========================================
+   TARJETAS DE LOS TALLERES
+   ========================================== */
+
+.lab14 .card {
+    --bs-card-border-color: #c4d1df;
+    border-radius: 1rem;
+}
+
+.lab14 .card-title,
+.lab14 .card-text {
+    overflow-wrap: anywhere;
+}
+
+/* Distinción visual del cuarto taller */
+
+.lab14 .reto-card {
+    border-top: 4px solid #0f6b68;
+}
+
+/* ==========================================
+   PERSONALIZACIÓN DE LOS BOTONES
+   ========================================== */
+
+.lab14 .btn-primary {
+    /* Estado normal */
+    --bs-btn-bg: #0f6b68;
+    --bs-btn-border-color: #0f6b68;
+
+    /* Estado hover */
+    --bs-btn-hover-bg: #095451;
+    --bs-btn-hover-border-color: #095451;
+
+    /* Estado activo o pulsado */
+    --bs-btn-active-bg: #073f3e;
+    --bs-btn-active-border-color: #073f3e;
+}
+
+/* ==========================================
+   ACCESIBILIDAD Y FOCO DEL TECLADO
+   ========================================== */
+
+.lab14 :where(a, button):focus-visible,
+.lab14 main:focus {
+    outline: 3px solid #963d14;
+    outline-offset: 4px;
+}
+
+/* Foco blanco para el botón de la portada */
+
+.lab14 .hero-panel button:focus-visible {
+    outline-color: #ffffff;
+}
+
+/* ==========================================
+   ENLACE PARA SALTAR AL CONTENIDO
+   ========================================== */
+
+.lab14 .skip-link {
+    position: absolute;
+    z-index: 10;
+    top: .5rem;
+    left: .5rem;
+    padding: .5rem 1rem;
+    background: #ffffff;
+    color: #182536;
+    border-radius: .25rem;
+}
+
+/* ==========================================
+   PREFERENCIA DE MOVIMIENTO REDUCIDO
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .lab14 *,
+    .lab14 *::before,
+    .lab14 *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+
+}
