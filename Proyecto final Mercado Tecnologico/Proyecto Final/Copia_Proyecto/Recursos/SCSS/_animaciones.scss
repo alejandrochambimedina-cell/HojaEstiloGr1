@@ -1,0 +1,55 @@
+// =========================================================
+//   _animaciones.scss  (PARCIAL)
+//   ---------------------------------------------------------
+//   Librería de herramientas para animar. Al empezar con "_",
+//   Sass NO genera un .css propio: solo se importa con @use
+//   desde global.scss y estilos.scss.
+//   Aquí solo hay variables y mixins; los @keyframes viven en
+//   el archivo que los usa.
+// =========================================================
+
+// ---------- Variables de animación ----------
+$duracion-corta: 0.25s;
+$duracion-media: 0.5s;
+$duracion-larga: 0.8s;
+
+$easing-suave: ease-out;
+$easing-rebote: cubic-bezier(0.2, 0.8, 0.3, 1.2);
+
+// ---------- Mixin: aplicar una animación ----------
+// Usa la forma abreviada de "animation" con valores por defecto,
+// así cada componente solo indica lo que cambia.
+// Nota: fill-mode "backwards" aplica el estado inicial durante el
+// retraso, pero al terminar libera la propiedad. Así el efecto
+// :hover (transform) sigue funcionando después de la entrada.
+@mixin animar(
+    $nombre,
+    $duracion: $duracion-media,
+    $easing: $easing-suave,
+    $retraso: 0s,
+    $repeticion: 1,
+    $fill: backwards
+) {
+    animation: $nombre $duracion $easing $retraso $repeticion normal $fill;
+}
+
+// ---------- Mixin: retraso escalonado entre hermanos ----------
+// Genera con un @for el animation-delay de cada hijo:
+// el 1.º entra de inmediato, el 2.º un poco después, etc.
+@mixin escalonar($cantidad, $paso: 0.08s) {
+    @for $i from 1 through $cantidad {
+        &:nth-child(#{$i}) {
+            animation-delay: ($i - 1) * $paso;
+        }
+    }
+}
+
+// ---------- Mixin: respetar "reducir movimiento" ----------
+// Accesibilidad / compatibilidad: si el usuario desactivó las
+// animaciones en su sistema, el contenido dentro de este mixin
+// se aplica solo en ese caso.
+@mixin sin-movimiento {
+    @media (prefers-reduced-motion: reduce) {
+        @content;
+    }
+}
