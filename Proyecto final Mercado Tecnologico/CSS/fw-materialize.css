@@ -1,0 +1,290 @@
+@keyframes aparecer-arriba {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+body {
+  background-color: #f4f7fb;
+}
+
+nav.nav-tecno {
+  background-color: #071a3d;
+  height: auto;
+  line-height: normal;
+}
+nav.nav-tecno .nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 68px;
+}
+nav.nav-tecno .nav-wrapper {
+  padding: 0 24px;
+}
+nav.nav-tecno .brand-logo {
+  position: static;
+  display: flex;
+  align-items: center;
+}
+nav.nav-tecno .brand-logo img {
+  height: 46px;
+  width: auto;
+}
+nav.nav-tecno ul.menu-escritorio {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+nav.nav-tecno ul.menu-escritorio li {
+  float: none;
+}
+nav.nav-tecno ul.menu-escritorio li.activa a {
+  background-color: #00897b;
+  border-radius: 6px;
+}
+nav.nav-tecno ul.menu-escritorio a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: auto;
+  line-height: normal;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+nav.nav-tecno ul.menu-escritorio a i.material-icons {
+  height: auto;
+  line-height: 1;
+  margin: 0;
+  font-size: 22px;
+}
+nav.nav-tecno ul.menu-escritorio a.btn {
+  height: auto;
+  line-height: normal;
+  padding: 10px 16px;
+}
+nav.nav-tecno .sidenav-trigger {
+  margin: 0;
+  height: auto;
+  line-height: normal;
+}
+@media (max-width: 1099.98px) {
+  nav.nav-tecno ul.menu-escritorio {
+    display: none;
+  }
+  nav.nav-tecno .sidenav-trigger {
+    display: flex;
+    align-items: center;
+  }
+}
+@media (min-width: 1100px) {
+  nav.nav-tecno .sidenav-trigger {
+    display: none;
+  }
+}
+
+.sidenav li.activa > a {
+  background-color: rgba(0, 137, 123, 0.14);
+  font-weight: 500;
+}
+
+.portada-hogar {
+  padding: 3rem 0 2rem;
+  background: linear-gradient(135deg, #e0f2f1 0%, #ffffff 70%);
+}
+.portada-hogar h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 1rem 0;
+}
+.portada-hogar .row {
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 0;
+}
+.portada-hogar .row > div > * {
+  animation: aparecer-arriba 0.8s ease-out 0s 1 normal backwards;
+}
+.portada-hogar img {
+  border-radius: 1.2rem;
+}
+.portada-hogar .chip {
+  height: auto;
+  line-height: 1.4;
+  padding: 6px 14px;
+  white-space: normal;
+}
+
+.barra-filtros {
+  align-items: center;
+  gap: 1rem;
+  animation: aparecer-arriba 0.8s ease-out 0.15s 1 normal backwards;
+}
+.barra-filtros .input-field {
+  margin: 0;
+}
+
+.chip.filtro-btn {
+  cursor: pointer;
+  margin: 4px 6px 4px 0;
+  padding: 0 18px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.chip.filtro-btn:hover {
+  background-color: #b2dfdb;
+}
+.chip.filtro-btn.activo {
+  background-color: #00897b;
+  color: #fff;
+}
+
+.grilla-productos {
+  gap: 1.5rem;
+}
+.grilla-productos > .producto {
+  display: flex;
+  animation: aparecer-arriba 0.8s ease-out 0s 1 normal backwards;
+}
+.grilla-productos > .producto:nth-child(1) {
+  animation-delay: 0s;
+}
+.grilla-productos > .producto:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.grilla-productos > .producto:nth-child(3) {
+  animation-delay: 0.16s;
+}
+.grilla-productos > .producto:nth-child(4) {
+  animation-delay: 0.24s;
+}
+.grilla-productos > .producto:nth-child(5) {
+  animation-delay: 0.32s;
+}
+.grilla-productos > .producto:nth-child(6) {
+  animation-delay: 0.4s;
+}
+.grilla-productos > .producto:nth-child(7) {
+  animation-delay: 0.48s;
+}
+.grilla-productos > .producto:nth-child(8) {
+  animation-delay: 0.56s;
+}
+.grilla-productos > .producto:nth-child(9) {
+  animation-delay: 0.64s;
+}
+
+.grilla-productos > .col.producto > .card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.grilla-productos > .col.producto > .card:hover {
+  transform: translateY(-6px);
+}
+.grilla-productos > .col.producto > .card .card-image {
+  background-color: #f8fafc;
+}
+.grilla-productos > .col.producto > .card .card-image img {
+  height: 200px;
+  object-fit: contain;
+  padding: 0.8rem;
+}
+.grilla-productos > .col.producto > .card .card-content {
+  flex: 1;
+}
+.grilla-productos > .col.producto > .card .card-content h3.card-title {
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0.3rem 0 0;
+}
+.grilla-productos > .col.producto > .card .card-content .producto-categoria {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #00897b;
+}
+.grilla-productos > .col.producto > .card .card-content .pista {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: #9e9e9e;
+}
+.grilla-productos > .col.producto > .card .card-reveal h3.card-title {
+  font-size: 1.15rem;
+  margin: 0 0 0.8rem;
+}
+.grilla-productos > .col.producto > .card .card-action.producto-pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 12px 16px;
+}
+.grilla-productos > .col.producto > .card .card-action.producto-pie strong {
+  font-size: 1.15rem;
+  color: #00897b;
+  white-space: nowrap;
+}
+
+.etiqueta-oferta {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  float: none;
+  margin: 0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  min-width: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+#mensajeSinResultados {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+footer.page-footer.pie-tecno {
+  background-color: #071a3d;
+  padding-top: 3rem;
+}
+footer.page-footer.pie-tecno a:hover {
+  color: #fff;
+}
+footer.page-footer.pie-tecno li {
+  overflow-wrap: anywhere;
+}
+footer.page-footer.pie-tecno .footer-logo span {
+  color: #4db6ac;
+}
+footer.page-footer.pie-tecno .footer-copyright {
+  background-color: #04132f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*# sourceMappingURL=fw-materialize.css.map */

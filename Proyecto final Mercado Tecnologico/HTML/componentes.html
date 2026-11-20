@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TecnoStore - Componentes para PC, construido con Tailwind CSS.">
+    <title>Componentes (Tailwind CSS) | TecnoStore</title>
+
+    <!-- Fuente y iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Carrito compartido (CSS propio; Tailwind no lo toca) -->
+    <link rel="stylesheet" href="../CSS/carrito.css">
+
+    <!-- Tailwind CSS v4 (versión de navegador: genera el CSS al cargar la página) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.5"></script>
+
+    <!-- En Tailwind v4 el tema se define con CSS (@theme) -->
+    <style type="text/tailwindcss">
+        @theme {
+            --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+            --color-marca: #0866e8;
+            --color-marca-oscuro: #071a3d;
+            --animate-entrada: entrada 0.7s ease-out backwards;
+            @keyframes entrada {
+                from { opacity: 0; transform: translateY(24px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100 font-sans text-slate-800 antialiased">
+
+    <!-- ============ BARRA SUPERIOR ============ -->
+    <header class="sticky top-0 z-50 bg-marca-oscuro text-white shadow-lg">
+        <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2.5">
+            <a href="index.html"><img src="../Imagenes/logo-tecno.png" alt="Logo de TecnoStore" class="h-11 w-auto"></a>
+
+            <nav class="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
+                <a href="index.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition text-slate-200 hover:bg-white/10 hover:text-white"><i class="fa-solid fa-house"></i>Inicio</a>
+                <a href="computadoras.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition text-slate-200 hover:bg-white/10 hover:text-white"><i class="fa-solid fa-laptop"></i>Computadoras</a>
+                <a href="componentes.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition bg-marca text-white"><i class="fa-solid fa-microchip"></i>Componentes</a>
+                <a href="gaming.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition text-slate-200 hover:bg-white/10 hover:text-white"><i class="fa-solid fa-gamepad"></i>Accesorios y Gaming</a>
+                <a href="electrodomesticos.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition text-slate-200 hover:bg-white/10 hover:text-white"><i class="fa-solid fa-blender"></i>Electrodomésticos</a>
+                <a href="#carrito" onclick="mostrarCarrito()" class="carrito-link ml-2 flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold shadow-lg shadow-blue-900/40 transition hover:-translate-y-0.5 hover:bg-sky-500">
+                    <i class="fa-solid fa-cart-shopping"></i> Carrito <span class="contador-carrito">0</span>
+                </a>
+            </nav>
+
+            <button id="btnMenuTw" type="button" class="rounded-lg p-2 text-xl transition hover:bg-white/10 lg:hidden" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <nav id="menuMovilTw" class="hidden flex-col gap-1 border-t border-white/10 px-4 pb-4 pt-2 lg:hidden" aria-label="Navegación móvil">
+            <a href="index.html" class="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-white"><i class="fa-solid fa-house w-5 text-center"></i>Inicio</a>
+            <a href="computadoras.html" class="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-white"><i class="fa-solid fa-laptop w-5 text-center"></i>Computadoras</a>
+            <a href="componentes.html" class="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium bg-marca text-white"><i class="fa-solid fa-microchip w-5 text-center"></i>Componentes</a>
+            <a href="gaming.html" class="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-white"><i class="fa-solid fa-gamepad w-5 text-center"></i>Accesorios y Gaming</a>
+            <a href="electrodomesticos.html" class="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-white"><i class="fa-solid fa-blender w-5 text-center"></i>Electrodomésticos</a>
+            <a href="#carrito" onclick="mostrarCarrito()" class="mt-1 flex items-center gap-2 rounded-lg bg-marca px-3 py-2.5 text-sm font-semibold"><i class="fa-solid fa-cart-shopping w-5 text-center"></i>Carrito <span class="contador-carrito">0</span></a>
+        </nav>
+    </header>
+
+    <!-- Notificación Flotante (Toast) -->
+    <div id="notificacion" class="notificacion"></div>
+
+    <!-- Modal del Carrito -->
+    <div id="modal-carrito" class="modal-carrito">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-cart-shopping"></i> Mi Carrito</h3>
+                <button class="btn-cerrar" onclick="cerrarCarrito()">&times;</button>
+            </div>
+
+            <ul id="lista-carrito"></ul>
+
+            <div class="modal-footer">
+                <p>Total: <strong>S/ <span id="total-carrito">0.00</span></strong></p>
+                <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar</button>
+                <button class="btn-comprar" onclick="finalizarCompra()">Comprar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Pago (se abre al presionar "Comprar" en el carrito) -->
+    <div id="modal-pago" class="modal-carrito">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-credit-card"></i> Procesar Pago</h3>
+                <button class="btn-cerrar" onclick="cerrarPago()">&times;</button>
+            </div>
+
+            <!-- Formulario de pago (simulado) -->
+            <form id="form-pago" class="form-pago" onsubmit="procesarPago(event)" autocomplete="off" novalidate>
+                <p>Total a pagar: <strong>S/ <span id="total-pago">0.00</span></strong></p>
+
+                <label for="pago-nombre">Nombre del titular</label>
+                <input type="text" id="pago-nombre" placeholder="Ej: Juan Pérez">
+
+                <label for="pago-tarjeta">Número de tarjeta (16 dígitos)</label>
+                <input type="text" id="pago-tarjeta" maxlength="16" placeholder="1234567812345678">
+
+                <label for="pago-vencimiento">Vencimiento (MM/AA)</label>
+                <input type="text" id="pago-vencimiento" maxlength="5" placeholder="08/28">
+
+                <label for="pago-cvv">CVV</label>
+                <input type="password" id="pago-cvv" maxlength="3" placeholder="123">
+
+                <p id="mensaje-error" class="mensaje-error"></p>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-vaciar" onclick="cancelarPago()">Cancelar</button>
+                    <button type="submit" class="btn-comprar">Pagar</button>
+                </div>
+            </form>
+
+            <!-- Mensaje de éxito (oculto hasta que se procesa el pago) -->
+            <div id="mensaje-exito" class="mensaje-exito">
+                <i class="fa-solid fa-circle-check"></i>
+                <h3>¡Pago procesado con éxito!</h3>
+                <button class="btn-comprar" onclick="cerrarPago()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+
+        <!-- ============ ENCABEZADO ============ -->
+        <section class="mx-auto max-w-3xl animate-entrada px-4 pb-4 pt-12 text-center">
+            <span class="inline-flex items-center gap-2 text-sm font-semibold text-marca"><i class="fa-solid fa-microchip"></i> Piezas de alto rendimiento · hecho con Tailwind</span>
+            <h1 class="mt-2 text-4xl font-bold tracking-tight text-marca-oscuro sm:text-5xl">Componentes para PC</h1>
+            <p class="mt-3 text-slate-500">Arma o repotencia tu computadora con la mejor tecnología en hardware.</p>
+        </section>
+
+        <!-- ============ BUSCADOR, FILTROS Y ORDEN ============ -->
+        <section class="mx-auto flex max-w-7xl flex-col items-center gap-4 px-4 pt-6 animate-entrada [animation-delay:150ms]">
+            <div class="flex w-full max-w-xl items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm focus-within:border-marca focus-within:ring-2 focus-within:ring-marca/20">
+                <i class="fa-solid fa-magnifying-glass text-marca"></i>
+                <input type="text" id="buscarProducto" placeholder="Buscar pieza o componente..." aria-label="Buscar producto" class="w-full bg-transparent text-sm outline-none placeholder:text-slate-400">
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-2">
+            <button type="button" class="filtro-btn rounded-full border border-marca/30 bg-white px-4 py-2 text-sm font-semibold text-marca transition hover:bg-blue-50 active:scale-95 [&.activo]:border-marca [&.activo]:bg-marca [&.activo]:text-white activo" data-filtro="todos">Todos</button>
+            <button type="button" class="filtro-btn rounded-full border border-marca/30 bg-white px-4 py-2 text-sm font-semibold text-marca transition hover:bg-blue-50 active:scale-95 [&.activo]:border-marca [&.activo]:bg-marca [&.activo]:text-white" data-filtro="cpu">Procesadores</button>
+            <button type="button" class="filtro-btn rounded-full border border-marca/30 bg-white px-4 py-2 text-sm font-semibold text-marca transition hover:bg-blue-50 active:scale-95 [&.activo]:border-marca [&.activo]:bg-marca [&.activo]:text-white" data-filtro="gpu">Tarjetas Gráficas</button>
+            <button type="button" class="filtro-btn rounded-full border border-marca/30 bg-white px-4 py-2 text-sm font-semibold text-marca transition hover:bg-blue-50 active:scale-95 [&.activo]:border-marca [&.activo]:bg-marca [&.activo]:text-white" data-filtro="ram">Memorias RAM</button>
+            <button type="button" class="filtro-btn rounded-full border border-marca/30 bg-white px-4 py-2 text-sm font-semibold text-marca transition hover:bg-blue-50 active:scale-95 [&.activo]:border-marca [&.activo]:bg-marca [&.activo]:text-white" data-filtro="placa">Placas Base</button>
+            <button type="button" class="filtro-btn rounded-full border border-marca/30 bg-white px-4 py-2 text-sm font-semibold text-marca transition hover:bg-blue-50 active:scale-95 [&.activo]:border-marca [&.activo]:bg-marca [&.activo]:text-white" data-filtro="ssd">Almacenamiento</button>
+            <button type="button" class="filtro-btn rounded-full border border-marca/30 bg-white px-4 py-2 text-sm font-semibold text-marca transition hover:bg-blue-50 active:scale-95 [&.activo]:border-marca [&.activo]:bg-marca [&.activo]:text-white" data-filtro="psu">Fuentes de Poder</button>
+            </div>
+
+            <div class="relative">
+                <select id="ordenarPrecio" aria-label="Ordenar productos" class="cursor-pointer appearance-none rounded-full border border-marca/30 bg-white py-2 pl-4 pr-10 text-sm font-semibold text-marca outline-none transition hover:bg-blue-50 focus:border-marca">
+                    <option value="relevancia">Ordenar por: Relevancia</option>
+                    <option value="menor">Precio: menor a mayor</option>
+                    <option value="mayor">Precio: mayor a menor</option>
+                </select>
+                <i class="fa-solid fa-chevron-down pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-marca"></i>
+            </div>
+        </section>
+
+        <!-- ============ CATÁLOGO ============ -->
+        <section id="catalogo-componentes" class="mx-auto max-w-7xl px-4 py-8">
+            <div id="grid-componentes" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="cpu" data-orden="0">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/Procesador_IntelCore7.png" alt="Intel Core i7-14700K" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">Top Ventas</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Procesadores | Intel</span>
+                    <small class="text-xs text-slate-400">SKU: CPU-INTEL-I7-14700K</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">Intel Core i7-14700K</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Núcleos</dt><dd>20 (8 Performance + 12 Efficient)</dd><dt class="font-semibold text-slate-700">Hilos</dt><dd>28</dd><dt class="font-semibold text-slate-700">Frecuencia</dt><dd>Base 3.4 GHz - Turbo hasta 5.6 GHz</dd><dt class="font-semibold text-slate-700">Caché</dt><dd>33MB Smart Cache</dd><dt class="font-semibold text-slate-700">Socket</dt><dd>LGA1700</dd><dt class="font-semibold text-slate-700">Ideal para</dt><dd>Gaming y multitarea pesada</dd><dt class="font-semibold text-slate-700">Compatibilidad</dt><dd>Memoria DDR4 y DDR5, PCIe 5.0 y 4.0</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-box-open mt-0.5"></i><span>Incluye pasta térmica de regalo + Garantía de 3 años</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 1,950.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="cpu" data-orden="1">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/Procesador_AMDRyzen7.png" alt="AMD Ryzen 7 7800X3D" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">Favorito Gamers</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Procesadores | AMD</span>
+                    <small class="text-xs text-slate-400">SKU: CPU-AMD-R7-7800X3D</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">AMD Ryzen 7 7800X3D</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Núcleos</dt><dd>8</dd><dt class="font-semibold text-slate-700">Hilos</dt><dd>16</dd><dt class="font-semibold text-slate-700">Frecuencia</dt><dd>Base 4.2 GHz - Boost hasta 5.0 GHz</dd><dt class="font-semibold text-slate-700">Caché</dt><dd>96MB 3D V-Cache</dd><dt class="font-semibold text-slate-700">Socket</dt><dd>AM5</dd><dt class="font-semibold text-slate-700">Ideal para</dt><dd>Alto rendimiento en juegos</dd><dt class="font-semibold text-slate-700">Compatibilidad</dt><dd>Memoria DDR5</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐⭐ (5.0/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-fire mt-0.5"></i><span>El preferido para gaming puro + Garantía de 3 años</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 1,780.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="cpu" data-orden="2">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/Procesador_IntelCore5.png" alt="Intel Core i5-13400F" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">Calidad-Precio</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Procesadores | Intel</span>
+                    <small class="text-xs text-slate-400">SKU: CPU-INTEL-I5-13400F</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">Intel Core i5-13400F</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Núcleos</dt><dd>10 (6 Performance + 4 Efficient)</dd><dt class="font-semibold text-slate-700">Hilos</dt><dd>16</dd><dt class="font-semibold text-slate-700">Frecuencia</dt><dd>Base 2.5 GHz - Turbo hasta 4.6 GHz</dd><dt class="font-semibold text-slate-700">Caché</dt><dd>20MB Smart Cache</dd><dt class="font-semibold text-slate-700">Socket</dt><dd>LGA1700</dd><dt class="font-semibold text-slate-700">Ideal para</dt><dd>Gama media, requiere GPU dedicada (sin gráficos integrados)</dd><dt class="font-semibold text-slate-700">Compatibilidad</dt><dd>Memoria DDR4 y DDR5</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐☆ (4.6/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-tag mt-0.5"></i><span>Excelente opción calidad-precio + Garantía de 2 años</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 750.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="gpu" data-orden="3">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/GPU_NVIDIA4060.png" alt="Tarjeta Gráfica NVIDIA GeForce RTX 4060" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">Más Popular</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Tarjetas Gráficas | NVIDIA</span>
+                    <small class="text-xs text-slate-400">SKU: GPU-RTX4060-8G-OC</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">GPU NVIDIA GeForce RTX 4060 8GB GDDR6</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Núcleos CUDA</dt><dd>3072</dd><dt class="font-semibold text-slate-700">Frecuencia Boost</dt><dd>2460 MHz</dd><dt class="font-semibold text-slate-700">Memoria</dt><dd>8GB GDDR6 (128-bit) - 17 Gbps</dd><dt class="font-semibold text-slate-700">Arquitectura</dt><dd>Ada Lovelace (DLSS 3 y Ray Tracing 3ª Gen)</dd><dt class="font-semibold text-slate-700">Conectividad</dt><dd>3x DisplayPort 1.4a, 1x HDMI 2.1a</dd><dt class="font-semibold text-slate-700">Fuente Recomendada</dt><dd>550W (Conector 1x 8-pin)</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐⭐ (4.8/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-truck-fast mt-0.5"></i><span>Envío gratis a todo el Perú + Garantía oficial de 2 años</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 1,650.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="gpu" data-orden="4">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/GPU_NVIDIA4070.png" alt="NVIDIA GeForce RTX 4070 Super" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">DLSS 3 &amp; Ray Tracing</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Tarjetas Gráficas | NVIDIA</span>
+                    <small class="text-xs text-slate-400">SKU: GPU-RTX4070S-12G</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">NVIDIA GeForce RTX 4070 Super</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Memoria</dt><dd>12GB GDDR6X (192-bit)</dd><dt class="font-semibold text-slate-700">Frecuencia Boost</dt><dd>2475 MHz</dd><dt class="font-semibold text-slate-700">Arquitectura</dt><dd>Ada Lovelace (DLSS 3 y Ray Tracing 3ª Gen)</dd><dt class="font-semibold text-slate-700">Ideal para</dt><dd>Jugar en 1440p con gráficos al máximo</dd><dt class="font-semibold text-slate-700">Fuente Recomendada</dt><dd>650W</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-truck-fast mt-0.5"></i><span>Envío gratis a todo el Perú + Garantía oficial de 2 años</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 2,890.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="gpu" data-orden="5">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/GPU_AMDRX7800.png" alt="AMD Radeon RX 7800 XT" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">Gran VRAM</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Tarjetas Gráficas | AMD</span>
+                    <small class="text-xs text-slate-400">SKU: GPU-RX7800XT-16G</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">AMD Radeon RX 7800 XT</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Memoria</dt><dd>16GB GDDR6 (256-bit)</dd><dt class="font-semibold text-slate-700">Arquitectura</dt><dd>RDNA 3</dd><dt class="font-semibold text-slate-700">Ideal para</dt><dd>Diseño y juegos, gran potencia y VRAM</dd><dt class="font-semibold text-slate-700">Conectividad</dt><dd>DisplayPort 2.1, HDMI 2.1</dd><dt class="font-semibold text-slate-700">Fuente Recomendada</dt><dd>700W</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐☆ (4.7/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-truck-fast mt-0.5"></i><span>Envío gratis a todo el Perú + Garantía oficial de 2 años</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 2,450.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="ram" data-orden="6">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/RAM_RGB32GB_2X16.png" alt="Corsair Vengeance RGB DDR5 32GB" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">RGB Sync</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Memorias RAM | Corsair DDR5</span>
+                    <small class="text-xs text-slate-400">SKU: RAM-CORSAIR-DDR5-32G-6000</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">Corsair Vengeance RGB DDR5 32GB (2x16GB) 6000MHz</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Capacidad</dt><dd>32 GB (2 Módulos de 16 GB Dual Channel)</dd><dt class="font-semibold text-slate-700">Frecuencia</dt><dd>6000 MHz</dd><dt class="font-semibold text-slate-700">Latencia</dt><dd>CL36 (1.35V)</dd><dt class="font-semibold text-slate-700">Soporte Perfiles</dt><dd>Intel XMP 3.0 &amp; AMD EXPO</dd><dt class="font-semibold text-slate-700">Diseño</dt><dd>Disipador térmico de aluminio anodizado</dd><dt class="font-semibold text-slate-700">Iluminación</dt><dd>RGB personalizable por software</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-shield-halved mt-0.5"></i><span>Garantía vitalicia de fabricante</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 580.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="ram" data-orden="7">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/RAM_Kingston16GB_3200MHz.png" alt="Kingston Fury Beast DDR4 16GB" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">Entrada / Actualización</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Memorias RAM | Kingston DDR4</span>
+                    <small class="text-xs text-slate-400">SKU: RAM-KINGSTON-DDR4-16G-3200</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">Kingston Fury Beast DDR4 16GB 3200MHz</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Capacidad</dt><dd>16 GB (1 Módulo)</dd><dt class="font-semibold text-slate-700">Frecuencia</dt><dd>3200 MHz</dd><dt class="font-semibold text-slate-700">Latencia</dt><dd>CL16</dd><dt class="font-semibold text-slate-700">Ideal para</dt><dd>Equipos de gama de entrada o actualización</dd><dt class="font-semibold text-slate-700">Diseño</dt><dd>Disipador de aluminio bajo perfil</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐☆ (4.6/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-shield-halved mt-0.5"></i><span>Garantía de por vida de fabricante</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 195.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="ssd" data-orden="8">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/DiscoSSD_Samsung990PROSSD_2TBM.2NVMe.png" alt="Samsung 990 PRO SSD 2TB" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">Ultra Rápido</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Almacenamiento | Samsung NVMe</span>
+                    <small class="text-xs text-slate-400">SKU: SSD-SAMSUNG-990PRO-2TB</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">Samsung 990 PRO SSD 2TB M.2 NVMe</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Velocidad Lectura</dt><dd>Hasta 7450 MB/s</dd><dt class="font-semibold text-slate-700">Velocidad Escritura</dt><dd>Hasta 6900 MB/s</dd><dt class="font-semibold text-slate-700">Formato</dt><dd>M.2 2280</dd><dt class="font-semibold text-slate-700">Controlador</dt><dd>NVMe 2.0</dd><dt class="font-semibold text-slate-700">Compatibilidad</dt><dd>PC Desktop, Laptops y PlayStation 5</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-gamepad mt-0.5"></i><span>100% Compatible con PS5 + 5 años de garantía</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 780.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="ssd" data-orden="9">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/DiscoSSD_KingstonNV2_1TBM.2 2280NVMe.png" alt="Kingston NV2 1TB SSD" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">Económico</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Almacenamiento | Kingston NVMe</span>
+                    <small class="text-xs text-slate-400">SKU: SSD-KINGSTON-NV2-1TB</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">Kingston NV2 1TB M.2 2280 NVMe</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Velocidad Lectura</dt><dd>Hasta 3500 MB/s</dd><dt class="font-semibold text-slate-700">Formato</dt><dd>M.2 2280</dd><dt class="font-semibold text-slate-700">Controlador</dt><dd>NVMe Gen 3</dd><dt class="font-semibold text-slate-700">Ideal para</dt><dd>Uso diario, económico y eficiente</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐☆ (4.5/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-tag mt-0.5"></i><span>La mejor relación precio-rendimiento + 3 años de garantía</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 290.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="placa" data-orden="10">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/PlacaBase_ASUS_ROGStrixB650-A.jpg" alt="ASUS ROG Strix B650-A Gaming WiFi" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">Cupón S/40 OFF</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Placas Base | Asus AM5</span>
+                    <small class="text-xs text-slate-400">SKU: MB-ASUS-ROG-B650A-WIFI</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">ASUS ROG Strix B650-A Gaming WiFi</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Socket</dt><dd>AMD AM5 (Ryzen de última generación)</dd><dt class="font-semibold text-slate-700">Formato</dt><dd>ATX</dd><dt class="font-semibold text-slate-700">Ranuras RAM</dt><dd>4x DDR5</dd><dt class="font-semibold text-slate-700">Almacenamiento</dt><dd>Múltiples M.2 PCIe 4.0/5.0 + SATA III</dd><dt class="font-semibold text-slate-700">Redes</dt><dd>WiFi 6E + Bluetooth 5.3</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-ticket mt-0.5"></i><span>Cupón GAMER40 (S/ 40 OFF en el carrito)</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 895.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="placa" data-orden="11">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/PlacaBase_MAG B760_TOMAHAWK.png" alt="MSI MAG B760 TOMAHAWK WIFI" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">Para Intel</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Placas Base | MSI Intel</span>
+                    <small class="text-xs text-slate-400">SKU: MB-MSI-B760-TOMAHAWK</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">MSI MAG B760 TOMAHAWK WIFI</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Socket</dt><dd>Intel LGA1700 (Gen 12/13/14)</dd><dt class="font-semibold text-slate-700">Formato</dt><dd>ATX</dd><dt class="font-semibold text-slate-700">Ranuras RAM</dt><dd>4x DDR5</dd><dt class="font-semibold text-slate-700">Redes</dt><dd>WiFi 6E + Bluetooth 5.3</dd><dt class="font-semibold text-slate-700">Ideal para</dt><dd>Procesadores Intel de gama media-alta</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐☆ (4.7/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-microchip mt-0.5"></i><span>Excelente compatibilidad con Intel + 3 años de garantía</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 820.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="psu" data-orden="12">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/PSU_CorsairRM850xShift850W80PlusGold.jpg" alt="Corsair RM850x Shift 850W" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">Certificado Gold</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Fuentes de Poder | Corsair</span>
+                    <small class="text-xs text-slate-400">SKU: PSU-CORSAIR-RM850X-SHIFT</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">Corsair RM850x Shift 850W 80 Plus Gold</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Potencia</dt><dd>850 Watts</dd><dt class="font-semibold text-slate-700">Certificación</dt><dd>80 Plus Gold</dd><dt class="font-semibold text-slate-700">Cableado</dt><dd>Totalmente Modular, conectores laterales (Shift)</dd><dt class="font-semibold text-slate-700">Ideal para</dt><dd>Componentes exigentes, potencia de sobra</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐⭐ (4.9/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-bolt mt-0.5"></i><span>Eficiencia energética garantizada + 5 años de garantía</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 650.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="producto group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl" data-tipo="psu" data-orden="13">
+                <span class="absolute inset-x-0 top-0 z-10 h-1 bg-linear-to-r from-marca to-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100"></span>
+                <div class="relative aspect-4/3 overflow-hidden bg-slate-50">
+                    <img src="../Imagenes/PSU_GigabyteP650B650W80PlusBronze.jpg" alt="Gigabyte P650B 650W" class="h-full w-full object-contain p-4 transition duration-300 group-hover:scale-110">
+                    <span class="absolute left-2.5 top-2.5 rounded-md bg-marca px-2 py-1 text-xs font-semibold text-white">Certificado Bronze</span>
+                </div>
+                <div class="producto-info flex flex-1 flex-col p-5">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-marca">Fuentes de Poder | Gigabyte</span>
+                    <small class="text-xs text-slate-400">SKU: PSU-GIGABYTE-P650B</small>
+                    <h3 class="mt-1 line-clamp-2 text-lg font-semibold text-slate-900">Gigabyte P650B 650W 80 Plus Bronze</h3>
+                    <dl class="mt-3 grid flex-1 grid-cols-[auto_1fr] content-start gap-x-3 gap-y-1 text-xs text-slate-600"><dt class="font-semibold text-slate-700">Potencia</dt><dd>650 Watts</dd><dt class="font-semibold text-slate-700">Certificación</dt><dd>80 Plus Bronze</dd><dt class="font-semibold text-slate-700">Protecciones</dt><dd>OVP/UVP/SCP/OPP</dd><dt class="font-semibold text-slate-700">Ideal para</dt><dd>Configuraciones estándar, segura y confiable</dd></dl>
+                    <div class="mt-3 text-sm text-amber-500">⭐⭐⭐⭐☆ (4.5/5)</div>
+                <p class="mt-3 flex items-start gap-2 text-xs font-medium text-emerald-600"><i class="fa-solid fa-shield-halved mt-0.5"></i><span>Protección total + 3 años de garantía</span></p>
+                    <div class="producto-pie mt-4 flex items-center justify-between gap-3">
+                        <strong class="text-xl font-bold text-slate-900">S/ 320.00</strong>
+                        <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-marca px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 active:scale-95">
+                            <i class="fa-solid fa-cart-plus"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+                <p id="mensajeSinResultados" class="col-span-full hidden py-8 text-center text-slate-500">
+                    No se encontraron productos que coincidan con tu búsqueda.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- ============ FICHA: TAILWIND CSS ============ -->
+        <section class="mx-auto max-w-7xl px-4 pb-4 pt-6" aria-labelledby="tituloFicha">
+            <h2 id="tituloFicha" class="mb-6 text-center text-2xl font-bold text-marca-oscuro sm:text-3xl"><i class="fa-solid fa-wind mr-2 text-marca"></i>Sobre Tailwind CSS</h2>
+            <div class="grid gap-5 md:grid-cols-2">
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                <div class="mb-3 flex items-center gap-3">
+                    <span class="grid size-10 place-items-center rounded-xl bg-marca/10 text-marca"><i class="fa-solid fa-book-open"></i></span>
+                    <h3 class="text-lg font-semibold text-slate-900">Definición</h3>
+                </div>
+                <div class="space-y-2 text-sm leading-relaxed text-slate-600 [&_code]:rounded [&_code]:bg-slate-100 [&_code]:px-1 [&_code]:text-xs [&_code]:text-marca [&_li]:ml-4 [&_li]:list-disc [&_ul]:space-y-1"><p>Tailwind CSS es un framework <strong>utility-first</strong>: en lugar de componentes ya armados, ofrece miles de clases pequeñas (<code>flex</code>, <code>p-4</code>, <code>text-center</code>, <code>hover:bg-blue-600</code>) que se combinan directamente en el HTML para construir cualquier diseño. Lo creó Adam Wathan (2017) y su versión 4 (2025) se configura desde el propio CSS con un motor nuevo y más rápido.</p></div>
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                <div class="mb-3 flex items-center gap-3">
+                    <span class="grid size-10 place-items-center rounded-xl bg-marca/10 text-marca"><i class="fa-solid fa-thumbs-up"></i></span>
+                    <h3 class="text-lg font-semibold text-slate-900">Ventajas</h3>
+                </div>
+                <div class="space-y-2 text-sm leading-relaxed text-slate-600 [&_code]:rounded [&_code]:bg-slate-100 [&_code]:px-1 [&_code]:text-xs [&_code]:text-marca [&_li]:ml-4 [&_li]:list-disc [&_ul]:space-y-1"><ul><li>Diseños a medida sin salir del HTML ni inventar nombres de clases.</li><li>En producción solo se incluye el CSS que realmente usas: archivos muy livianos.</li><li>Responsive y estados con prefijos (<code>md:</code>, <code>hover:</code>, <code>dark:</code>).</li><li>Escala de espaciados, colores y tamaños consistente.</li><li>Encaja muy bien con componentes de React, Vue o Astro.</li></ul></div>
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                <div class="mb-3 flex items-center gap-3">
+                    <span class="grid size-10 place-items-center rounded-xl bg-marca/10 text-marca"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+                    <h3 class="text-lg font-semibold text-slate-900">Usos</h3>
+                </div>
+                <div class="space-y-2 text-sm leading-relaxed text-slate-600 [&_code]:rounded [&_code]:bg-slate-100 [&_code]:px-1 [&_code]:text-xs [&_code]:text-marca [&_li]:ml-4 [&_li]:list-disc [&_ul]:space-y-1"><ul><li>Interfaces con identidad visual propia.</li><li>Sistemas de diseño y librerías de componentes.</li><li>Aplicaciones con frameworks de JavaScript.</li><li>Prototipos rápidos de pantallas personalizadas.</li></ul></div>
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                <div class="mb-3 flex items-center gap-3">
+                    <span class="grid size-10 place-items-center rounded-xl bg-marca/10 text-marca"><i class="fa-solid fa-rocket"></i></span>
+                    <h3 class="text-lg font-semibold text-slate-900">Aplicaciones</h3>
+                </div>
+                <div class="space-y-2 text-sm leading-relaxed text-slate-600 [&_code]:rounded [&_code]:bg-slate-100 [&_code]:px-1 [&_code]:text-xs [&_code]:text-marca [&_li]:ml-4 [&_li]:list-disc [&_ul]:space-y-1"><p><strong>En esta página:</strong> el diseño completo (tarjetas con ficha técnica, barra de filtros, efectos al pasar el mouse y menú móvil) sale de clases utilitarias escritas en el HTML. Lo único de CSS propio es el carrito, el pago y la notificación, que comparte todo el sitio.</p><p><strong>Fuera del proyecto:</strong> aplicaciones web, tiendas y páginas de producto. <strong>Ojo:</strong> el HTML se llena de clases y cuesta memorizarlas al inicio. Aquí se usa el script de navegador por simplicidad; en producción se compila con la herramienta de línea de comandos o con Vite.</p></div>
+            </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============ PIE DE PÁGINA ============ -->
+    <footer class="mt-12 bg-marca-oscuro text-white">
+        <div class="mx-auto grid max-w-7xl gap-10 px-6 pb-10 pt-14 sm:grid-cols-2 lg:grid-cols-4">
+            <div>
+                <a href="index.html#inicio" class="text-3xl font-bold">Tecno<span class="text-sky-400">Store</span></a>
+                <p class="mt-3 max-w-xs text-sm leading-relaxed text-slate-300">Tecnología para todos. Encuentra computadoras, componentes, accesorios y productos para tu hogar.</p>
+                <ul class="mt-4 space-y-2 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-sky-400"></i>Compra segura</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-sky-400"></i>Envíos rápidos</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="mb-3 font-semibold">Categorías</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="computadoras.html" class="text-slate-300 transition hover:text-white"><i class="fa-solid fa-chevron-right mr-2 text-[10px] text-sky-400"></i>Computadoras</a></li>
+                    <li><a href="componentes.html" class="text-slate-300 transition hover:text-white"><i class="fa-solid fa-chevron-right mr-2 text-[10px] text-sky-400"></i>Componentes</a></li>
+                    <li><a href="gaming.html" class="text-slate-300 transition hover:text-white"><i class="fa-solid fa-chevron-right mr-2 text-[10px] text-sky-400"></i>Accesorios y Gaming</a></li>
+                    <li><a href="electrodomesticos.html" class="text-slate-300 transition hover:text-white"><i class="fa-solid fa-chevron-right mr-2 text-[10px] text-sky-400"></i>Electrodomésticos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="mb-3 font-semibold">Contacto</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-envelope w-4 text-sky-400"></i>tecnostore_gaming@gmail.com</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-phone w-4 text-sky-400"></i>+51 987 654 321</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot w-4 text-sky-400"></i>Lima, Perú</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="mb-3 font-semibold">Síguenos</h4>
+                <p class="mb-3 text-sm text-slate-300">Encuentra nuestras novedades, promociones y productos.</p>
+                <div class="flex gap-3">
+                    <a href="#" aria-label="Facebook" class="grid size-10 place-items-center rounded-lg border border-sky-500/60 text-white transition hover:-translate-y-0.5 hover:bg-marca"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram" class="grid size-10 place-items-center rounded-lg border border-sky-500/60 text-white transition hover:-translate-y-0.5 hover:bg-marca"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok" class="grid size-10 place-items-center rounded-lg border border-sky-500/60 text-white transition hover:-translate-y-0.5 hover:bg-marca"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-2 bg-[#04132f] px-6 py-4 text-xs text-slate-400">
+            <p>© 2026 TecnoStore. Todos los derechos reservados.</p>
+            <p><i class="fa-solid fa-laptop mr-1 text-sky-400"></i>Tienda virtual de productos tecnológicos.</p>
+        </div>
+    </footer>
+
+    <script src="../JS/inicio.js"></script>
+    <script src="../JS/orden-precio.js"></script>
+    <script>
+        // Menú móvil: mostrar u ocultar con la clase "hidden" de Tailwind
+        document.getElementById("btnMenuTw").addEventListener("click", function () {
+            const menu = document.getElementById("menuMovilTw");
+            const abierto = menu.classList.toggle("hidden") === false;
+            menu.classList.toggle("flex", abierto);
+            this.setAttribute("aria-expanded", abierto ? "true" : "false");
+        });
+    </script>
+
+</body>
+
+</html>

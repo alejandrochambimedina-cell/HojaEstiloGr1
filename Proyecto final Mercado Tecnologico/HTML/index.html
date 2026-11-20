@@ -23,6 +23,7 @@
     <!-- CSS principal -->
     <link rel="stylesheet" href="../CSS/estilos.css">
     <link rel="stylesheet" href="../CSS/global.css">
+    <link rel="stylesheet" href="../CSS/carrito.css">
 </head>
 
 <body>
@@ -153,7 +154,8 @@
                     productos gaming y electrodomésticos en un solo lugar.</p>
                 <div class="hero-botones">
                     <a href="gaming.html" class="btn"><i class="fa-solid fa-store"></i>Ver productos</a>
-                    <a href="#categorias" class="btn btn-secundario"><i class="fa-solid fa-layer-group"></i>Ver categorías</a>
+                    <a href="#categorias" class="btn btn-secundario"><i class="fa-solid fa-layer-group"></i>Ver
+                        categorías</a>
                 </div>
             </div>
             <div class="hero-imagen">
@@ -322,8 +324,8 @@
                 </article>
 
             </div>
-        </section>+
-        
+        </section>
+
 
         <!-- =================== MÁS VENDIDOS ======================= -->
 
@@ -470,14 +472,155 @@
             </div>
         </section>
 
+        <!-- ================== FRAMEWORKS CSS ====================== -->
+
+        <section class="seccion frameworks" id="frameworks">
+
+            <div class="titulo-seccion">
+                <span><i class="fa-solid fa-swatchbook"></i> Aprende</span>
+                <h2>Frameworks CSS</h2>
+                <p>Qué son, cómo se clasifican y en qué página de TecnoStore aplicamos cada uno.</p>
+            </div>
+
+            <div class="fw-info">
+
+                <article class="fw-info-card">
+                    <h3><i class="fa-solid fa-book-open"></i> Definición</h3>
+                    <p>Un framework CSS es un conjunto de estilos y componentes ya escritos y probados
+                        (grilla, tipografía, botones, formularios, navegación) que se reutilizan para
+                        construir interfaces más rápido y con coherencia visual.</p>
+                </article>
+
+                <article class="fw-info-card">
+                    <h3><i class="fa-solid fa-sitemap"></i> Tipos</h3>
+                    <ul>
+                        <li><strong>De componentes:</strong> piezas ya armadas (Bootstrap, Materialize).</li>
+                        <li><strong>Utility-first:</strong> clases pequeñas que se combinan (Tailwind CSS).</li>
+                        <li><strong>Sistema de diseño:</strong> guías y librerías (Material Design).</li>
+                        <li><strong>Ligeros:</strong> pocos estilos base (Pico, Pure.css).</li>
+                    </ul>
+                </article>
+
+                <article class="fw-info-card">
+                    <h3><i class="fa-solid fa-thumbs-up"></i> Ventajas</h3>
+                    <ul>
+                        <li>Desarrollo más rápido.</li>
+                        <li>Diseño responsive incluido.</li>
+                        <li>Consistencia visual en equipo.</li>
+                        <li>Documentación y comunidad.</li>
+                        <li>Compatibilidad entre navegadores probada.</li>
+                    </ul>
+                    <p class="fw-ojo"><strong>Ojo:</strong> peso extra si no se optimiza, sitios que se parecen
+                        entre sí y estilos difíciles de sobrescribir.</p>
+                </article>
+
+                <article class="fw-info-card">
+                    <h3><i class="fa-solid fa-rocket"></i> Aplicaciones</h3>
+                    <ul>
+                        <li>Prototipos y productos mínimos viables.</li>
+                        <li>Paneles de administración.</li>
+                        <li>Tiendas en línea y sitios corporativos.</li>
+                        <li>Proyectos en equipo que necesitan un estándar visual.</li>
+                    </ul>
+                    <p class="fw-ojo"><strong>Aquí:</strong> cada página del catálogo usa un framework distinto
+                        para poder compararlos.</p>
+                </article>
+
+            </div>
+
+            <div class="fw-tabla-wrap">
+                <table class="fw-tabla">
+                    <caption class="fw-caption">Comparativa de los frameworks usados en TecnoStore</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Framework</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Idea principal</th>
+                            <th scope="col">Dónde lo usamos</th>
+                            <th scope="col">Cuándo elegirlo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Bootstrap</th>
+                            <td>De componentes</td>
+                            <td>Grilla de 12 columnas y componentes listos.</td>
+                            <td><a href="computadoras.html">Computadoras</a></td>
+                            <td>Cuando se necesita velocidad y un estándar común en el equipo.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tailwind CSS</th>
+                            <td>Utility-first</td>
+                            <td>Clases pequeñas que se combinan directamente en el HTML.</td>
+                            <td><a href="componentes.html">Componentes</a></td>
+                            <td>Cuando se busca un diseño propio y a medida.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Material Design</th>
+                            <td>Sistema de diseño</td>
+                            <td>Guías y tokens; se implementa con librerías como Material Web.</td>
+                            <td><a href="gaming.html">Accesorios y Gaming</a></td>
+                            <td>Cuando se quiere el estilo de Google o un tema oscuro coherente.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Materialize</th>
+                            <td>De componentes (estilo Material)</td>
+                            <td>Componentes con estética Material y efectos de ondas.</td>
+                            <td><a href="electrodomesticos.html">Electrodomésticos</a></td>
+                            <td>Prototipos rápidos; el proyecto original ya no tiene mantenimiento.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">CSS propio + SASS</th>
+                            <td>Sin framework</td>
+                            <td>Estilos escritos a mano y organizados con SASS.</td>
+                            <td>Inicio y compra</td>
+                            <td>Cuando se quiere control total y un sitio liviano.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="categorias fw-demos">
+
+                <article class="categoria">
+                    <div class="icono"><i class="fa-brands fa-bootstrap"></i></div>
+                    <h3>Bootstrap</h3>
+                    <p>Catálogo de computadoras con grilla, tarjetas, formularios y menú colapsable.</p>
+                    <a href="computadoras.html">Ver demo <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <article class="categoria">
+                    <div class="icono"><i class="fa-solid fa-wind"></i></div>
+                    <h3>Tailwind CSS</h3>
+                    <p>Componentes para PC con fichas técnicas diseñadas solo con clases utilitarias.</p>
+                    <a href="componentes.html">Ver demo <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <article class="categoria">
+                    <div class="icono"><i class="fa-solid fa-palette"></i></div>
+                    <h3>Material Design</h3>
+                    <p>Accesorios y gaming con tema oscuro, chips de filtro y tokens de color.</p>
+                    <a href="gaming.html">Ver demo <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+                <article class="categoria">
+                    <div class="icono"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Materialize</h3>
+                    <p>Electrodomésticos con tarjetas que revelan detalles, chips y menú lateral.</p>
+                    <a href="electrodomesticos.html">Ver demo <i class="fa-solid fa-arrow-right"></i></a>
+                </article>
+
+            </div>
+        </section>
+
         <!-- ================ LLAMADO A LA ACCIÓN ==================== -->
 
         <section class="cta">
             <div class="cta-contenido"> <span> <i class="fa-solid fa-magnifying-glass"></i> Encuentra lo que buscas
                 </span>
                 <h2> Explora nuestro catálogo </h2>
-                <p> Descubre productos tecnológicos para tus necesidades. </p> <a href="computadoras.html" class="btn"> <i
-                        class="fa-solid fa-store"></i> Ver mas productos </a>
+                <p> Descubre productos tecnológicos para tus necesidades. </p> <a href="computadoras.html" class="btn">
+                    <i class="fa-solid fa-store"></i> Ver mas productos </a>
             </div>
         </section>
     </main>
@@ -547,51 +690,47 @@
         <p><i class="fa-solid fa-laptop"></i>
             Tienda virtual de productos tecnológicos.</p>
     </div>
-<!-- Vista ampliada del producto -->
-<div class="modal-producto" id="modal-producto"
-    role="dialog" aria-modal="true"
-    aria-labelledby="modal-producto-nombre"
-    aria-hidden="true">
+    <script src="../JS/inicio.js"></script>
 
-    <div class="modal-producto-contenido">
-        <button class="modal-producto-cerrar"
-            id="modal-producto-cerrar"
-            type="button"
-            aria-label="Cerrar ventana">
-            &times;
-        </button>
 
-        <div class="modal-producto-imagen">
-            <img id="modal-imagen" src="" alt="">
-        </div>
+    <!-- Vista ampliada del producto -->
+    <div class="modal-producto" id="modal-producto" role="dialog" aria-modal="true"
+        aria-labelledby="modal-producto-nombre" aria-hidden="true">
 
-        <div class="modal-producto-info">
-            <span id="modal-categoria" class="producto-categoria"></span>
+        <div class="modal-producto-contenido">
+            <button class="modal-producto-cerrar" id="modal-producto-cerrar" type="button" aria-label="Cerrar ventana">
+                &times;
+            </button>
 
-            <h2 id="modal-producto-nombre"></h2>
-
-            <div id="modal-valoracion" class="valoracion"></div>
-
-            <div class="modal-producto-precios">
-                <strong id="modal-precio" class="precio"></strong>
-                <span id="modal-descuento" class="modal-producto-descuento"></span>
-                <del id="modal-precio-anterior"></del>
+            <div class="modal-producto-imagen">
+                <img id="modal-imagen" src="" alt="">
             </div>
 
-            <p class="modal-producto-descripcion">
-                Descubre los detalles de este producto y encuentra
-                la opción ideal para ti.
-            </p>
+            <div class="modal-producto-info">
+                <span id="modal-categoria" class="producto-categoria"></span>
 
-            <a id="modal-boton-compra" href="#" class="btn-producto">
-                Ver producto
-            </a>
+                <h2 id="modal-producto-nombre"></h2>
+
+                <div id="modal-valoracion" class="valoracion"></div>
+
+                <div class="modal-producto-precios">
+                    <strong id="modal-precio" class="precio"></strong>
+                    <span id="modal-descuento" class="modal-producto-descuento"></span>
+                    <del id="modal-precio-anterior"></del>
+                </div>
+
+                <p class="modal-producto-descripcion">
+                    Descubre los detalles de este producto y encuentra
+                    la opción ideal para ti.
+                </p>
+
+                <a id="modal-boton-compra" href="#" class="btn-producto">
+                    Ver producto
+                </a>
+            </div>
         </div>
     </div>
-</div>
-
-
-<script src="../JS/inicio.js"></script>
 
 </body>
+
 </html>

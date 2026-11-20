@@ -1156,3 +1156,128 @@
         font-size: 1.4rem;
     }
 }
+
+
+/* =========================================
+   SECCIÓN: FRAMEWORKS CSS (index)
+========================================= */
+
+.frameworks {
+    .fw-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .fw-info-card {
+        background-color: var(--blanco);
+        border: 1px solid #e6edf5;
+        border-radius: var(--radio);
+        padding: 1.4rem;
+        box-shadow: var(--sombra);
+
+        @include efecto-hover(-5px, var(--sombra-hover));
+
+        h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.7rem;
+            color: var(--azul-oscuro);
+            font-size: 1.05rem;
+
+            i {
+                color: var(--azul);
+            }
+        }
+
+        p,
+        li {
+            color: var(--gris-texto);
+            font-size: 0.88rem;
+        }
+
+        ul {
+            padding-left: 1.1rem;
+        }
+
+        li {
+            margin-bottom: 0.3rem;
+        }
+
+        .fw-ojo {
+            margin-top: 0.8rem;
+            padding-top: 0.7rem;
+            border-top: 1px dashed #d5e3f5;
+            font-size: 0.8rem;
+        }
+    }
+
+    .fw-tabla-wrap {
+        margin-bottom: 2rem;
+        overflow-x: auto;
+        border-radius: var(--radio);
+        background-color: var(--blanco);
+        box-shadow: var(--sombra);
+    }
+
+    .fw-tabla {
+        width: 100%;
+        min-width: 760px;
+        border-collapse: collapse;
+
+        .fw-caption {
+            padding: 1rem 1rem 0.2rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--azul-oscuro);
+        }
+
+        th,
+        td {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            vertical-align: top;
+            font-size: 0.85rem;
+        }
+
+        thead th {
+            background-color: var(--azul-oscuro);
+            color: var(--blanco);
+            font-size: 0.8rem;
+            letter-spacing: 0.03em;
+        }
+
+        tbody tr {
+            border-top: 1px solid #e6edf5;
+            transition: var(--transicion);
+
+            &:hover {
+                background-color: var(--azul-suave);
+            }
+        }
+
+        tbody th {
+            color: var(--azul-oscuro);
+            font-weight: 600;
+        }
+
+        td {
+            color: var(--gris-texto);
+
+            a {
+                color: var(--azul);
+                font-weight: 600;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .fw-demos {
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+}

@@ -1,0 +1,369 @@
+@use "animaciones" as anim;
+
+// =========================================================
+//   fw-material.scss  ·  Material Design 3 (tema oscuro)
+//   ---------------------------------------------------------
+//   Material Design se personaliza con "design tokens": variables
+//   CSS que empiezan con --md-sys-color-*. Los componentes de
+//   Material Web (botones, chips, campos...) las leen solos.
+//   Cambiando estos valores cambia todo el tema.
+// =========================================================
+
+@keyframes aparecer-arriba {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ---------- Tokens de color (esquema oscuro, semilla azul) ----------
+:root {
+    color-scheme: dark;
+
+    --md-sys-color-primary: #a8c7fa;
+    --md-sys-color-on-primary: #062e6f;
+    --md-sys-color-primary-container: #0842a0;
+    --md-sys-color-on-primary-container: #d3e3fd;
+    --md-sys-color-secondary: #bec6dc;
+    --md-sys-color-on-secondary: #283141;
+    --md-sys-color-secondary-container: #3e4759;
+    --md-sys-color-on-secondary-container: #dae2f9;
+    --md-sys-color-tertiary: #ddbcf0;
+    --md-sys-color-on-tertiary: #3f2948;
+    --md-sys-color-tertiary-container: #573e5f;
+    --md-sys-color-on-tertiary-container: #fad8fd;
+    --md-sys-color-error: #ffb4ab;
+    --md-sys-color-on-error: #690005;
+    --md-sys-color-error-container: #93000a;
+    --md-sys-color-on-error-container: #ffdad6;
+
+    --md-sys-color-background: #111318;
+    --md-sys-color-on-background: #e2e2e9;
+    --md-sys-color-surface: #111318;
+    --md-sys-color-surface-dim: #111318;
+    --md-sys-color-surface-bright: #37393e;
+    --md-sys-color-surface-container-lowest: #0c0e13;
+    --md-sys-color-surface-container-low: #191c20;
+    --md-sys-color-surface-container: #1d2024;
+    --md-sys-color-surface-container-high: #282a2f;
+    --md-sys-color-surface-container-highest: #33353a;
+    --md-sys-color-on-surface: #e2e2e9;
+    --md-sys-color-surface-variant: #44474e;
+    --md-sys-color-on-surface-variant: #c4c6d0;
+    --md-sys-color-outline: #8e9099;
+    --md-sys-color-outline-variant: #44474e;
+    --md-sys-color-inverse-surface: #e2e2e9;
+    --md-sys-color-inverse-on-surface: #2e3036;
+    --md-sys-color-inverse-primary: #0b57d0;
+    --md-sys-color-surface-tint: #a8c7fa;
+    --md-sys-color-shadow: #000;
+    --md-sys-color-scrim: #000;
+
+    --md-ref-typeface-brand: "Roboto", system-ui, sans-serif;
+    --md-ref-typeface-plain: "Roboto", system-ui, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    font-family: var(--md-ref-typeface-plain);
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: var(--md-sys-color-primary);
+    text-decoration: none;
+}
+
+// ---------- Barra superior ----------
+.appbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--md-sys-color-surface-container);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+    .logo img {
+        display: block;
+        height: 46px;
+        width: auto;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .solo-movil {
+        display: none;
+        position: relative;
+    }
+
+    @media (max-width: 900px) {
+        nav .enlace-nav {
+            display: none;
+        }
+
+        .solo-movil {
+            display: block;
+        }
+    }
+}
+
+// ---------- Contenido ----------
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 3rem;
+}
+
+.encabezado-pagina {
+    text-align: center;
+    margin: 1rem 0 2rem;
+    @include anim.animar(aparecer-arriba, anim.$duracion-larga);
+
+    .sobretitulo {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--md-sys-color-primary);
+    }
+
+    h1 {
+        margin: 0.3rem 0;
+    }
+
+    p {
+        margin: 0;
+        color: var(--md-sys-color-on-surface-variant);
+    }
+}
+
+// ---------- Filtros ----------
+.barra-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    @include anim.animar(aparecer-arriba, anim.$duracion-larga, $retraso: 0.15s);
+
+    md-outlined-text-field {
+        min-width: min(100%, 320px);
+    }
+
+    md-outlined-select {
+        min-width: 200px;
+    }
+}
+
+// ---------- Tarjetas (cards de Material 3) ----------
+.grilla-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.25rem;
+}
+
+.sin-resultados {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--md-sys-color-on-surface-variant);
+    padding: 2rem 0;
+}
+
+.m3-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 16px;
+    background-color: var(--md-sys-color-surface-container-low);
+    --md-elevation-level: 1;
+    transition: transform 0.3s ease;
+
+    @include anim.animar(aparecer-arriba, anim.$duracion-larga);
+    @include anim.escalonar(9);
+
+    &:hover {
+        --md-elevation-level: 3;
+        transform: translateY(-4px);
+    }
+
+    .m3-media {
+        position: relative;
+        margin: 8px 8px 0;
+        border-radius: 12px;
+        background-color: #eef1f6;
+        overflow: hidden;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 190px;
+            object-fit: contain;
+            padding: 0.6rem;
+        }
+    }
+
+    .m3-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 2px 10px;
+        border-radius: 8px;
+        background-color: var(--md-sys-color-error-container);
+        color: var(--md-sys-color-on-error-container);
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+    // Etiqueta informativa (no es descuento)
+    .m3-badge.info {
+        background-color: var(--md-sys-color-secondary-container);
+        color: var(--md-sys-color-on-secondary-container);
+    }
+
+    .m3-cuerpo {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 1rem;
+
+        .producto-categoria {
+            color: var(--md-sys-color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            margin: 0;
+        }
+
+        p {
+            flex: 1;
+            margin: 0;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+    }
+
+    .producto-pie {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-top: 0.6rem;
+
+        strong {
+            color: var(--md-sys-color-on-surface);
+            white-space: nowrap;
+        }
+    }
+}
+
+// ---------- Ficha (pestañas) ----------
+.ficha {
+    margin-top: 3rem;
+    border-radius: 16px;
+    background-color: var(--md-sys-color-surface-container);
+    overflow: hidden;
+
+    .ficha-panel {
+        padding: 1.5rem;
+        line-height: 1.6;
+
+        h2 {
+            margin: 0 0 0.6rem;
+        }
+
+        ul {
+            margin: 0.5rem 0 0;
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.3rem;
+        }
+
+        &[hidden] {
+            display: none;
+        }
+    }
+}
+
+// ---------- Pie de página ----------
+.pie {
+    background-color: var(--md-sys-color-surface-container-lowest);
+    padding: 2.5rem 1.5rem 1rem;
+
+    .pie-columnas {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    h4 {
+        margin: 0 0 0.6rem;
+    }
+
+    p,
+    li {
+        color: var(--md-sys-color-on-surface-variant);
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        margin-bottom: 0.4rem;
+    }
+
+    .derechos {
+        max-width: 1200px;
+        margin: 2rem auto 0;
+        padding-top: 1rem;
+        border-top: 1px solid var(--md-sys-color-outline-variant);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.5rem;
+        color: var(--md-sys-color-on-surface-variant);
+    }
+}
+
+// ---------- Accesibilidad: reducir movimiento ----------
+@include anim.sin-movimiento {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

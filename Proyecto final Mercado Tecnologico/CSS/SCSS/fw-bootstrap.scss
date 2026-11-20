@@ -1,0 +1,178 @@
+@use "sass:color";
+@use "animaciones" as anim;
+
+// =========================================================
+//   fw-bootstrap.scss  ·  Tema TecnoStore sobre Bootstrap 5.3
+//   ---------------------------------------------------------
+//   Bootstrap se carga completo desde CDN y aquí solo se
+//   personaliza. Bootstrap 5.3 expone sus colores como variables
+//   CSS (--bs-primary, --bs-btn-bg...), así que se cambia la
+//   marca sin recompilar el framework. Sass aporta los cálculos
+//   de color (color.scale) y las animaciones del parcial.
+// =========================================================
+
+$azul: #0866e8;
+$azul-rgb: 8, 102, 232;
+$azul-oscuro: #071a3d;
+$azul-hover: color.scale($azul, $lightness: -12%);
+$azul-active: color.scale($azul, $lightness: -20%);
+
+// ---------- Keyframes (esta página no carga estilos.css) ----------
+@keyframes aparecer-arriba {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulso {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.12); }
+}
+
+// ---------- Marca: se reemplazan las variables de Bootstrap ----------
+:root {
+    --bs-primary: #{$azul};
+    --bs-primary-rgb: #{$azul-rgb};
+    --bs-link-color-rgb: #{$azul-rgb};
+    --bs-link-hover-color-rgb: 6, 77, 176;
+    --bs-body-font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --bs-body-bg: #f4f7fb;
+}
+
+.btn-primary {
+    --bs-btn-bg: #{$azul};
+    --bs-btn-border-color: #{$azul};
+    --bs-btn-hover-bg: #{$azul-hover};
+    --bs-btn-hover-border-color: #{$azul-hover};
+    --bs-btn-active-bg: #{$azul-active};
+    --bs-btn-active-border-color: #{$azul-active};
+    --bs-btn-disabled-bg: #{$azul};
+    --bs-btn-disabled-border-color: #{$azul};
+}
+
+.btn-outline-primary {
+    --bs-btn-color: #{$azul};
+    --bs-btn-border-color: #{$azul};
+    --bs-btn-hover-bg: #{$azul};
+    --bs-btn-hover-border-color: #{$azul};
+    --bs-btn-active-bg: #{$azul};
+    --bs-btn-active-border-color: #{$azul};
+    --bs-btn-disabled-color: #{$azul};
+    --bs-btn-disabled-border-color: #{$azul};
+}
+
+// ---------- Barra de navegación ----------
+.navbar-tecno {
+    --bs-navbar-color: rgba(232, 238, 248, 0.88);
+    --bs-navbar-hover-color: #fff;
+    background-color: $azul-oscuro;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+
+    .navbar-brand img {
+        height: 46px;
+        width: auto;
+    }
+
+    .nav-link {
+        border-radius: 0.5rem;
+        font-weight: 500;
+
+        &.active {
+            color: #fff;
+            background-color: $azul;
+        }
+    }
+}
+
+// ---------- Encabezado de la página ----------
+.encabezado-pagina {
+    @include anim.animar(aparecer-arriba, anim.$duracion-larga);
+}
+
+// ---------- Filtros ----------
+.barra-filtros {
+    @include anim.animar(aparecer-arriba, anim.$duracion-larga, $retraso: 0.15s);
+}
+
+// JavaScript (inicio.js) marca el botón elegido con la clase "activo"
+.filtro-btn.activo {
+    color: #fff;
+    background-color: $azul;
+    border-color: $azul;
+}
+
+// Efecto "botón presionado"
+.filtro-btn:active,
+.producto-pie .btn:active {
+    transform: scale(0.94);
+}
+
+// ---------- Tarjetas de producto ----------
+// La clase .producto va en la columna (así el filtro oculta la
+// columna completa y la grilla se reacomoda sola).
+#grid-computadoras > .producto {
+    @include anim.animar(aparecer-arriba, anim.$duracion-larga);
+    @include anim.escalonar(8);
+}
+
+.producto .card {
+    border: 1px solid #e6edf5;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 15px 35px rgba(7, 26, 61, 0.14) !important;
+
+        .card-img-top {
+            transform: scale(1.05);
+        }
+    }
+
+    .card-img-top {
+        height: 220px;
+        object-fit: contain;
+        background-color: #f8fafc;
+        transition: transform 0.4s ease;
+    }
+}
+
+.oferta-etiqueta {
+    @include anim.animar(pulso, 2s, ease-in-out, $repeticion: infinite, $fill: none);
+}
+
+// ---------- Pie de página ----------
+.footer-tecno {
+    background-color: $azul-oscuro;
+
+    a {
+        text-decoration: none;
+
+        &:hover {
+            color: #fff !important;
+        }
+    }
+
+    .footer-logo span {
+        color: #1683ff;
+    }
+}
+
+// ---------- Accesibilidad: reducir movimiento ----------
+@include anim.sin-movimiento {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

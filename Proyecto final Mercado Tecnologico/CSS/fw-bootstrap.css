@@ -1,0 +1,165 @@
+@keyframes aparecer-arriba {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes pulso {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+:root {
+  --bs-primary: #0866e8;
+  --bs-primary-rgb: 8, 102, 232;
+  --bs-link-color-rgb: 8, 102, 232;
+  --bs-link-hover-color-rgb: 6, 77, 176;
+  --bs-body-font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bs-body-bg: #f4f7fb;
+}
+
+.btn-primary {
+  --bs-btn-bg: #0866e8;
+  --bs-btn-border-color: #0866e8;
+  --bs-btn-hover-bg: rgb(2.7607843137%, 35.2%, 80.062745098%);
+  --bs-btn-hover-border-color: rgb(2.7607843137%, 35.2%, 80.062745098%);
+  --bs-btn-active-bg: rgb(2.5098039216%, 32%, 72.7843137255%);
+  --bs-btn-active-border-color: rgb(2.5098039216%, 32%, 72.7843137255%);
+  --bs-btn-disabled-bg: #0866e8;
+  --bs-btn-disabled-border-color: #0866e8;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #0866e8;
+  --bs-btn-border-color: #0866e8;
+  --bs-btn-hover-bg: #0866e8;
+  --bs-btn-hover-border-color: #0866e8;
+  --bs-btn-active-bg: #0866e8;
+  --bs-btn-active-border-color: #0866e8;
+  --bs-btn-disabled-color: #0866e8;
+  --bs-btn-disabled-border-color: #0866e8;
+}
+
+.navbar-tecno {
+  --bs-navbar-color: rgba(232, 238, 248, 0.88);
+  --bs-navbar-hover-color: #fff;
+  background-color: #071a3d;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+.navbar-tecno .navbar-brand img {
+  height: 46px;
+  width: auto;
+}
+.navbar-tecno .nav-link {
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+.navbar-tecno .nav-link.active {
+  color: #fff;
+  background-color: #0866e8;
+}
+
+.encabezado-pagina {
+  animation: aparecer-arriba 0.8s ease-out 0s 1 normal backwards;
+}
+
+.barra-filtros {
+  animation: aparecer-arriba 0.8s ease-out 0.15s 1 normal backwards;
+}
+
+.filtro-btn.activo {
+  color: #fff;
+  background-color: #0866e8;
+  border-color: #0866e8;
+}
+
+.filtro-btn:active,
+.producto-pie .btn:active {
+  transform: scale(0.94);
+}
+
+#grid-computadoras > .producto {
+  animation: aparecer-arriba 0.8s ease-out 0s 1 normal backwards;
+}
+#grid-computadoras > .producto:nth-child(1) {
+  animation-delay: 0s;
+}
+#grid-computadoras > .producto:nth-child(2) {
+  animation-delay: 0.08s;
+}
+#grid-computadoras > .producto:nth-child(3) {
+  animation-delay: 0.16s;
+}
+#grid-computadoras > .producto:nth-child(4) {
+  animation-delay: 0.24s;
+}
+#grid-computadoras > .producto:nth-child(5) {
+  animation-delay: 0.32s;
+}
+#grid-computadoras > .producto:nth-child(6) {
+  animation-delay: 0.4s;
+}
+#grid-computadoras > .producto:nth-child(7) {
+  animation-delay: 0.48s;
+}
+#grid-computadoras > .producto:nth-child(8) {
+  animation-delay: 0.56s;
+}
+
+.producto .card {
+  border: 1px solid #e6edf5;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.producto .card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 35px rgba(7, 26, 61, 0.14) !important;
+}
+.producto .card:hover .card-img-top {
+  transform: scale(1.05);
+}
+.producto .card .card-img-top {
+  height: 220px;
+  object-fit: contain;
+  background-color: #f8fafc;
+  transition: transform 0.4s ease;
+}
+
+.oferta-etiqueta {
+  animation: pulso 2s ease-in-out 0s infinite normal none;
+}
+
+.footer-tecno {
+  background-color: #071a3d;
+}
+.footer-tecno a {
+  text-decoration: none;
+}
+.footer-tecno a:hover {
+  color: #fff !important;
+}
+.footer-tecno .footer-logo span {
+  color: #1683ff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*# sourceMappingURL=fw-bootstrap.css.map */
