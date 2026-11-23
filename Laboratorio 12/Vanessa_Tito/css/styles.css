@@ -1,0 +1,150 @@
+/* BLOQUE 1 Base de la página y foco */
+* { box-sizing: border-box; }
+body {
+ margin: 0;
+ color: #14283f;
+ background: #f2f5f9;
+ font-family: Arial, sans-serif;
+ line-height: 1.6;
+}
+.wrap {
+ width: 90%;
+ max-width: 70rem;
+ margin: 0 auto;
+}
+.site-header { padding: 2rem 0 1rem; }
+h1 { font-size: 2.5rem; }
+h1, h2, h3 { line-height: 1.2; }
+.eyebrow { color: #42566d; font-weight: bold; }
+a { color: #164b8c; }
+a:focus, input:focus, main:focus {
+ outline: 3px solid #8b3600;
+ outline-offset: 4px;
+}
+.skip-link {
+ position: absolute;
+ top: -5rem;
+ left: 1rem;
+ padding: 0.6rem 1rem;
+ background: white;
+ z-index: 10;
+}
+.skip-link:focus { top: 1rem; }
+input { width: 1.2rem; height: 1.2rem; }
+label { margin-right: 1rem; }
+.site-footer { padding: 2rem 0; }
+
+/* BLOQUE 2 Contenido estático del catálogo */
+.cards { display: block; }
+.tile { margin: 0 0 1.25rem; }
+.card {
+ height: 100%;
+ padding: 1.25rem;
+ border: 2px solid #b9c6d5;
+ border-radius: 1rem;
+ background: white;
+}
+.card h3, .card p { overflow-wrap: break-word; }
+.button {
+ display: inline-block;
+ max-width: 100%;
+ min-height: 2.75rem;
+ padding: 0.65rem 0.8rem;
+ border-radius: 0.5rem;
+ background: #164b8c;
+ color: white;
+ font-weight: bold;
+ text-decoration: none;
+ overflow-wrap: break-word;
+}
+.button:focus { background: #103766; }
+.button:active { background: #0a274d; }
+@media (hover: hover) and (pointer: fine) {
+ .button:hover { background: #103766; }
+}
+.decoration { color: #42566d; }
+.marker {
+ display: inline-block;
+ width: 1rem;
+ height: 1rem;
+ margin-right: 0.5rem;
+ border-radius: 50%;
+ background: #164b8c;
+}
+.readings { margin: 2rem 0; }
+
+/* =====================================================
+   TRABAJO EVALUADO (PC3): se añade al final de la base
+   ===================================================== */
+
+/* BLOQUE 3 Mejora condicional con Grid.
+   La base (display: block) permanece fuera de la condición.
+   Cortes: 40rem (2 columnas) y 64rem (3 columnas), definidos por
+   el momento en que las tarjetas disponen de espacio suficiente. */
+@supports (display: grid) {
+ .cards {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr);
+ gap: 1.25rem;
+ }
+ .tile { margin: 0; min-width: 0; } /* el gap reemplaza el margen inferior */
+ @media (min-width: 40rem) {
+ .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+ }
+ @media (min-width: 64rem) {
+ .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+ }
+}
+
+/* BLOQUE 4 Fotogramas (dos secuencias con nombre propio) */
+@keyframes tile-enter {
+ from { transform: translateY(0.75rem); }
+ to { transform: translateY(0); }
+}
+@keyframes marker-rise {
+ from { transform: translateY(0); }
+ to { transform: translateY(-0.25rem); }
+}
+
+/* BLOQUE 5 Movimiento permitido (solo con no-preference) */
+@media (prefers-reduced-motion: no-preference) {
+
+ /* Transiciones de interacción: se declaran en la regla BASE
+    para que apliquen tanto al entrar como al salir del estado. */
+ .card { transition: transform 220ms ease-out 0ms; }
+ .button { transition: background-color 180ms ease-out; }
+
+ /* Estados: foco interno y hover disponible */
+ .card:focus-within { transform: translateY(-0.25rem) scale(1.02); }
+ @media (hover: hover) and (pointer: fine) {
+ .card:hover { transform: translateY(-0.25rem) scale(1.02); }
+ }
+
+ /* Entrada escalonada sobre la envoltura .tile.
+    fill-mode backwards: primer fotograma durante la espera y
+    estilo base al terminar (el texto nunca se oculta). */
+ #activar:checked ~ .scene .tile {
+ animation: tile-enter 600ms ease-out 0ms 1 normal backwards running;
+ }
+ #activar:checked ~ .scene .tile:nth-child(2) { animation-delay: 120ms; }
+ #activar:checked ~ .scene .tile:nth-child(3) { animation-delay: 240ms; }
+
+ /* Punto decorativo: 1200ms por trayecto, ida y vuelta = 2400ms */
+ #activar:checked ~ .scene .marker {
+ animation: marker-rise 1200ms ease-in-out 0ms infinite alternate none running;
+ }
+
+ /* Pausa: va DESPUÉS de las declaraciones abreviadas para que
+    ninguna las restablezca a running. No se retira el nombre. */
+ #pausar:checked ~ .scene .tile,
+ #pausar:checked ~ .scene .marker {
+ animation-play-state: paused;
+ }
+}
+
+/* BLOQUE 6 Movimiento reducido: sin secuencias ni transiciones.
+   El foco y los colores de estado siguen cambiando de inmediato. */
+@media (prefers-reduced-motion: reduce) {
+ .card, .button { transition: none; }
+ .tile, .marker { animation: none; transform: none; }
+}
